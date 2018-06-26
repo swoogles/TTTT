@@ -6,7 +6,9 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class ControllerTest {
+import static org.testng.Assert.assertTrue;
+
+public class ControllerIntegrationTest {
 
     @DataProvider(name = "controllers")
     public static Object[][] primeNumbers() {
@@ -46,5 +48,10 @@ public class ControllerTest {
 //        assertEquals(runTimeOfOperationsInBetween, 10);
         int runTimeOfOperationsInBetween = controller.failableAction();
         chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
+
+        System.out.println("ah!");
+        
+        assertTrue(1 == 2);
+        throw new RuntimeException("Insta-fail");
     }
 }
