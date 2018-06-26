@@ -41,7 +41,7 @@ public class ControllerTest {
     @Test(dataProvider = "controllers")
     public void test_simple(String developer, Controller controller) {
         int numPatients  = 5;
-        final List<Integer> testFacilityId = controller.facilityLevelOperation("testFacilityId", numPatients);
+        final int results = controller.facilityLevelOperation("testFacilityId", numPatients);
         // TODO more specific controller action.
 //        assertEquals(runTimeOfOperationsInBetween, 10);
         int runTimeOfOperationsInBetween = controller.failableAction();

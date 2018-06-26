@@ -3,7 +3,7 @@ apply plugin: 'java'
 apply plugin: 'war'
 
 repositories {                                                                                                                                                            
-  maven { url '' }                                                                                        
+  mavenCentral()
 }    
 
 dependencies {
@@ -18,3 +18,14 @@ dependencies {
 // sourceSets.main.resources {
     // srcDirs = ['src/main/java']
 // }
+
+
+
+sourceSets {
+  integrationTest {
+    java.srcDir file('src/integration-test/java')
+      resources.srcDir file('src/integration-test/resources')
+      compileClasspath += sourceSets.main.output + configurations.testRuntime
+      runtimeClasspath += output + compileClasspath
+  }
+}
