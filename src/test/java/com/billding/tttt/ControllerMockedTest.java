@@ -14,16 +14,13 @@ public class ControllerMockedTest {
     @DataProvider(name = "applications")
     public static Object[][] primeNumbers() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
-        final TestEnvironmentParameters testEnvironmentParameters = new TestEnvironmentParameters();
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
-        final Function<TestEnvironmentParameters, String> getRandomDeveloper = TestEnvironmentParameters::getRandomDeveloper;
-        final Function<TestEnvironmentParameters, Integer> getNumberOfTests = TestEnvironmentParameters::getNumberOfControllerTests;
 
         final Logic logicMock = mock(Logic.class);
 
         return testInstanceCreator.createInstances(
-            getNumberOfTests,
+            TestEnvironmentParameters::getNumberOfControllerTests,
             (idx) -> new Controller(
                 componentRunTimes.getController(),
                 logicMock
