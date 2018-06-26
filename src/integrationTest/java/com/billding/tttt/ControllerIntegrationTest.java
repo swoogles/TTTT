@@ -49,8 +49,6 @@ public class ControllerIntegrationTest {
         int runTimeOfOperationsInBetween = controller.failableAction();
         chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
 
-        System.out.println("ah!");
-        
         assertTrue(1 == 2);
         throw new RuntimeException("Insta-fail");
     }

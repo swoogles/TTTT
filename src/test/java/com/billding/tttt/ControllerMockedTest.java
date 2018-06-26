@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.mockito.Mockito.mock;
+import static org.testng.Assert.assertTrue;
 
 public class ControllerMockedTest {
 
