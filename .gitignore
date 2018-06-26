@@ -1,0 +1,19 @@
+target/
+
+# IntelliJ
+.idea
+*.iml
+*.eml
+**/out
+
+*.class
+*.checkstyle
+node_modules/*
+
+#gradle
+.gradle/
+*/build/*
+build/*
+
+**.log
+
