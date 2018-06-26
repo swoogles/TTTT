@@ -3,8 +3,6 @@ package com.billding.tttt;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.stream.IntStream;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -31,11 +29,11 @@ public class ApplicationMockedTest {
         when(controller.getOperationRunTime()).thenReturn(1);
         when(thirdPartyResource.getOperationRunTime()).thenReturn(1);
 
-        final Object[][] applications =
-            IntStream.range(0, testEnvironmentParameters.getNumberOfApplicationTests())
-                .mapToObj(idx -> new Object[]{
-                    testEnvironmentParameters.getRandomDeveloper(),
-                    new Application(
+        TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
+
+        return testInstanceCreator.createInstances(
+            testEnvironmentParameters.getNumberOfApplicationTests(),
+            (idx) -> new Application(
                         "test_app" + idx,
                         kafkaCluster,
                         authService,
@@ -43,8 +41,7 @@ public class ApplicationMockedTest {
                         thirdPartyResource,
                         componentRunTimes.getApplication()
                     )
-                }).toArray(size -> new Object[size][1]);
-        return applications;
+        );
     }
 
     @Test(dataProvider = "applications")

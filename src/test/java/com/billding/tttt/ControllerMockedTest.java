@@ -3,11 +3,11 @@ package com.billding.tttt;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
 import static org.mockito.Mockito.mock;
-import static org.testng.Assert.assertTrue;
 
 public class ControllerMockedTest {
 
@@ -15,22 +15,18 @@ public class ControllerMockedTest {
     public static Object[][] primeNumbers() {
         final ChaoticWorld chaoticWorld = new ChaoticWorld();
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
-        final Network network = new Network(componentRunTimes.getNetwork());
-        final Database database = new Database(network);
-
         final TestEnvironmentParameters testEnvironmentParameters = new TestEnvironmentParameters();
+
+        TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         final Logic logicMock = mock(Logic.class);
 
-        final Object[][] applications =
-            IntStream.range(0, testEnvironmentParameters.getNumberOfControllerTests()).mapToObj(idx -> new Object[]{
-                testEnvironmentParameters.getRandomDeveloper(),
-                    new Controller(
-                        componentRunTimes.getController(),
-                        logicMock
-                    ),
-            }).toArray(size -> new Object[size][1]);
-        return applications;
+        return testInstanceCreator.createInstances(
+            testEnvironmentParameters.getNumberOfControllerTests(),
+            (idx) -> new Controller(
+                componentRunTimes.getController(),
+                logicMock
+            ));
     }
 
     ChaoticWorld chaoticWorld = new ChaoticWorld();
@@ -38,10 +34,9 @@ public class ControllerMockedTest {
     @Test(dataProvider = "applications")
     public void test_simple(String developer, Controller controller) {
         int numPatients  = 5;
-        final int results = controller.facilityLevelOperation("testFacilityId", numPatients);
+        final int runTimeOfOperationsInBetween = controller.facilityLevelOperation("testFacilityId", numPatients);
         // TODO more specific controller action.
 //        assertEquals(runTimeOfOperationsInBetween, 10);
-        int runTimeOfOperationsInBetween = controller.failableAction();
         chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
     }
 }
