@@ -48,8 +48,5 @@ public class ControllerIntegrationTest {
 //        assertEquals(runTimeOfOperationsInBetween, 10);
         int runTimeOfOperationsInBetween = controller.failableAction();
         chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
-
-        assertTrue(1 == 2);
-        throw new RuntimeException("Insta-fail");
     }
 }
