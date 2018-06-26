@@ -12,7 +12,6 @@ public class ApplicationMockedTest {
     @DataProvider(name = "applications")
     public static Object[][] primeNumbers() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
-        final TestEnvironmentParameters testEnvironmentParameters = new TestEnvironmentParameters();
 
         final KafkaCluster kafkaCluster = mock(KafkaCluster.class);
         final AuthService authService = mock(AuthService.class);
@@ -32,7 +31,7 @@ public class ApplicationMockedTest {
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            testEnvironmentParameters.getNumberOfApplicationTests(),
+            TestEnvironmentParameters::getNumberOfApplicationTests,
             (idx) -> new Application(
                         "test_app" + idx,
                         kafkaCluster,
