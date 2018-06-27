@@ -16,6 +16,8 @@ public class KafkaCluster implements UnreliableService {
     }
 
     public int clusterAction() {
+        // TODO I think I should invert this. Put the details in this layer's method, and then
+        // invoke it in failableAction.
         return this.failableAction();
     }
 
@@ -31,6 +33,6 @@ public class KafkaCluster implements UnreliableService {
         ServiceStatus.ensureServiceIsRunning(this.name);
         return
             this.operationRunTime
-            + this.network.failableAction();
+            + this.network.httpOperation(200);
     }
 }
