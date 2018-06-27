@@ -4,6 +4,7 @@ language: java
 		# - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
 		# - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
+
 cache:
 		directories:
 			- $HOME/.m2
@@ -12,10 +13,13 @@ cache:
 
 jdk:
   - oraclejdk8
+
 before_script:
   - chmod +x gradlew
+
 script:
   - ./gradlew check
   - ./gradlew jacocoTestReport
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
