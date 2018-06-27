@@ -11,6 +11,7 @@ final class TestEnvironmentParameters {
     private final int numberOfMapperTests;
     private final int numberOfControllerTests;
     private final int numberOfThirdPartyResourceTests;
+    private final int numberOfProducerTests;
 
     private final List<String> developers;
 
@@ -27,6 +28,7 @@ final class TestEnvironmentParameters {
         this.numberOfMapperTests = propertyRetriever.getInt("num_tests.mappers");
         this.numberOfControllerTests = propertyRetriever.getInt("num_tests.controllers");
         this.numberOfThirdPartyResourceTests = propertyRetriever.getInt("num_tests.third_party_resources");
+        this.numberOfProducerTests = propertyRetriever.getInt("num_tests.producer");
 
         this.developers = parseDevelopers(propertyRetriever.getString("developers"));
         this.numberOfDevelopers = developers.size();
@@ -71,5 +73,9 @@ final class TestEnvironmentParameters {
 
     public int getNumberOfThirdPartyResourceTests() {
         return numberOfThirdPartyResourceTests * getNumberOfTimesTestWillBeRun();
+    }
+
+    public int getNumberOfProducerTests() {
+        return numberOfProducerTests;
     }
 }

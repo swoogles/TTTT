@@ -7,8 +7,8 @@ import java.util.stream.IntStream;
 
 public class ProducerTest {
 
-    @DataProvider(name = "mappers")
-    public static Object[][] primeNumbers() {
+    @DataProvider(name = "producers")
+    public static Object[][] testData() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
         final Network network = new Network(componentRunTimes.getNetwork());
         final ChaoticWorld chaoticWorld = new ChaoticWorld();
@@ -29,7 +29,7 @@ public class ProducerTest {
         return applications;
     }
 
-    @Test(dataProvider = "mappers")
+    @Test(dataProvider = "producers")
     public void test_specific(String developer, Producer producer) {
         final int testCaseRunTime = producer.submitEvent();
     }
