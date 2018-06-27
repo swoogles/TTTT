@@ -22,7 +22,8 @@ public class ProducerMockedTest {
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            TestEnvironmentParameters::getNumberOfMapperTests,
+            (ignored) -> 1, // TODO Use a real property here
+            // TestEnvironmentParameters::getNumberOfProducerTests,
             (idx) -> new Producer(
                         kafkaCluster,
                         chaoticWorld,

@@ -14,7 +14,7 @@ public class NetworkMockedTest {
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            TestEnvironmentParameters::getNumberOfMapperTests,
+            (ignored) -> 1,
             (idx) -> new Network(networkOperationRunTime)
         );
 

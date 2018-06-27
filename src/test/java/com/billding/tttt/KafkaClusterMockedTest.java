@@ -19,7 +19,7 @@ public class KafkaClusterMockedTest {
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            TestEnvironmentParameters::getNumberOfMapperTests,
+            (ignored) -> 1,
             (idx) -> new KafkaCluster(network)
         );
 
