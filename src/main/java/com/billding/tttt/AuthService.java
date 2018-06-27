@@ -12,7 +12,7 @@ public class AuthService implements UnreliableService {
     }
 
     public int authenticateUser(String username, String password) { // Take params here.
-        return this.intranet.failableAction();
+        return failableAction();
     }
 
     @Override
