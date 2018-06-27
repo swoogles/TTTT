@@ -23,6 +23,6 @@ public class Network implements UnreliableService {
     @Override
     public int failableAction() {
         ServiceStatus.ensureServiceIsRunning(this.name);
-        return this.operationRunTime;
+        return this.getOperationRunTime();
     }
 }

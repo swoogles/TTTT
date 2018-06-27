@@ -29,7 +29,7 @@ public class Endpoint implements UnreliableService {
     public int failableAction() {
         ServiceStatus.ensureServiceIsRunning(this.name);
         return
-            this.operationRunTime
+            this.getOperationRunTime()
             + this.network.httpOperation(200)
             + this.application.simpleAction();
     }

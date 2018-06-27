@@ -23,6 +23,5 @@ public class NetworkMockedTest {
     @Test(dataProvider = "networks")
     public void test_specific(String developer, Network network) {
         assertEquals(networkOperationRunTime, network.httpOperation(200));
-        assertEquals(networkOperationRunTime, network.getOperationRunTime());
     }
 }

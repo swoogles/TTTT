@@ -32,7 +32,7 @@ public class KafkaCluster implements UnreliableService {
         // I should emphasize and possibly create test variations for.
         ServiceStatus.ensureServiceIsRunning(this.name);
         return
-            this.operationRunTime
+            this.getOperationRunTime()
             + this.network.httpOperation(200);
     }
 }

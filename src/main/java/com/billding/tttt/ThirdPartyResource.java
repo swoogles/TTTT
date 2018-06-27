@@ -24,7 +24,7 @@ public class ThirdPartyResource implements UnreliableService {
     @Override
     public int failableAction() {
         ServiceStatus.ensureServiceIsRunning(this.name);
-        return this.operationRunTime
+        return this.getOperationRunTime()
             + this.network.httpOperation(200);
     }
 }

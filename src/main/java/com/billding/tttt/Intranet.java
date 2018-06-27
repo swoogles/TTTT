@@ -23,7 +23,7 @@ public class Intranet implements UnreliableService {
     public int failableAction() {
         ServiceStatus.ensureServiceIsRunning(this.name);
         return
-            this.operationRunTime
+            this.getOperationRunTime()
                 + this.network.failableAction();
     }
 }

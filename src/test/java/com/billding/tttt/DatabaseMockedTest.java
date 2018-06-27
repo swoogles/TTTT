@@ -29,6 +29,5 @@ public class DatabaseMockedTest {
     @Test(dataProvider = "databases")
     public void test_specific(String developer, Database database) {
         assertEquals(mapperOperationRunTime, database.failableAction());
-        assertEquals(mapperOperationRunTime, database.getOperationRunTime());
     }
 }

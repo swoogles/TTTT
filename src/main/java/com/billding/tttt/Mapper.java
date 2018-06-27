@@ -25,7 +25,7 @@ class Mapper implements UnreliableService {
     @Override
     public int failableAction() {
         this.chaoticWorld.currentTime();
-        return this.operationRunTime
+        return this.getOperationRunTime()
             + this.database.failableAction();
     }
 }

@@ -24,6 +24,5 @@ public class BrowserMockedTest {
     @Test(dataProvider = "browsers")
     public void test_specific(String developer, Browser browser) {
         assertEquals(browserOperationRunTime, browser.failableAction());
-        assertEquals(browserOperationRunTime, browser.getOperationRunTime());
     }
 }

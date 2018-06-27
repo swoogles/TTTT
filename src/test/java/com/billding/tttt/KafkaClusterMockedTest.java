@@ -28,6 +28,5 @@ public class KafkaClusterMockedTest {
     @Test(dataProvider = "kafkaClusters")
     public void test_specific(String developer, KafkaCluster kafkaCluster) {
         assertEquals(kafkaClusterOperationRunTime, kafkaCluster.clusterAction());
-        assertEquals(kafkaClusterOperationRunTime, kafkaCluster.getOperationRunTime());
     }
 }

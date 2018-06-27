@@ -29,7 +29,7 @@ public class Controller implements UnreliableService {
     @Override
     public int failableAction() {
         return
-            this.operationRunTime
+            this.getOperationRunTime()
             + this.logic.failableAction();
     }
 }

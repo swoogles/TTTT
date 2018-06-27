@@ -41,7 +41,7 @@ public class Application implements UnreliableService {
     public int failableAction() {
         int numPatients = 5;
         ServiceStatus.ensureServiceIsRunning(SERVICE_NAME_BASE);
-        return this.operationRunTime
+        return this.getOperationRunTime()
             + kafkaCluster.clusterAction()
             + authService.authenticateUser("userName", "password")
             + controller.facilityLevelOperation("facilityId", numPatients)
