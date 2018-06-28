@@ -9,7 +9,7 @@ import static org.testng.Assert.assertEquals;
 
 public class DatabaseMockedTest {
     // TODO Make a constructor arg of Database
-    private static final int mapperOperationRunTime = 10;
+    private static final int operationRunTime = 10;
 
     @DataProvider(name = "databases")
     public static Object[][] primeNumbers() {
@@ -20,14 +20,12 @@ public class DatabaseMockedTest {
 
         return testInstanceCreator.createInstances(
             TestEnvironmentParameters::getNumberOfMapperTests,
-            (idx) -> new Database(
-                        network
-                    )
+            (idx) -> new Database( network, operationRunTime)
         );
     }
 
     @Test(dataProvider = "databases")
     public void test_specific(String developer, Database database) {
-        assertEquals(mapperOperationRunTime, database.failableAction());
+        assertEquals(operationRunTime, database.failableAction());
     }
 }

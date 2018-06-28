@@ -11,7 +11,6 @@ public class ApplicationTest {
         final ChaoticWorld chaoticWorld = new ChaoticWorld();
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
         final Network network = new Network(componentRunTimes.getNetwork());
-        final Database database = new Database(network);
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
@@ -33,7 +32,7 @@ public class ApplicationTest {
                        new Logic(
                             chaoticWorld,
                             new Mapper(
-                                database,
+                                new Database(network, componentRunTimes.getDatabase()),
                                 chaoticWorld,
                                 componentRunTimes.getMapper()
                             ),

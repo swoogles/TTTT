@@ -11,24 +11,27 @@ public class ControllerIntegrationTest {
         final ChaoticWorld chaoticWorld = new ChaoticWorld();
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
         final Network network = new Network(componentRunTimes.getNetwork());
-        final Database database = new Database(network);
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
             (ignored) -> 1,
-            (idx) -> new Controller(
-                        componentRunTimes.getController(),
-                       new Logic(
-                            chaoticWorld,
-                            new Mapper(
-                                database,
-                                chaoticWorld,
-                                componentRunTimes.getMapper()
+            (idx) ->
+                new Controller(
+                    componentRunTimes.getController(),
+                    new Logic(
+                        chaoticWorld,
+                        new Mapper(
+                            new Database(
+                                network,
+                                componentRunTimes.getDatabase()
                             ),
-                            componentRunTimes.getLogic()
-                        )
-                    ));
+                            chaoticWorld,
+                            componentRunTimes.getMapper()
+                        ),
+                        componentRunTimes.getLogic()
+                    )
+                ));
     }
 
     @Test(dataProvider = "controllers")

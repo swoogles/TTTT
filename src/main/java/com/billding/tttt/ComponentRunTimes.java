@@ -3,6 +3,7 @@ package com.billding.tttt;
 public class ComponentRunTimes {
     // TODO Make entries for all components
     private final int mapper;
+    private final int database;
     private final int producer;
 
     private final int network;
@@ -17,6 +18,7 @@ public class ComponentRunTimes {
     public ComponentRunTimes() {
         PropertyRetriever propertyRetriever = new PropertyRetriever("runtimes");
         this.mapper = propertyRetriever.getInt("mapper");
+        this.database = propertyRetriever.getInt("database");
         this.network = propertyRetriever.getInt("network");
         this.logic = propertyRetriever.getInt("logic");
         this.authService = propertyRetriever.getInt("auth_service");
@@ -30,6 +32,10 @@ public class ComponentRunTimes {
 
     public int getMapper() {
         return mapper;
+    }
+
+    public int getDatabase() {
+        return database;
     }
 
     public int getProducer() {
@@ -63,4 +69,5 @@ public class ComponentRunTimes {
     public int getThirdPartyResource() {
         return thirdPartyResource;
     }
+
 }

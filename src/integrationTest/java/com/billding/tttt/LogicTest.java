@@ -2,8 +2,6 @@ package com.billding.tttt;
 
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-
 public class LogicTest {
     private final ChaoticWorld chaoticWorld = new ChaoticWorld();
     private final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
@@ -13,7 +11,9 @@ public class LogicTest {
         final Logic logic = new Logic(
             chaoticWorld,
             new Mapper(
-                new Database(new Network(componentRunTimes.getNetwork())),
+                new Database(
+                    new Network(componentRunTimes.getNetwork()),
+                    componentRunTimes.getDatabase()),
                 chaoticWorld,
                 componentRunTimes.getMapper()
             ),

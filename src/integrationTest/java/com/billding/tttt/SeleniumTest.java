@@ -17,7 +17,7 @@ public class SeleniumTest {
     private final WebDriver webDriver = new WebDriver();
 
 
-    private final Database database = new Database(network);
+    private final Database database = new Database(network, componentRunTimes.getDatabase());
     @Test
     public void test_simple() {
         Application application = new Application(

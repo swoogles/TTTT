@@ -10,14 +10,16 @@ public class MapperTest {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
         final Network network = new Network(componentRunTimes.getNetwork());
         final ChaoticWorld chaoticWorld = new ChaoticWorld();
-        final Database database = new Database(network);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
             TestEnvironmentParameters::getNumberOfMapperTests,
             (idx) -> new Mapper(
-                        database,
+                        new Database(
+                            network,
+                            componentRunTimes.getDatabase()
+                        ),
                         chaoticWorld,
                         componentRunTimes.getMapper()
                     )
