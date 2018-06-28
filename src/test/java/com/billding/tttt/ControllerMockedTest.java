@@ -3,10 +3,6 @@ package com.billding.tttt;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.IntStream;
-
 import static org.mockito.Mockito.mock;
 
 public class ControllerMockedTest {

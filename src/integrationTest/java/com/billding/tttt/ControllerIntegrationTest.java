@@ -3,12 +3,8 @@ package com.billding.tttt;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.List;
-import java.util.stream.IntStream;
-
-import static org.testng.Assert.assertTrue;
-
 public class ControllerIntegrationTest {
+    private final ChaoticWorld chaoticWorld = new ChaoticWorld();
 
     @DataProvider(name = "controllers")
     public static Object[][] primeNumbers() {
@@ -17,12 +13,11 @@ public class ControllerIntegrationTest {
         final Network network = new Network(componentRunTimes.getNetwork());
         final Database database = new Database(network);
 
-        final TestEnvironmentParameters testEnvironmentParameters = new TestEnvironmentParameters();
+        final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
-        final Object[][] controllers =
-            IntStream.range(0, testEnvironmentParameters.getNumberOfControllerTests()).mapToObj(idx -> new Object[]{
-                testEnvironmentParameters.getRandomDeveloper(),
-                    new Controller(
+        return testInstanceCreator.createInstances(
+            (ignored) -> 1,
+            (idx) -> new Controller(
                         componentRunTimes.getController(),
                        new Logic(
                             chaoticWorld,
@@ -33,12 +28,8 @@ public class ControllerIntegrationTest {
                             ),
                             componentRunTimes.getLogic()
                         )
-                    ),
-            }).toArray(size -> new Object[size][1]);
-        return controllers;
+                    ));
     }
-
-    ChaoticWorld chaoticWorld = new ChaoticWorld();
 
     @Test(dataProvider = "controllers")
     public void test_simple(String developer, Controller controller) {

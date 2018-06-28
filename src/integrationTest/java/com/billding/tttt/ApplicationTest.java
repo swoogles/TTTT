@@ -3,9 +3,8 @@ package com.billding.tttt;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.stream.IntStream;
-
 public class ApplicationTest {
+    private final ChaoticWorld chaoticWorld = new ChaoticWorld();
 
     @DataProvider(name = "applications")
     public static Object[][] primeNumbers() {
@@ -14,12 +13,11 @@ public class ApplicationTest {
         final Network network = new Network(componentRunTimes.getNetwork());
         final Database database = new Database(network);
 
-        final TestEnvironmentParameters testEnvironmentParameters = new TestEnvironmentParameters();
+        final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
-        final Object[][] applications =
-            IntStream.range(0, testEnvironmentParameters.getNumberOfApplicationTests()).mapToObj(idx -> new Object[]{
-                testEnvironmentParameters.getRandomDeveloper(),
-                new Application(
+        return testInstanceCreator.createInstances(
+            (ignored) -> 1,
+            (idx) -> new Application(
                     "test_app" + idx,
                     new KafkaCluster(
                         network
@@ -44,12 +42,8 @@ public class ApplicationTest {
                     ),
                     new ThirdPartyResource("github", network),
                     componentRunTimes.getApplication()
-                )
-            }).toArray(size -> new Object[size][1]);
-        return applications;
+                ));
     }
-
-    ChaoticWorld chaoticWorld = new ChaoticWorld();
 
     @Test(dataProvider = "applications")
     public void test_simple(String developer, Application application) {
