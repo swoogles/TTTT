@@ -11,6 +11,7 @@ public class ComponentRunTimes {
     private final int controller;
     private final int application;
     private final int seleniumTest;
+    private final int thirdPartyResource;
 
     // TODO Consider improved error msg for missing property.
     public ComponentRunTimes() {
@@ -24,6 +25,7 @@ public class ComponentRunTimes {
         this.application = propertyRetriever.getInt("application");
         // TODO consider kafka prefix
         this.producer = propertyRetriever.getInt("producer");
+        this.thirdPartyResource = propertyRetriever.getInt("third_party_resource");
     }
 
     public int getMapper() {
@@ -58,4 +60,7 @@ public class ComponentRunTimes {
         return application;
     }
 
+    public int getThirdPartyResource() {
+        return thirdPartyResource;
+    }
 }

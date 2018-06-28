@@ -15,7 +15,7 @@ public class ThirdPartyResourceTest {
 
         return testInstanceCreator.createInstances(
             (ignored) -> 1,
-            (idx) -> new ThirdPartyResource("github", network));
+            (idx) -> new ThirdPartyResource("github", network, componentRunTimes.getThirdPartyResource()));
     }
 
     @Test(dataProvider = "thirdPartyResources")

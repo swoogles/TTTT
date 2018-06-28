@@ -1,15 +1,15 @@
 package com.billding.tttt;
 
 public class ThirdPartyResource implements UnreliableService {
-    // TODO move to runtimes.properties
-    private final int operationRunTime = 30;
+    private final int operationRunTime;
     private final Network network;
 
     private final String name;
 
-    public ThirdPartyResource(String name, Network network) {
+    public ThirdPartyResource(String name, Network network, int operationRunTime) {
         this.network = network;
         this.name = "third_party." + name;
+        this.operationRunTime = operationRunTime;
     }
 
     public int communicate() {

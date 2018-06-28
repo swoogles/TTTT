@@ -43,7 +43,11 @@ public class SeleniumTest {
                     componentRunTimes.getLogic()
                 )
             ),
-            new ThirdPartyResource("github", network),
+            new ThirdPartyResource(
+                "github",
+                network,
+                componentRunTimes.getThirdPartyResource()
+            ),
             componentRunTimes.getApplication()
         );
         application.simpleAction();
