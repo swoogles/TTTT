@@ -1,5 +1,6 @@
 package com.billding.tttt;
 
+import com.billding.tttt.external_services.Network;
 import org.testng.annotations.Test;
 
 // TODO Consider property for number of test classes to imitate.

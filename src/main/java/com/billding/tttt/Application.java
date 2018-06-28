@@ -1,5 +1,8 @@
 package com.billding.tttt;
 
+import com.billding.tttt.external_services.KafkaCluster;
+import com.billding.tttt.external_services.ThirdPartyResource;
+
 public class Application implements UnreliableService {
     private static final String SERVICE_NAME_BASE = "application";
     private final int operationRunTime;

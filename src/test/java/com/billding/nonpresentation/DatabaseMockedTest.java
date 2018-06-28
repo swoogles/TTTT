@@ -1,5 +1,9 @@
-package com.billding.tttt;
+package com.billding.nonpresentation;
 
+import com.billding.tttt.external_services.Database;
+import com.billding.tttt.external_services.Network;
+import com.billding.tttt.TestEnvironmentParameters;
+import com.billding.tttt.TestInstanceCreator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

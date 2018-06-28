@@ -6,7 +6,7 @@ import java.util.Random;
 
 // By removing reliance on @Test(invocationCount), we can make this a normal class without any static reliance.
 // Then I can make new instances to demonstrate different real-world circumstances.
-final class TestEnvironmentParameters {
+public final class TestEnvironmentParameters {
     private final int numberOfApplicationTests;
     private final int numberOfMapperTests;
     private final int numberOfControllerTests;
@@ -42,11 +42,11 @@ final class TestEnvironmentParameters {
         return developers.get(Math.abs(random.nextInt()) % developers.size());
     }
 
-    int getNumberOfApplicationTests() {
+    public int getNumberOfApplicationTests() {
         return numberOfApplicationTests * getNumberOfTimesTestWillBeRun();
     }
 
-    int getNumberOfMapperTests() {
+    public int getNumberOfMapperTests() {
         return numberOfMapperTests * getNumberOfTimesTestWillBeRun();
     }
 

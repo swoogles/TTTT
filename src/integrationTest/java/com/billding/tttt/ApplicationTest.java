@@ -1,5 +1,9 @@
 package com.billding.tttt;
 
+import com.billding.tttt.external_services.Database;
+import com.billding.tttt.external_services.KafkaCluster;
+import com.billding.tttt.external_services.Network;
+import com.billding.tttt.external_services.ThirdPartyResource;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

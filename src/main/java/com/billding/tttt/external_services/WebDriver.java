@@ -1,4 +1,7 @@
-package com.billding.tttt;
+package com.billding.tttt.external_services;
+
+import com.billding.tttt.ServiceStatus;
+import com.billding.tttt.UnreliableService;
 
 public class WebDriver implements UnreliableService {
     private static final String name = "web_driver";

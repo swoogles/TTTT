@@ -1,5 +1,7 @@
 package com.billding.tttt;
 
+import com.billding.tttt.external_services.Network;
+
 import javax.json.Json;
 
 // TODO Not sure if EndPoint should actually encompass application

@@ -1,5 +1,6 @@
-package com.billding.tttt;
+package com.billding.nonpresentation;
 
+import com.billding.tttt.ServiceStatus;
 import org.testng.annotations.Test;
 
 public class ServiceStatusTest {

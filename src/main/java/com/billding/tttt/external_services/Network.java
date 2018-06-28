@@ -1,4 +1,7 @@
-package com.billding.tttt;
+package com.billding.tttt.external_services;
+
+import com.billding.tttt.ServiceStatus;
+import com.billding.tttt.UnreliableService;
 
 // TODO Is there any sub-service of network that makes sense?
 //  DNS?

@@ -1,6 +1,9 @@
-package com.billding.tttt;
+package com.billding.tttt.external_services;
 
-class Database implements UnreliableService {
+import com.billding.tttt.ServiceStatus;
+import com.billding.tttt.UnreliableService;
+
+public class Database implements UnreliableService {
     private final int operationRunTime;
     private final Network network;
 

@@ -1,5 +1,7 @@
 package com.billding.tttt;
 
+import com.billding.tttt.external_services.Network;
+
 /**
  *  Requires:
  *      Network (I think LAN is a better word)

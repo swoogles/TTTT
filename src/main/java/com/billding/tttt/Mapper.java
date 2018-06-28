@@ -1,5 +1,7 @@
 package com.billding.tttt;
 
+import com.billding.tttt.external_services.Database;
+
 class Mapper implements UnreliableService {
     private final int operationRunTime;
     private final Database database;
@@ -12,7 +14,7 @@ class Mapper implements UnreliableService {
         this.operationRunTime = operationRunTime;
     }
 
-    public int CRUD_query() { // I think this should accept a param or 2
+    public int CRUD_query() {
         return this.failableAction();
     }
 
