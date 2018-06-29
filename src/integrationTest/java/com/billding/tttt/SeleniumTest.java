@@ -23,11 +23,13 @@ public class SeleniumTest {
         private final Browser browser;
         private final WebDriver webDriver;
         private final int operationRunTime;
+        private final ThirdPartyResource javascriptCDN;
 
-        private SeleniumTestClass(Application application, Browser browser, WebDriver webDriver, int operationRunTime) {
+        private SeleniumTestClass(Application application, Browser browser, WebDriver webDriver, ThirdPartyResource javascriptCDN, int operationRunTime) {
             this.application = application;
             this.browser = browser;
             this.webDriver = webDriver;
+            this.javascriptCDN = javascriptCDN;
             this.operationRunTime = operationRunTime;
         }
 
@@ -42,7 +44,8 @@ public class SeleniumTest {
             return this.getOperationRunTime()
                 + this.application.failableAction()
                 + this.browser.failableAction()
-                + this.webDriver.failableAction();
+                + this.webDriver.failableAction()
+                + this.javascriptCDN.failableAction();
         }
     }
 
@@ -57,6 +60,9 @@ public class SeleniumTest {
         final Database database = new Database(network, componentRunTimes.getDatabase());
         final Browser browser = new Browser();
         final WebDriver webDriver = new WebDriver();
+        final int javaScriptCdnOperationRunTime = 20;
+        final ThirdPartyResource javascriptCDN =
+            new ThirdPartyResource("javascriptCDN", network, javaScriptCdnOperationRunTime);
 
 
         Application application = new Application(
@@ -66,8 +72,8 @@ public class SeleniumTest {
             ),
             new AuthService(
                 new Intranet(
-                    network
-                ),
+                    network,
+                    componentRunTimes.getIntranet()),
                 componentRunTimes.getAuthService()
             ),
             new Controller(
@@ -94,7 +100,7 @@ public class SeleniumTest {
 
         return testInstanceCreator.createInstances(
             (ignored) -> 1,
-            (idx) -> new SeleniumTestClass(application, browser, webDriver, operationRunTime));
+            (idx) -> new SeleniumTestClass(application, browser, webDriver, javascriptCDN, operationRunTime));
     }
 
     @Test(dataProvider = "seleniumTests")
