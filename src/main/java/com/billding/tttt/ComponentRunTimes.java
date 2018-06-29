@@ -7,6 +7,7 @@ public class ComponentRunTimes {
     private final int producer;
 
     private final int network;
+    private final int intranet;
     private final int logic;
     private final int authService;
     private final int controller;
@@ -20,6 +21,7 @@ public class ComponentRunTimes {
         this.mapper = propertyRetriever.getInt("mapper");
         this.database = propertyRetriever.getInt("database");
         this.network = propertyRetriever.getInt("network");
+        this.intranet = propertyRetriever.getInt("intranet");
         this.logic = propertyRetriever.getInt("logic");
         this.authService = propertyRetriever.getInt("auth_service");
         this.controller = propertyRetriever.getInt("controller");
@@ -46,6 +48,10 @@ public class ComponentRunTimes {
         return network;
     }
 
+    public int getIntranet() {
+        return intranet;
+    }
+
     public int getLogic() {
         return logic;
     }
@@ -69,5 +75,4 @@ public class ComponentRunTimes {
     public int getThirdPartyResource() {
         return thirdPartyResource;
     }
-
 }

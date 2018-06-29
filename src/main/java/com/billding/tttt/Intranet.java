@@ -7,13 +7,14 @@ import com.billding.tttt.external_services.Network;
  *      Network (I think LAN is a better word)
  */
 public class Intranet implements UnreliableService {
-    private final int operationRunTime = 10;
+    private final int operationRunTime;
     private final Network network;
 
     private static final String name = "intranet";
 
-    public Intranet(Network network) {
+    public Intranet(Network network, int operationRunTime) {
         this.network = network;
+        this.operationRunTime = operationRunTime;
     }
 
     @Override

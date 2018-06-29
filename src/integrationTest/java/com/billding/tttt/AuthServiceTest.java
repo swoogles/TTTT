@@ -9,7 +9,7 @@ public class AuthServiceTest {
     private final Network network = new Network(componentRunTimes.getNetwork());
     private final AuthService authService =
         new AuthService(
-            new Intranet( network ),
+            new Intranet( network, componentRunTimes.getIntranet()),
             componentRunTimes.getAuthService()
         );
 

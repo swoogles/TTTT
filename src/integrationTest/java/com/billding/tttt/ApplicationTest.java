@@ -27,8 +27,8 @@ public class ApplicationTest {
                     ),
                     new AuthService(
                         new Intranet(
-                            network
-                        ),
+                            network,
+                            componentRunTimes.getIntranet()),
                         componentRunTimes.getAuthService()
                     ),
                     new Controller(
