@@ -9,6 +9,11 @@ repositories {
   mavenCentral()
 }    
 
+dependencies {
+		testCompile "org.testng:testng:6.14+"
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.19.0'
+}
+
 test {
   useTestNG()
 }
@@ -19,12 +24,25 @@ testSets {
 
 integrationTest {
   useTestNG()
-  testClassesDir = file('build/classes/java/integrationTest')
+  // TODO Turn this into a reusable function that can be used for test & integrationTest
+	testLogging {
+		afterSuite { desc, result ->
+			if (!desc.parent) { // will match the outermost suite
+				println "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+			}
+		}
+	}
 }
 
-dependencies {
-		testCompile "org.testng:testng:6.14+"
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.19.0'
+test {
+  // TODO Turn this into a reusable function that can be used for test & integrationTest
+	testLogging {
+		afterSuite { desc, result ->
+			if (!desc.parent) { // will match the outermost suite
+				println "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+			}
+		}
+	}
 }
 
 jacocoTestReport {
@@ -37,15 +55,4 @@ jacocoTestReport {
 check {
   dependsOn integrationTest
   dependsOn jacocoTestReport
-}
-
-// Log final numbers. They get hidden otherwise.
-test {
-	testLogging {
-		afterSuite { desc, result ->
-			if (!desc.parent) { // will match the outermost suite
-				println "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
-			}
-		}
-	}
 }
