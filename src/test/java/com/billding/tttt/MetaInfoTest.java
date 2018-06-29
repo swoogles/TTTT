@@ -1,5 +1,6 @@
 package com.billding.tttt;
 
+import com.billding.meta.TestEnvironmentParameters;
 import org.testng.annotations.Test;
 
 public class MetaInfoTest {

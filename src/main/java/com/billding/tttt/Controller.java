@@ -1,8 +1,7 @@
 package com.billding.tttt;
 
-import java.util.List;
-
 // TODO add terrible Struts 1 dependency
+// Consider renaming to Resource/RESTEndpoint/etc.
 public class Controller implements UnreliableService {
     private final Logic logic;
     private static final String name = "controller";

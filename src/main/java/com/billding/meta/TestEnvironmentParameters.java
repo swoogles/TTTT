@@ -1,11 +1,12 @@
-package com.billding.tttt;
+package com.billding.meta;
+
+import com.billding.tttt.PropertyRetriever;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-// By removing reliance on @Test(invocationCount), we can make this a normal class without any static reliance.
-// Then I can make new instances to demonstrate different real-world circumstances.
+// TODO make new instances to demonstrate different real-world circumstances.
 public final class TestEnvironmentParameters {
     private final int numberOfApplicationTests;
     private final int numberOfMapperTests;

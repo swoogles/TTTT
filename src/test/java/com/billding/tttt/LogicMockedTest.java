@@ -1,5 +1,6 @@
 package com.billding.tttt;
 
+import com.billding.meta.ComponentRunTimes;
 import org.testng.annotations.Test;
 
 import java.util.List;

@@ -1,4 +1,6 @@
-package com.billding.tttt;
+package com.billding.meta;
+
+import com.billding.tttt.PropertyRetriever;
 
 public class ComponentRunTimes {
     // TODO Make entries for all components

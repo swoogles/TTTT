@@ -13,15 +13,15 @@ public class PropertyRetriever {
         this.bundle = ResourceBundle.getBundle(resourceName);
     }
 
-    boolean getBoolean(String name) {
+    public boolean getBoolean(String name) {
         return this.bundle.containsKey(name) && this.bundle.getString(name).equals("true");
     }
 
-    int getInt(String name) {
+    public int getInt(String name) {
         return Integer.parseInt(this.bundle.getString(name));
     }
 
-    String getString(String name) {
+    public String getString(String name) {
         return this.bundle.getString(name);
     }
 }
