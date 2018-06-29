@@ -1,7 +1,7 @@
 package com.billding.nonpresentation;
 
 import com.billding.tttt.Browser;
-import com.billding.tttt.TestInstanceCreator;
+import com.billding.meta.TestInstanceCreator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

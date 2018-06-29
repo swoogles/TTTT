@@ -1,5 +1,7 @@
 package com.billding.tttt;
 
+import com.billding.meta.ServiceStatus;
+
 // TODO Should this take a Database parameter?
 public class AuthService implements UnreliableService {
     private final Intranet intranet;

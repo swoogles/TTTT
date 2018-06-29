@@ -30,7 +30,7 @@ public final class TestEnvironment {
         this.numberOfControllerTests = propertyRetriever.getInt("num_tests.controllers");
         this.numberOfThirdPartyResourceTests = propertyRetriever.getInt("num_tests.third_party_resources");
         this.numberOfProducerTests = propertyRetriever.getInt("num_tests.producer");
-
+        // TODO Consider difference in these 2 categories of properties & splitting this class.
         this.developers = parseDevelopers(propertyRetriever.getString("developers"));
         this.numberOfDevelopers = developers.size();
         this.numberOfHours = propertyRetriever.getInt("hours_in_work_day");
@@ -39,6 +39,7 @@ public final class TestEnvironment {
     }
 
     private final Random random = new Random();
+    // TODO Consider parameterized Random
     public String getRandomDeveloper() {
         return developers.get(Math.abs(random.nextInt()) % developers.size());
     }

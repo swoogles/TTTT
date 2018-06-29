@@ -1,4 +1,4 @@
-package com.billding.tttt;
+package com.billding.meta;
 
 import com.billding.meta.TestEnvironment;
 

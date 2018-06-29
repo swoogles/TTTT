@@ -1,6 +1,7 @@
 package com.billding.tttt;
 
 import com.billding.meta.ComponentRunTimes;
+import com.billding.meta.TestInstanceCreator;
 import com.billding.tttt.external_services.Database;
 import com.billding.tttt.external_services.KafkaCluster;
 import com.billding.tttt.external_services.Network;

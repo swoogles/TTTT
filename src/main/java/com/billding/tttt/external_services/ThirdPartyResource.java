@@ -1,6 +1,6 @@
 package com.billding.tttt.external_services;
 
-import com.billding.tttt.ServiceStatus;
+import com.billding.meta.ServiceStatus;
 import com.billding.tttt.UnreliableService;
 
 public class ThirdPartyResource implements UnreliableService {

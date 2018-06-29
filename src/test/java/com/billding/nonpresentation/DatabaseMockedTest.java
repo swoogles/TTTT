@@ -3,7 +3,7 @@ package com.billding.nonpresentation;
 import com.billding.tttt.external_services.Database;
 import com.billding.tttt.external_services.Network;
 import com.billding.meta.TestEnvironment;
-import com.billding.tttt.TestInstanceCreator;
+import com.billding.meta.TestInstanceCreator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

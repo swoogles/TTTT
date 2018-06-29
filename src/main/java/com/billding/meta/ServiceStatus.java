@@ -1,4 +1,6 @@
-package com.billding.tttt;
+package com.billding.meta;
+
+import com.billding.tttt.PropertyRetriever;
 
 public class ServiceStatus {
     // TODO ground this static shiz

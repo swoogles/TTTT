@@ -1,5 +1,7 @@
 package com.billding.tttt;
 
+import com.billding.meta.ServiceStatus;
+
 public class Browser implements UnreliableService {
 
     private static final String name = "browser";
