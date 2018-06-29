@@ -1,7 +1,7 @@
 package com.billding.tttt;
 
 import com.billding.meta.ComponentRunTimes;
-import com.billding.meta.TestEnvironmentParameters;
+import com.billding.meta.TestEnvironment;
 import com.billding.tttt.external_services.KafkaCluster;
 import com.billding.tttt.external_services.ThirdPartyResource;
 import org.testng.annotations.DataProvider;
@@ -35,7 +35,7 @@ public class ApplicationMockedTest {
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            TestEnvironmentParameters::getNumberOfApplicationTests,
+            TestEnvironment::getNumberOfApplicationTests,
             (idx) -> new Application(
                         "test_app" + idx,
                         kafkaCluster,

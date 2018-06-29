@@ -8,9 +8,9 @@ import static org.testng.Assert.assertTrue;
 public class TestSuiteCalculatorTest {
     @Test
     public void test_totalTestRunTime() {
-        TestEnvironmentParameters testEnvironmentParameters = new TestEnvironmentParameters();
+        TestEnvironment testEnvironment = new TestEnvironment();
         ComponentRunTimes componentRunTimes = new ComponentRunTimes();
-        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(testEnvironmentParameters, componentRunTimes);
+        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(testEnvironment, componentRunTimes);
         assertTrue(testSuiteCalculator.totalTestRunTime() > 500);
     }
 }

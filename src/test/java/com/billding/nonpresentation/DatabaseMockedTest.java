@@ -2,7 +2,7 @@ package com.billding.nonpresentation;
 
 import com.billding.tttt.external_services.Database;
 import com.billding.tttt.external_services.Network;
-import com.billding.meta.TestEnvironmentParameters;
+import com.billding.meta.TestEnvironment;
 import com.billding.tttt.TestInstanceCreator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ public class DatabaseMockedTest {
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            TestEnvironmentParameters::getNumberOfMapperTests,
+            TestEnvironment::getNumberOfMapperTests,
             (idx) -> new Database( network, operationRunTime)
         );
     }

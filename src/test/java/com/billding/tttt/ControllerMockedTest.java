@@ -1,7 +1,7 @@
 package com.billding.tttt;
 
 import com.billding.meta.ComponentRunTimes;
-import com.billding.meta.TestEnvironmentParameters;
+import com.billding.meta.TestEnvironment;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -18,7 +18,7 @@ public class ControllerMockedTest {
         final Logic logicMock = mock(Logic.class);
 
         return testInstanceCreator.createInstances(
-            TestEnvironmentParameters::getNumberOfControllerTests,
+            TestEnvironment::getNumberOfControllerTests,
             (idx) -> new Controller(
                 componentRunTimes.getController(),
                 logicMock

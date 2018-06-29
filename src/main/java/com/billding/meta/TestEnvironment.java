@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 // TODO make new instances to demonstrate different real-world circumstances.
-public final class TestEnvironmentParameters {
+public final class TestEnvironment {
     private final int numberOfApplicationTests;
     private final int numberOfMapperTests;
     private final int numberOfControllerTests;
@@ -23,7 +23,7 @@ public final class TestEnvironmentParameters {
 
 
     // TODO Consider taking property file name here, rather than demanding on instance from the caller
-    public TestEnvironmentParameters() {
+    public TestEnvironment() {
         final PropertyRetriever propertyRetriever = new PropertyRetriever("test_environment");
         this.numberOfApplicationTests = propertyRetriever.getInt("num_tests.application");
         this.numberOfMapperTests = propertyRetriever.getInt("num_tests.mappers");

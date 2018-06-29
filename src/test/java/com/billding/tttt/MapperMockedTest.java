@@ -1,6 +1,6 @@
 package com.billding.tttt;
 
-import com.billding.meta.TestEnvironmentParameters;
+import com.billding.meta.TestEnvironment;
 import com.billding.tttt.external_services.Database;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -24,7 +24,7 @@ public class MapperMockedTest {
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            TestEnvironmentParameters::getNumberOfMapperTests,
+            TestEnvironment::getNumberOfMapperTests,
             (idx) -> new Mapper(
                         database,
                         chaoticWorld,

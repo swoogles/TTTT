@@ -1,16 +1,16 @@
 package com.billding.tttt;
 
-import com.billding.meta.TestEnvironmentParameters;
+import com.billding.meta.TestEnvironment;
 
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
 public class TestInstanceCreator {
-    public Object[][] createInstances(Function<TestEnvironmentParameters, Integer> getNumberOfTests, Function<Integer, Object> instanceSupplier) {
-        final TestEnvironmentParameters testEnvironmentParameters = new TestEnvironmentParameters();
-        return IntStream.range(0, getNumberOfTests.apply(testEnvironmentParameters))
+    public Object[][] createInstances(Function<TestEnvironment, Integer> getNumberOfTests, Function<Integer, Object> instanceSupplier) {
+        final TestEnvironment testEnvironment = new TestEnvironment();
+        return IntStream.range(0, getNumberOfTests.apply(testEnvironment))
             .mapToObj(idx -> new Object[]{
-                testEnvironmentParameters.getRandomDeveloper(),
+                testEnvironment.getRandomDeveloper(),
                 instanceSupplier.apply(idx)
             }).toArray(size -> new Object[size][2]);
     }
