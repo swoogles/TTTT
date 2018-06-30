@@ -1,4 +1,4 @@
-package com.billding.tttt;
+package com.billding.meta;
 
 import java.time.Instant;
 import java.util.Random;
@@ -13,7 +13,7 @@ public class ChaoticWorld {
         );
         // throw with 1 in 60 chance
         */
-    Instant currentTime() {
+    public Instant currentTime() {
         // TODO Make % a parameter/property
         final Instant now = Instant.now();
         // TODO Reinstate when appropriate

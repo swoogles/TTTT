@@ -1,5 +1,6 @@
 package com.billding.tttt;
 
+import com.billding.meta.ChaoticWorld;
 import com.billding.tttt.external_services.KafkaCluster;
 
 class Producer implements UnreliableService {
