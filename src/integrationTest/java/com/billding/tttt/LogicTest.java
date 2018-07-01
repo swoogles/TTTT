@@ -8,7 +8,8 @@ import org.testng.annotations.Test;
 
 public class LogicTest {
     private final ChaoticWorld chaoticWorld = new ChaoticWorld();
-    private final ComponentRunTimes componentRunTimes = new ComponentRunTimes("test_environment");
+    private final ComponentRunTimes componentRunTimes =
+        new ComponentRunTimes("runtimes");
 
     @Test
     public void test_simple() {
