@@ -1,7 +1,6 @@
 package com.billding.tttt;
 
 import com.billding.meta.ChaoticWorld;
-import com.billding.meta.ComponentRunTimes;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -11,19 +10,20 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class LogicMockedTest {
+    private final int operationRuntime = 5;
     private final ChaoticWorld chaoticWorld = new ChaoticWorld();
-    private final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
 
     @Test
     public void test_simple() {
         Mapper mapper = mock(Mapper.class);
         when(mapper.CRUD_query()).thenReturn(5);
-        when(mapper.getOperationRunTime()).thenReturn(1);
+        int mapperOperationRuntime = 1;
+        when(mapper.failableAction()).thenReturn(mapperOperationRuntime);
         int numPatients = 25;
         final Logic logic = new Logic(
             chaoticWorld,
             mapper,
-            componentRunTimes.getLogic()
+            operationRuntime
         );
         final List<Integer> facilityId = logic.facilityLevelOperation("facilityId", numPatients);
         // TODO fix bug; this only returns 5.
@@ -31,5 +31,10 @@ public class LogicMockedTest {
         for (int i = 0; i < numPatients; i++) {
             assertEquals(facilityId.get(i), new Integer(5));
         }
+
+        assertEquals(
+            logic.failableAction(),
+            operationRuntime + mapperOperationRuntime
+        );
     }
 }
