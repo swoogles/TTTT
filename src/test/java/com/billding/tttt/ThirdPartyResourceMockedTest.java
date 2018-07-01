@@ -33,5 +33,9 @@ public class ThirdPartyResourceMockedTest {
             thirdPartyResource.failableAction(),
             operationRunTime
         );
+        assertEquals(
+            thirdPartyResource.communicate(),
+            operationRunTime
+        );
     }
 }
