@@ -15,8 +15,6 @@ public class ControllerMockedTest {
 
     @DataProvider(name = "applications")
     public static Object[][] primeNumbers() {
-        final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
-
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         final Logic logicMock = mock(Logic.class);

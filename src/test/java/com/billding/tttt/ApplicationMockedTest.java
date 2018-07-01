@@ -13,12 +13,11 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class ApplicationMockedTest {
-    final ChaoticWorld chaoticWorld = new ChaoticWorld();
+    private static final int operationRuntime = 1;
+    private final ChaoticWorld chaoticWorld = new ChaoticWorld();
 
     @DataProvider(name = "applications")
     public static Object[][] primeNumbers() {
-        final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
-
         final KafkaCluster kafkaCluster = mock(KafkaCluster.class);
         final AuthService authService = mock(AuthService.class);
         final Controller controller = mock(Controller.class);
@@ -44,7 +43,7 @@ public class ApplicationMockedTest {
                         authService,
                         controller,
                         thirdPartyResource,
-                        componentRunTimes.getApplication()
+                        operationRuntime
                     )
         );
     }

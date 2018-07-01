@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 // TODO Consider property for number of test classes to imitate.
 public class AuthServiceTest {
-    private final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
+    private final ComponentRunTimes componentRunTimes = new ComponentRunTimes("test_environment");
     private final Network network = new Network(componentRunTimes.getNetwork());
     private final AuthService authService =
         new AuthService(

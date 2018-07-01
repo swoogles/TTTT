@@ -13,7 +13,7 @@ public class ThirdPartyResourceTest {
 
     @DataProvider(name = "thirdPartyResources")
     public static Object[][] primeNumbers() {
-        final ComponentRunTimes componentRunTimes = new ComponentRunTimes();
+        final ComponentRunTimes componentRunTimes = new ComponentRunTimes("test_environment");
         final Network network = new Network(componentRunTimes.getNetwork());
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();

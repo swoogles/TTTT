@@ -9,8 +9,8 @@ public class TestSuiteCalculatorTest {
     @Test
     public void test_totalTestRunTime() {
         TestEnvironment testEnvironment = new TestEnvironment("frozen_test_environment");
-        ComponentRunTimes componentRunTimes = new ComponentRunTimes();
+        ComponentRunTimes componentRunTimes = new ComponentRunTimes("frozen_runtimes");
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(testEnvironment, componentRunTimes);
-        assertTrue(testSuiteCalculator.totalTestRunTime() > 500);
+        assertEquals(testSuiteCalculator.totalTestRunTime(), 607419);
     }
 }

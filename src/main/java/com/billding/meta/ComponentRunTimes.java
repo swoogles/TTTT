@@ -18,8 +18,8 @@ public class ComponentRunTimes {
     private final int thirdPartyResource;
 
     // TODO Consider improved error msg for missing property.
-    public ComponentRunTimes() {
-        PropertyRetriever propertyRetriever = new PropertyRetriever("runtimes");
+    public ComponentRunTimes(String propertyFileName) {
+        PropertyRetriever propertyRetriever = new PropertyRetriever(propertyFileName);
         this.mapper = propertyRetriever.getInt("mapper");
         this.database = propertyRetriever.getInt("database");
         this.network = propertyRetriever.getInt("network");
