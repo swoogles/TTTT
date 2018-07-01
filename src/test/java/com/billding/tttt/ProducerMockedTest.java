@@ -1,6 +1,7 @@
 package com.billding.tttt;
 
 import com.billding.meta.ChaoticWorld;
+import com.billding.meta.TestEnvironment;
 import com.billding.meta.TestInstanceCreator;
 import com.billding.tttt.external_services.KafkaCluster;
 import org.testng.annotations.DataProvider;
@@ -25,8 +26,7 @@ public class ProducerMockedTest {
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            (ignored) -> 1, // TODO Use a real property here
-            // TestEnvironment::getNumberOfProducerTests,
+            TestEnvironment::getNumberOfProducerTests,
             (idx) -> new Producer(
                         kafkaCluster,
                         chaoticWorld,
