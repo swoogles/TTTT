@@ -13,6 +13,7 @@ public class Controller implements UnreliableService {
         this.operationRunTime = operationRunTime;
     }
 
+    // Is the possibility of a null result from this.logic.facilityLevelOperation the last remaining bit to cover?
     public int facilityLevelOperation(String facilityId, int numPatients) {
         return
             this.logic.facilityLevelOperation(facilityId, numPatients)

@@ -8,6 +8,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class ControllerMockedTest {
@@ -41,5 +42,22 @@ public class ControllerMockedTest {
 
         // TODO more specific controller action.
 //        assertEquals(runTimeOfOperationsInBetween, 10);
+    }
+
+    // TOD Should I condense to one test to keep test numbers consistent/dynamic?
+    @Test(expectedExceptions = NullPointerException.class)
+    public void test_nullResultFromLogic() {
+        final Logic logicMock = mock(Logic.class);
+        String facilityId = "facilityId";
+        int numPatients = 1;
+        when (logicMock.facilityLevelOperation(facilityId, numPatients)).thenReturn(null);
+
+        final Controller controller = new Controller(
+            operationRunTime,
+            logicMock
+        );
+
+        controller.facilityLevelOperation(facilityId, numPatients);
+
     }
 }
