@@ -13,7 +13,7 @@ public class MapperTest {
 
     @DataProvider(name = "mappers")
     public static Object[][] primeNumbers() {
-        final ComponentRunTimes componentRunTimes = new ComponentRunTimes("test_environment");
+        final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
         final ChaoticWorld chaoticWorld = new ChaoticWorld();
 

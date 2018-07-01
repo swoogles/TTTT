@@ -16,7 +16,7 @@ public class ApplicationTest {
     @DataProvider(name = "applications")
     public static Object[][] primeNumbers() {
         final ChaoticWorld chaoticWorld = new ChaoticWorld();
-        final ComponentRunTimes componentRunTimes = new ComponentRunTimes("test_environment");
+        final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();

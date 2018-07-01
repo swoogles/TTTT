@@ -12,7 +12,7 @@ public class ProducerTest {
 
     @DataProvider(name = "producers")
     public static Object[][] testData() {
-        final ComponentRunTimes componentRunTimes = new ComponentRunTimes("test_environment");
+        final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
