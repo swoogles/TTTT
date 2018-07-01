@@ -23,8 +23,8 @@ public final class TestEnvironment {
 
 
     // TODO Consider taking property file name here, rather than demanding on instance from the caller
-    public TestEnvironment() {
-        final PropertyRetriever propertyRetriever = new PropertyRetriever("test_environment");
+    public TestEnvironment(String propertyFileName) {
+        final PropertyRetriever propertyRetriever = new PropertyRetriever(propertyFileName);
         this.numberOfApplicationTests = propertyRetriever.getInt("num_tests.application");
         this.numberOfMapperTests = propertyRetriever.getInt("num_tests.mappers");
         this.numberOfControllerTests = propertyRetriever.getInt("num_tests.controllers");
