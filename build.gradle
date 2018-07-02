@@ -1,6 +1,7 @@
 plugins {
   id 'org.unbroken-dome.test-sets' version '1.5.0'
   id "com.github.spotbugs" version "1.6.2"
+  id "net.ltgt.errorprone" version "0.0.14"
 }
 
 apply plugin: 'java'
