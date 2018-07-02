@@ -21,18 +21,19 @@ Describe Test Environment to determine number of tests to run. This is based on:
 
 Fail groups of integration tests based on what services are available:
 	
+ 
   * Database
-		* Network
-		* Intranet
-		* Kafka Cluster
-		* Application
-		* Web Driver
-		* Browser
-		* Auth Service
-		* Third Party Services
-		* More to come...
+  * Network
+  * Intranet
+  * Kafka Cluster
+  * Application
+  * Web Driver
+  * Browser
+  * Auth Service
+  * Third Party Services
+  * More to come...
 
-##Goals:
+## Goals:
 
 * Easily calculate/display total runtime for a given configuration
 * Have several scenarios defined via property files, to display impact of testing decisions
