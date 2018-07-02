@@ -6,17 +6,19 @@ Who knows? Maybe it will spin off some decent code of its own.
 
 Existing Features:
 	Describe Test Environment to determine number of tests to run. This is based on:
-		-Developers lists
-		-Hours in the work day
-		-Runs per developer per hour
-		-Number of specific test classes
-			- Applications
-			- Mappers
-			- Controllers
-			- Third Party Resources
-			- Kafka Producers
+	
+	-Developers lists
+	-Hours in the work day
+	-Runs per developer per hour
+	-Number of specific test classes
+			-Applications
+			-Mappers
+			-Controllers
+			-Third Party Resources
+			-Kafka Producers
 
-	Fail groups of integration tests based on what services are available
+	Fail groups of integration tests based on what services are available:
+	
 		-Database
 		-Network
 		-Intranet
@@ -30,8 +32,9 @@ Existing Features:
 		-More to come...
 
 Goals:
-	Easily calculate/display total runtime for a given configuration
-	Have several scenarios defined via property files, to display impact of testing decisions
+
+-Easily calculate/display total runtime for a given configuration
+-Have several scenarios defined via property files, to display impact of testing decisions
 		-Total runtime
 		-Likelihood of intermitant failures
 
