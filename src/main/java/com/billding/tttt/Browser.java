@@ -3,11 +3,13 @@ package com.billding.tttt;
 import com.billding.meta.ServiceStatus;
 
 public class Browser implements UnreliableService {
-
+    // TODO Consider taking different browser names as parameter
     private static final String name = "browser";
-    private final int operationRunTime = 30;
+    private final int operationRunTime;
 
-    public Browser() { }
+    public Browser(int operationRunTime) {
+        this.operationRunTime = operationRunTime;
+    }
 
     @Override
     public int getOperationRunTime() {

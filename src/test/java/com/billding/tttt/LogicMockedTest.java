@@ -10,7 +10,7 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class LogicMockedTest {
-    private final int operationRuntime = 5;
+    private static final int operationRuntime = 5;
     private final ChaoticWorld chaoticWorld = new ChaoticWorld();
 
     @Test
@@ -29,7 +29,7 @@ public class LogicMockedTest {
         // TODO fix bug; this only returns 5.
 //        assertEquals(logic.getOperationRunTime(), 6);
         for (int i = 0; i < numPatients; i++) {
-            assertEquals(facilityId.get(i), new Integer(5));
+            assertEquals(facilityId.get(i), Integer.valueOf(5));
         }
 
         assertEquals(

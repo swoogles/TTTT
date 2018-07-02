@@ -10,12 +10,13 @@ import com.billding.tttt.UnreliableService;
  */
 public class KafkaCluster implements UnreliableService {
     private final Network network;
-    private final int operationRunTime = 20;
+    private final int operationRunTime;
 
     private static final String name = "kafka_cluster";
 
-    public KafkaCluster(Network network) {
+    public KafkaCluster(Network network, int operationRunTime) {
         this.network = network;
+        this.operationRunTime = operationRunTime;
     }
 
     public int clusterAction() {

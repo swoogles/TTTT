@@ -8,6 +8,8 @@ import com.billding.tttt.external_services.Network;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
+
 public class ControllerIntegrationTest {
     private final ChaoticWorld chaoticWorld = new ChaoticWorld();
 
@@ -42,9 +44,10 @@ public class ControllerIntegrationTest {
     @Test(dataProvider = "controllers")
     public void test_simple(String developer, Controller controller) {
         int numPatients  = 5;
-        final int results = controller.facilityLevelOperation("testFacilityId", numPatients);
-        // TODO more specific controller action.
-//        assertEquals(runTimeOfOperationsInBetween, 10);
+        assertEquals(
+            controller.facilityLevelOperation("testFacilityId", numPatients),
+            200
+        );
         int runTimeOfOperationsInBetween = controller.failableAction();
         chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
     }

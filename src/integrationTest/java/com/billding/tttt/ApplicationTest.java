@@ -26,7 +26,8 @@ public class ApplicationTest {
             (idx) -> new Application(
                     "test_app" + idx,
                     new KafkaCluster(
-                        network
+                        network,
+                        componentRunTimes.getKafkaCluster()
                     ),
                     new AuthService(
                         new Intranet(

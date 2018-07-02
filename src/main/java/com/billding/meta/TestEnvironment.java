@@ -41,7 +41,7 @@ public final class TestEnvironment {
     private final Random random = new Random();
     // TODO Consider parameterized Random
     public String getRandomDeveloper() {
-        return developers.get(Math.abs(random.nextInt()) % developers.size());
+        return developers.get(Math.abs(random.nextInt() & Integer.MAX_VALUE) % developers.size());
     }
 
     public int getNumberOfApplicationTests() {

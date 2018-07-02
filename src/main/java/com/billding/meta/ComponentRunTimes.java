@@ -17,6 +17,10 @@ public class ComponentRunTimes {
     private final int seleniumTest;
     private final int thirdPartyResource;
 
+    private final int browser;
+    private final int kafkaCluster;
+    private final int webDriver;
+
     // TODO Consider improved error msg for missing property.
     public ComponentRunTimes(String propertyFileName) {
         PropertyRetriever propertyRetriever = new PropertyRetriever(propertyFileName);
@@ -32,6 +36,9 @@ public class ComponentRunTimes {
         // TODO consider kafka prefix
         this.producer = propertyRetriever.getInt("producer");
         this.thirdPartyResource = propertyRetriever.getInt("third_party_resource");
+        this.browser = propertyRetriever.getInt("browser");
+        this.kafkaCluster = propertyRetriever.getInt("kafka_cluster");
+        this.webDriver = propertyRetriever.getInt("web_driver");
     }
 
     public int getMapper() {
@@ -76,5 +83,17 @@ public class ComponentRunTimes {
 
     public int getThirdPartyResource() {
         return thirdPartyResource;
+    }
+
+    public int getBrowser() {
+        return browser;
+    }
+
+    public int getKafkaCluster() {
+        return kafkaCluster;
+    }
+
+    public int getWebDriver() {
+        return webDriver;
     }
 }

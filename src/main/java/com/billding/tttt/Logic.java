@@ -33,6 +33,8 @@ public class Logic implements UnreliableService {
 
     @Override
     public int getOperationRunTime() {
+        // TODO All of these should be calling .getOperationRunTime() for *each* of their dependencies!
+        // Every single UnreliableService
         return this.operationRunTime;
     }
 

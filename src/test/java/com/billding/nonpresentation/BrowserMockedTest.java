@@ -18,7 +18,7 @@ public class BrowserMockedTest {
 
         return testInstanceCreator.createInstances(
             (ignored) -> 1,
-            (idx) -> new Browser()
+            (idx) -> new Browser(browserOperationRunTime)
         );
 
     }

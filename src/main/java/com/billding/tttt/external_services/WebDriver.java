@@ -7,9 +7,10 @@ public class WebDriver implements UnreliableService {
     private static final String name = "web_driver";
 
     // TODO move to runtimes.properties?
-    private final int operationRunTime = 10;
+    private final int operationRunTime;
 
-    public WebDriver() {
+    public WebDriver(int operationRunTime) {
+        this.operationRunTime = operationRunTime;
     }
 
     @Override

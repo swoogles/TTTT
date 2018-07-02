@@ -7,7 +7,7 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class AuthServiceMockedTest {
-    private final int authServiceRunTime = 1;
+    private static final int authServiceRunTime = 1;
     private final Intranet mockIntraNet = mock(Intranet.class);
     private final AuthService authService =
         new AuthService(

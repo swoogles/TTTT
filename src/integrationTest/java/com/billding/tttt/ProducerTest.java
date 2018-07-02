@@ -8,6 +8,8 @@ import com.billding.tttt.external_services.Network;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
+
 public class ProducerTest {
 
     @DataProvider(name = "producers")
@@ -20,7 +22,8 @@ public class ProducerTest {
             (ignored) -> 1,
             (idx) -> new Producer(
                         new KafkaCluster(
-                            new Network(componentRunTimes.getNetwork())
+                            new Network(componentRunTimes.getNetwork()),
+                            componentRunTimes.getKafkaCluster()
                         ),
                         new ChaoticWorld(),
                         componentRunTimes.getProducer()
@@ -29,6 +32,9 @@ public class ProducerTest {
 
     @Test(dataProvider = "producers")
     public void test_specific(String developer, Producer producer) {
-        final int testCaseRunTime = producer.submitEvent();
+        assertEquals(
+        producer.submitEvent(),
+            35
+        );
     }
 }

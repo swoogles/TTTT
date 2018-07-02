@@ -26,10 +26,9 @@ public class ChaoticWorld {
     private final Random random = new Random();
 
     public void do2AssertionsThatNeededToHappenInTheSameMinute(int runTimeOfOperationsInBetween) {
+        /* TODO Reinstate when appropriate
         int millisecondsAnAnHour = 60 * 1000;
         int possibleOutComes  = millisecondsAnAnHour;
-        // TODO Reinstate when appropriate
-        /*
         if( Math.abs(random.nextInt()) % possibleOutComes < runTimeOfOperationsInBetween) {
             throw new RuntimeException("Happened at the worst millisecond in the whole hour");
         }

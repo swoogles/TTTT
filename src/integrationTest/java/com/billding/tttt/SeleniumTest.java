@@ -11,14 +11,9 @@ import com.billding.tttt.external_services.WebDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-/**
- *  Requires:
- *      3rd Party CSS
- *      3rd Party JS
- */
-public class SeleniumTest {
-    private static final String name = "selenium_test";
+import static org.testng.Assert.assertTrue;
 
+public class SeleniumTest {
     private static final int operationRunTime = 20;
 
     private static class SeleniumTestClass implements UnreliableService {
@@ -61,8 +56,8 @@ public class SeleniumTest {
         final Network network = new Network(componentRunTimes.getNetwork());
 
         final Database database = new Database(network, componentRunTimes.getDatabase());
-        final Browser browser = new Browser();
-        final WebDriver webDriver = new WebDriver();
+        final Browser browser = new Browser(componentRunTimes.getBrowser());
+        final WebDriver webDriver = new WebDriver(operationRunTime);
         final int javaScriptCdnOperationRunTime = 20;
         final ThirdPartyResource javascriptCDN =
             new ThirdPartyResource("javascriptCDN", network, javaScriptCdnOperationRunTime);
@@ -71,7 +66,8 @@ public class SeleniumTest {
         Application application = new Application(
             "selenium_test_case",
             new KafkaCluster(
-                network
+                network,
+                componentRunTimes.getKafkaCluster()
             ),
             new AuthService(
                 new Intranet(
@@ -108,6 +104,8 @@ public class SeleniumTest {
 
     @Test(dataProvider = "seleniumTests")
     public void test_simple(String developer, SeleniumTestClass seleniumTestClass) {
-        int runTimeOfOperationsInBetween = seleniumTestClass.failableAction();
+        assertTrue(
+            seleniumTestClass.failableAction() > 0
+        );
     }
 }
