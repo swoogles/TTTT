@@ -80,7 +80,7 @@ jacocoTestCoverageVerification {
     violationRules {
         rule {
             limit {
-                minimum = 0.977
+                minimum = 1.000
             }
         }
 
@@ -89,4 +89,4 @@ jacocoTestCoverageVerification {
 
 // TODO Consider if this should be connected
 // to run coverage verification during the build (and fail when appropriate)
-// check.dependsOn jacocoTestCoverageVerification
+check.dependsOn jacocoTestCoverageVerification

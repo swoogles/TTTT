@@ -61,4 +61,19 @@ public class ComponentRunTimesTest {
     public void getThirdPartyResource() {
         assertEquals(componentRunTimes.getThirdPartyResource(), 113);
     }
+
+    @Test
+    public void getBrowser() {
+        assertEquals(componentRunTimes.getBrowser(), 127);
+    }
+
+    @Test
+    public void getKafkaCluster() {
+        assertEquals(componentRunTimes.getKafkaCluster(), 131);
+    }
+
+    @Test
+    public void getWebDriver() {
+        assertEquals(componentRunTimes.getWebDriver(), 137);
+    }
 }

@@ -13,8 +13,4 @@ class DemoScenarios {
         new TestEnvironment(
             propertyRetriever.getString("test_environment")
         );
-
-    private DemoScenarios() {
-        // TODO Ensure properties are present.
-    }
 }
