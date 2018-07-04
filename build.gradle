@@ -47,12 +47,20 @@ test {
 			}
 		}
 	}
+
+  jacoco {
+    append = false
+      destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+      classDumpDir = file("$buildDir/jacoco/classpathdumps")
+  }
 }
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        html.enabled false
+        xml.enabled false
+        csv.enabled false
+        // It'd be nice to spit out this dir name whenever jacoco runs via gradle.
+        html.destination file("${buildDir}/jacocoHtml")
     }
 }
 
@@ -78,6 +86,7 @@ jacocoTestCoverageVerification {
 
     }
 }
+
 // TODO Consider if this should be connected
 // to run coverage verification during the build (and fail when appropriate)
 // check.dependsOn jacocoTestCoverageVerification
