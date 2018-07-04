@@ -22,9 +22,9 @@ public final class TestEnvironment {
     private final int numberOfTimesTestWillBeRun;
 
 
-    // TODO Consider taking property file name here, rather than demanding on instance from the caller
     public TestEnvironment(String propertyFileName) {
-        final PropertyRetriever propertyRetriever = new PropertyRetriever(propertyFileName);
+        // TODO Consider less Stringy files.
+        final PropertyRetriever propertyRetriever = new PropertyRetriever("test_environments/" + propertyFileName);
         this.numberOfApplicationTests = propertyRetriever.getInt("num_tests.application");
         this.numberOfMapperTests = propertyRetriever.getInt("num_tests.mappers");
         this.numberOfControllerTests = propertyRetriever.getInt("num_tests.controllers");
