@@ -1,6 +1,6 @@
 package com.billding.tttt;
 
-import com.billding.meta.TestEnvironment;
+import com.billding.meta.CodeBase;
 import com.billding.meta.TestInstanceCreator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -25,7 +25,7 @@ public class ControllerMockedTest {
         when (logicMock.facilityLevelOperation(facilityId, numPatients)).thenReturn(Collections.singletonList(operationRunTime));
 
         return testInstanceCreator.createInstances(
-            TestEnvironment::getNumberOfControllerTests,
+            CodeBase::getNumberOfControllerTests,
             (idx) -> new Controller(
                 operationRunTime,
                 logicMock

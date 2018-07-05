@@ -1,8 +1,8 @@
 package com.billding.nonpresentation;
 
+import com.billding.meta.CodeBase;
 import com.billding.tttt.external_services.Database;
 import com.billding.tttt.external_services.Network;
-import com.billding.meta.TestEnvironment;
 import com.billding.meta.TestInstanceCreator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,7 +12,6 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class DatabaseMockedTest {
-    // TODO Make a constructor arg of Database
     private static final int operationRunTime = 10;
 
     @DataProvider(name = "databases")
@@ -23,7 +22,7 @@ public class DatabaseMockedTest {
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            TestEnvironment::getNumberOfMapperTests,
+            CodeBase::getNumberOfMapperTests,
             (idx) -> new Database( network, operationRunTime)
         );
     }

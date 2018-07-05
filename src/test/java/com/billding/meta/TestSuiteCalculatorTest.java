@@ -8,8 +8,9 @@ public class TestSuiteCalculatorTest {
     @Test
     public void test_totalTestRunTime() {
         TestEnvironment testEnvironment = new TestEnvironment("solo_project");
+        CodeBase codeBase = new CodeBase("minimal");
         ComponentRunTimes componentRunTimes = new ComponentRunTimes("frozen_runtimes");
-        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(testEnvironment, componentRunTimes);
-        assertEquals(testSuiteCalculator.totalTestRunTime(), 56879);
+        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(testEnvironment, componentRunTimes, codeBase);
+        assertEquals(testSuiteCalculator.totalTestRunTime(), 3713);
     }
 }

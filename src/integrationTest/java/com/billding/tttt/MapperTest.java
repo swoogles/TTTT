@@ -1,6 +1,7 @@
 package com.billding.tttt;
 
 import com.billding.meta.ChaoticWorld;
+import com.billding.meta.CodeBase;
 import com.billding.meta.ComponentRunTimes;
 import com.billding.meta.TestEnvironment;
 import com.billding.meta.TestInstanceCreator;
@@ -20,7 +21,7 @@ public class MapperTest {
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            TestEnvironment::getNumberOfMapperTests,
+            CodeBase::getNumberOfMapperTests,
             (idx) -> new Mapper(
                         new Database(
                             network,

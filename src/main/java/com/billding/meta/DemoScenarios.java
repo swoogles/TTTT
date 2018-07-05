@@ -13,4 +13,13 @@ class DemoScenarios {
         new TestEnvironment(
             propertyRetriever.getString("test_environment")
         );
+
+    public static CodeBase getCodeBase() {
+        return CODE_BASE;
+    }
+
+    private static final CodeBase CODE_BASE =
+        new CodeBase(
+            propertyRetriever.getString("codebase")
+        );
 }

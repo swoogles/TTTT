@@ -1,8 +1,7 @@
 package com.billding.tttt;
 
 import com.billding.meta.ChaoticWorld;
-import com.billding.meta.ComponentRunTimes;
-import com.billding.meta.TestEnvironment;
+import com.billding.meta.CodeBase;
 import com.billding.meta.TestInstanceCreator;
 import com.billding.tttt.external_services.KafkaCluster;
 import com.billding.tttt.external_services.ThirdPartyResource;
@@ -36,7 +35,7 @@ public class ApplicationMockedTest {
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            TestEnvironment::getNumberOfApplicationTests,
+            CodeBase::getNumberOfApplicationTests,
             (idx) -> new Application(
                         "test_app" + idx,
                         kafkaCluster,

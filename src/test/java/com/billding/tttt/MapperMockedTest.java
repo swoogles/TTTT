@@ -1,7 +1,7 @@
 package com.billding.tttt;
 
 import com.billding.meta.ChaoticWorld;
-import com.billding.meta.TestEnvironment;
+import com.billding.meta.CodeBase;
 import com.billding.meta.TestInstanceCreator;
 import com.billding.tttt.external_services.Database;
 import org.testng.annotations.DataProvider;
@@ -26,7 +26,7 @@ public class MapperMockedTest {
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            TestEnvironment::getNumberOfMapperTests,
+            CodeBase::getNumberOfMapperTests,
             (idx) -> new Mapper(
                         database,
                         chaoticWorld,
