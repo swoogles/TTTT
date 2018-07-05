@@ -3,6 +3,9 @@ package com.billding.tttt;
 import com.billding.meta.ServiceStatus;
 
 // TODO Should this take a Database parameter?
+/**
+ * Performs simple authentication operations that involve a lookup on an {@link Intranet}.
+ */
 public class AuthService implements UnreliableService {
     private final Intranet intranet;
     private final int operationRunTime;

@@ -3,6 +3,9 @@ package com.billding.tttt;
 import com.billding.meta.ChaoticWorld;
 import com.billding.tttt.external_services.KafkaCluster;
 
+/**
+ * Performs simple operations on a {@link KafkaCluster}.
+ */
 class Producer implements UnreliableService {
     private final KafkaCluster kafkaCluster;
     private final ChaoticWorld chaoticWorld;

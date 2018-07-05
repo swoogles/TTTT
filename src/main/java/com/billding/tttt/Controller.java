@@ -2,6 +2,9 @@ package com.billding.tttt;
 
 // TODO add terrible Struts 1 dependency
 // Consider renaming to Resource/RESTEndpoint/etc.
+/**
+ * Performs more complex operations that involve a {@link Logic}.
+ */
 public class Controller implements UnreliableService {
     private final Logic logic;
     private static final String name = "controller";

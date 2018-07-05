@@ -3,6 +3,12 @@ package com.billding.meta;
 import java.time.Instant;
 import java.util.Random;
 
+/**
+ * This is intended to be the source of most intermittent, unpredictable failures.
+ * Whether looking at the current time at 2 different points, or expecting the
+ * database to be consistent in between requests, this is where the trouble should
+ * arise.
+ */
 public class ChaoticWorld {
     /* TODO Figure out how to best convey failures here. Autoblowing up might be too
         heavy-handed for the point I'm trying to make.o

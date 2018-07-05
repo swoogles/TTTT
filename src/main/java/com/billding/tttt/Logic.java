@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Performs more complex operations that involve a {@link Mapper}.
+ */
 public class Logic implements UnreliableService {
     private final ChaoticWorld chaoticWorld;
     private final Mapper mapper;

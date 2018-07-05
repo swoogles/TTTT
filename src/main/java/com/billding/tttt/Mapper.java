@@ -3,6 +3,9 @@ package com.billding.tttt;
 import com.billding.meta.ChaoticWorld;
 import com.billding.tttt.external_services.Database;
 
+/**
+ * Performs simple operations on a {@link Database}.
+ */
 class Mapper implements UnreliableService {
     private final int operationRunTime;
     private final Database database;

@@ -2,6 +2,9 @@ package com.billding.meta;
 
 import com.billding.tttt.PropertyRetriever;
 
+/**
+ * Contains totals for the number of different types of tests in the project.
+ */
 public class CodeBase {
     private final int numberOfApplicationTests;
     private final int numberOfMapperTests;

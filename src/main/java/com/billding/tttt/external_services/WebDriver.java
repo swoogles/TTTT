@@ -3,10 +3,12 @@ package com.billding.tttt.external_services;
 import com.billding.meta.ServiceStatus;
 import com.billding.tttt.UnreliableService;
 
+/**
+ * This is a weird bit of software that must be installed on the machine before Selenium tests can execute.
+ */
 public class WebDriver implements UnreliableService {
     private static final String name = "web_driver";
 
-    // TODO move to runtimes.properties?
     private final int operationRunTime;
 
     public WebDriver(int operationRunTime) {

@@ -5,6 +5,10 @@ import java.util.ResourceBundle;
 // TODO Oo! This class can demonstrate failures when the filesystem changes!
 // resource_directory=/home/developer
 // resource_directory=/home/bamboo
+
+/**
+ * This class is the simplest form of getting .properties that I can manage at any given time.
+ */
 public class PropertyRetriever {
     private final ResourceBundle bundle;
 

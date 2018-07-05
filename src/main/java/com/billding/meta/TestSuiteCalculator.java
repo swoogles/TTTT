@@ -1,5 +1,9 @@
 package com.billding.meta;
 
+/**
+ * Will look at the combination of properties that define a scenario and determine
+ * how many tests would be run in that circumstance.
+ */
 public class TestSuiteCalculator {
     private final TestEnvironment testEnvironment;
     private final ComponentRunTimes componentRunTimes;
