@@ -87,6 +87,11 @@ jacocoTestCoverageVerification {
     }
 }
 
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compile
+}
+
 // TODO Consider if this should be connected
 // to run coverage verification during the build (and fail when appropriate)
 check.dependsOn jacocoTestCoverageVerification
