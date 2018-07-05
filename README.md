@@ -9,18 +9,17 @@ Who knows? Maybe it will spin off some decent code of its own.
 ## Existing Features:
 Describe Test Environment to determine number of tests to run. This is based on:
 	
-	* Developers lists
-	* Hours in the work day
-	* Runs per developer per hour
-	* Number of specific test classes
-			* Applications
-			* Mappers
-			* Controllers
-			* Third Party Resources
-			* Kafka Producers
+  * Developers lists
+  * Hours in the work day
+  * Runs per developer per hour
+  * Number of specific test classes
+    * Applications
+    * Mappers
+    * Controllers
+    * Third Party Resources
+    * Kafka Producers
 
 Fail groups of integration tests based on what services are available:
-	
  
   * Database
   * Network
