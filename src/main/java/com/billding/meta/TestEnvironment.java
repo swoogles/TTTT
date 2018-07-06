@@ -2,6 +2,7 @@ package com.billding.meta;
 
 import com.billding.tttt.PropertyRetriever;
 
+import java.time.Period;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -12,6 +13,8 @@ public final class TestEnvironment {
 
     private final int runsPerDeveloperPerHour;
     private final int numberOfHours;
+
+    private final Period timeWindow;
 
     public int getNumberOfDevelopers() {
         return numberOfDevelopers;
@@ -28,6 +31,10 @@ public final class TestEnvironment {
         this.numberOfDevelopers = developers.size();
         this.numberOfHours = propertyRetriever.getInt("hours_in_work_day");
         this.runsPerDeveloperPerHour = propertyRetriever.getInt("runs_per_developer_per_hour");
+        this.timeWindow = Period.parse(
+            propertyRetriever.getString("time_window")
+
+        );
         this.numberOfTimesTestWillBeRun = runsPerDeveloperPerHour * numberOfHours * numberOfDevelopers;
     }
 
@@ -42,4 +49,7 @@ public final class TestEnvironment {
         return Arrays.asList(split);
     }
 
+    public Period getTimeWindow() {
+        return timeWindow;
+    }
 }
