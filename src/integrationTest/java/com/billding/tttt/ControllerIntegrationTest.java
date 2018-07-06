@@ -8,6 +8,8 @@ import com.billding.tttt.external_services.Network;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 import static org.testng.Assert.assertEquals;
 
 public class ControllerIntegrationTest {
@@ -46,9 +48,9 @@ public class ControllerIntegrationTest {
         int numPatients  = 5;
         assertEquals(
             controller.facilityLevelOperation("testFacilityId", numPatients),
-            200
+            Duration.ofMillis(200)
         );
-        int runTimeOfOperationsInBetween = controller.failableAction();
+        Duration runTimeOfOperationsInBetween = controller.failableAction();
         chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
     }
 }

@@ -7,17 +7,20 @@ import com.billding.meta.TestInstanceCreator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class DatabaseMockedTest {
-    private static final int operationRunTime = 10;
+    private static final Duration operationRunTime = Duration.ofMillis(10);
+    private static final Duration mockedOperationRuntime = Duration.ofMillis(0);
 
     @DataProvider(name = "databases")
     public static Object[][] primeNumbers() {
         final Network network = mock(Network.class);
-        when(network.failableAction()).thenReturn(0);
+        when(network.failableAction()).thenReturn(mockedOperationRuntime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 

@@ -6,17 +6,20 @@ import com.billding.meta.TestInstanceCreator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class KafkaClusterMockedTest {
-    private static final int kafkaClusterOperationRunTime = 20;
+    private static final Duration kafkaClusterOperationRunTime = Duration.ofMillis(20);
+    private static final Duration networkOperationRunTime = Duration.ofMillis(0);
 
     @DataProvider(name = "kafkaClusters")
     public static Object[][] testData() {
         Network network = mock(Network.class);
-        when(network.httpOperation(200)).thenReturn(0);
+        when(network.httpOperation(200)).thenReturn(networkOperationRunTime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 

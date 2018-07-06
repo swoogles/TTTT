@@ -1,5 +1,6 @@
 package com.billding.meta;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.util.Random;
 
@@ -31,7 +32,7 @@ public class ChaoticWorld {
 
     private final Random random = new Random();
 
-    public void do2AssertionsThatNeededToHappenInTheSameMinute(int runTimeOfOperationsInBetween) {
+    public void do2AssertionsThatNeededToHappenInTheSameMinute(Duration runTimeOfOperationsInBetween) {
         /* TODO Reinstate when appropriate
         int millisecondsAnAnHour = 60 * 1000;
         int possibleOutComes  = millisecondsAnAnHour;

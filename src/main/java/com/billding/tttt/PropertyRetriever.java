@@ -44,7 +44,7 @@ public class PropertyRetriever {
             );
             return Duration.ofSeconds(numSeconds);
         } else {
-            throw new RuntimeException("Failed to parse short duration property");
+            throw new RuntimeException("Failed to parse short duration property " + name + " in property file: " + this.bundle.getBaseBundleName() );
         }
 
     }

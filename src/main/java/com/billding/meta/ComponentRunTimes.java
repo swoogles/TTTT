@@ -2,98 +2,100 @@ package com.billding.meta;
 
 import com.billding.tttt.PropertyRetriever;
 
+import java.time.Duration;
+
 public class ComponentRunTimes {
     // TODO Make entries for all components
-    private final int mapper;
-    private final int database;
-    private final int producer;
+    private final Duration mapper;
+    private final Duration database;
+    private final Duration producer;
 
-    private final int network;
-    private final int intranet;
-    private final int logic;
-    private final int authService;
-    private final int controller;
-    private final int application;
-    private final int seleniumTest;
-    private final int thirdPartyResource;
+    private final Duration network;
+    private final Duration intranet;
+    private final Duration logic;
+    private final Duration authService;
+    private final Duration controller;
+    private final Duration application;
+    private final Duration seleniumTest;
+    private final Duration thirdPartyResource;
 
-    private final int browser;
-    private final int kafkaCluster;
-    private final int webDriver;
+    private final Duration browser;
+    private final Duration kafkaCluster;
+    private final Duration webDriver;
 
     // TODO Consider improved error msg for missing property.
     public ComponentRunTimes(String propertyFileName) {
         PropertyRetriever propertyRetriever = new PropertyRetriever(propertyFileName);
-        this.mapper = propertyRetriever.getInt("mapper");
-        this.database = propertyRetriever.getInt("database");
-        this.network = propertyRetriever.getInt("network");
-        this.intranet = propertyRetriever.getInt("intranet");
-        this.logic = propertyRetriever.getInt("logic");
-        this.authService = propertyRetriever.getInt("auth_service");
-        this.controller = propertyRetriever.getInt("controller");
-        this.seleniumTest = propertyRetriever.getInt("selenium_test");
-        this.application = propertyRetriever.getInt("application");
+        this.mapper = propertyRetriever.getShortDuration("mapper");
+        this.database = propertyRetriever.getShortDuration("database");
+        this.network = propertyRetriever.getShortDuration("network");
+        this.intranet = propertyRetriever.getShortDuration("intranet");
+        this.logic = propertyRetriever.getShortDuration("logic");
+        this.authService = propertyRetriever.getShortDuration("auth_service");
+        this.controller = propertyRetriever.getShortDuration("controller");
+        this.seleniumTest = propertyRetriever.getShortDuration("selenium_test");
+        this.application = propertyRetriever.getShortDuration("application");
         // TODO consider kafka prefix
-        this.producer = propertyRetriever.getInt("producer");
-        this.thirdPartyResource = propertyRetriever.getInt("third_party_resource");
-        this.browser = propertyRetriever.getInt("browser");
-        this.kafkaCluster = propertyRetriever.getInt("kafka_cluster");
-        this.webDriver = propertyRetriever.getInt("web_driver");
+        this.producer = propertyRetriever.getShortDuration("producer");
+        this.thirdPartyResource = propertyRetriever.getShortDuration("third_party_resource");
+        this.browser = propertyRetriever.getShortDuration("browser");
+        this.kafkaCluster = propertyRetriever.getShortDuration("kafka_cluster");
+        this.webDriver = propertyRetriever.getShortDuration("web_driver");
     }
 
-    public int getMapper() {
+    public Duration getMapper() {
         return mapper;
     }
 
-    public int getDatabase() {
+    public Duration getDatabase() {
         return database;
     }
 
-    public int getProducer() {
+    public Duration getProducer() {
         return producer;
     }
 
-    public int getNetwork() {
+    public Duration getNetwork() {
         return network;
     }
 
-    public int getIntranet() {
+    public Duration getIntranet() {
         return intranet;
     }
 
-    public int getLogic() {
+    public Duration getLogic() {
         return logic;
     }
 
-    public int getAuthService() {
+    public Duration getAuthService() {
         return authService;
     }
 
-    public int getController() {
+    public Duration getController() {
         return controller;
     }
 
-    public int getSeleniumTest() {
+    public Duration getSeleniumTest() {
         return seleniumTest;
     }
 
-    public int getApplication() {
+    public Duration getApplication() {
         return application;
     }
 
-    public int getThirdPartyResource() {
+    public Duration getThirdPartyResource() {
         return thirdPartyResource;
     }
 
-    public int getBrowser() {
+    public Duration getBrowser() {
         return browser;
     }
 
-    public int getKafkaCluster() {
+    public Duration getKafkaCluster() {
         return kafkaCluster;
     }
 
-    public int getWebDriver() {
+    public Duration getWebDriver() {
         return webDriver;
     }
 }

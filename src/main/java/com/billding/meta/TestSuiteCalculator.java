@@ -1,5 +1,7 @@
 package com.billding.meta;
 
+import java.time.Duration;
+
 /**
  * Will look at the combination of properties that define a scenario and determine
  * how many tests would be run in that circumstance.
@@ -16,13 +18,13 @@ public class TestSuiteCalculator {
     }
 
     // TODO Make sure this is exhaustive.
-    public int totalTestRunTime() {
+    public Duration totalTestRunTime() {
         return
-            this.codeBase.getNumberOfMapperTests() * this.componentRunTimes.getMapper()
-                + this.codeBase.getNumberOfProducerTests() * this.componentRunTimes.getProducer()
-                + this.codeBase.getNumberOfApplicationTests() * this.componentRunTimes.getApplication()
-                + this.codeBase.getNumberOfControllerTests() * this.componentRunTimes.getController()
-                + this.codeBase.getNumberOfThirdPartyResourceTests() * this.componentRunTimes.getThirdPartyResource()
+            this.componentRunTimes.getMapper().multipliedBy(this.codeBase.getNumberOfMapperTests())
+                .plus(this.componentRunTimes.getProducer().multipliedBy(this.codeBase.getNumberOfProducerTests())
+                .plus(this.componentRunTimes.getApplication().multipliedBy(this.codeBase.getNumberOfApplicationTests()))
+                .plus(this.componentRunTimes.getController().multipliedBy(this.codeBase.getNumberOfControllerTests()))
+                .plus(this.componentRunTimes.getThirdPartyResource().multipliedBy(this.codeBase.getNumberOfThirdPartyResourceTests())))
             ;
     }
 }

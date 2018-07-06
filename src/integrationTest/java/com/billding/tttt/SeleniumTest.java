@@ -11,19 +11,21 @@ import com.billding.tttt.external_services.WebDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 import static org.testng.Assert.assertTrue;
 
 public class SeleniumTest {
-    private static final int operationRunTime = 20;
+    private static final Duration operationRunTime = Duration.ofMillis(20);
 
     private static class SeleniumTestClass implements UnreliableService {
         private final Application application;
         private final Browser browser;
         private final WebDriver webDriver;
-        private final int operationRunTime;
+        private final Duration operationRunTime;
         private final ThirdPartyResource javascriptCDN;
 
-        private SeleniumTestClass(Application application, Browser browser, WebDriver webDriver, ThirdPartyResource javascriptCDN, int operationRunTime) {
+        private SeleniumTestClass(Application application, Browser browser, WebDriver webDriver, ThirdPartyResource javascriptCDN, Duration operationRunTime) {
             this.application = application;
             this.browser = browser;
             this.webDriver = webDriver;
@@ -33,17 +35,17 @@ public class SeleniumTest {
 
 
         @Override
-        public int getOperationRunTime() {
+        public Duration getOperationRunTime() {
             return this.operationRunTime;
         }
 
         @Override
-        public int failableAction() {
+        public Duration failableAction() {
             return this.getOperationRunTime()
-                + this.application.failableAction()
-                + this.browser.failableAction()
-                + this.webDriver.failableAction()
-                + this.javascriptCDN.failableAction();
+                .plus(this.application.failableAction())
+                .plus(this.browser.failableAction())
+                .plus(this.webDriver.failableAction())
+                .plus(this.javascriptCDN.failableAction());
         }
     }
 
@@ -58,7 +60,7 @@ public class SeleniumTest {
         final Database database = new Database(network, componentRunTimes.getDatabase());
         final Browser browser = new Browser(componentRunTimes.getBrowser());
         final WebDriver webDriver = new WebDriver(operationRunTime);
-        final int javaScriptCdnOperationRunTime = 20;
+        final Duration javaScriptCdnOperationRunTime = Duration.ofMillis(20);
         final ThirdPartyResource javascriptCDN =
             new ThirdPartyResource("javascriptCDN", network, javaScriptCdnOperationRunTime);
 
@@ -105,7 +107,7 @@ public class SeleniumTest {
     @Test(dataProvider = "seleniumTests")
     public void test_simple(String developer, SeleniumTestClass seleniumTestClass) {
         assertTrue(
-            seleniumTestClass.failableAction() > 0
+            seleniumTestClass.failableAction().compareTo(Duration.ofMillis(0)) > 0
         );
     }
 }

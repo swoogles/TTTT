@@ -5,11 +5,13 @@ import com.billding.meta.TestInstanceCreator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 import static org.testng.Assert.assertEquals;
 
 public class BrowserMockedTest {
     // TODO Pass as constructor arg
-    private static final int browserOperationRunTime = 30;
+    private static final Duration browserOperationRunTime = Duration.ofMillis(30);
 
     @DataProvider(name = "browsers")
     public static Object[][] testData() {

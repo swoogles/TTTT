@@ -2,6 +2,7 @@ package com.billding.tttt;
 
 import com.billding.meta.ChaoticWorld;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -14,9 +15,9 @@ public class Logic implements UnreliableService {
     private final Mapper mapper;
     private static final String name = "logic";
 
-    private final int operationRunTime;
+    private final Duration operationRunTime;
 
-    public Logic(ChaoticWorld chaoticWorld, Mapper mapper, int operationRunTime) {
+    public Logic(ChaoticWorld chaoticWorld, Mapper mapper, Duration operationRunTime) {
         this.chaoticWorld = chaoticWorld;
         this.mapper = mapper;
         this.operationRunTime = operationRunTime;
@@ -26,7 +27,8 @@ public class Logic implements UnreliableService {
         return patientIdsFor(facilityId, numPatients)
             .stream()
             .map(
-                patientId -> this.mapper.CRUD_query()
+                // TODO update this with meaningful result
+                patientId -> (int) this.mapper.CRUD_query().toMillis()
             ).collect(Collectors.toList());
     }
 
@@ -35,16 +37,16 @@ public class Logic implements UnreliableService {
     }
 
     @Override
-    public int getOperationRunTime() {
+    public Duration getOperationRunTime() {
         // TODO All of these should be calling .getOperationRunTime() for *each* of their dependencies!
         // Every single UnreliableService
         return this.operationRunTime;
     }
 
     @Override
-    public int failableAction() {
+    public Duration failableAction() {
         return
             this.getOperationRunTime()
-            + this.mapper.failableAction();
+            .plus(this.mapper.failableAction());
     }
 }

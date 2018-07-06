@@ -7,23 +7,26 @@ import com.billding.tttt.external_services.ThirdPartyResource;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class ThirdPartyResourceMockedTest {
-    private static final int operationRunTime = 1;
+    private static final Duration operationRunTime = Duration.ofMillis(1);
+    private static final Duration mockedOperationRuntime = Duration.ofMillis(0);
     private final ChaoticWorld chaoticWorld = new ChaoticWorld();
 
     @DataProvider(name = "thirdPartyResources")
     public static Object[][] primeNumbers() {
         final Network network = mock(Network.class);
-        when(network.httpOperation(200)).thenReturn(0);
+        when(network.httpOperation(200)).thenReturn(mockedOperationRuntime);
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            (ignored) -> operationRunTime,
+            (ignored) -> 1,
             (idx) -> new ThirdPartyResource("github", network, operationRunTime));
     }
 

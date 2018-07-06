@@ -2,6 +2,9 @@ package com.billding.tttt;
 
 // TODO add terrible Struts 1 dependency
 // Consider renaming to Resource/RESTEndpoint/etc.
+
+import java.time.Duration;
+
 /**
  * Performs more complex operations that involve a {@link Logic}.
  */
@@ -9,30 +12,32 @@ public class Controller implements UnreliableService {
     private final Logic logic;
     private static final String name = "controller";
 
-    private final int operationRunTime;
+    private final Duration operationRunTime;
 
-    public Controller(int operationRunTime, Logic logic) {
+    public Controller(Duration operationRunTime, Logic logic) {
         this.logic = logic;
         this.operationRunTime = operationRunTime;
     }
 
     // Is the possibility of a null result from this.logic.facilityLevelOperation the last remaining bit to cover?
-    public int facilityLevelOperation(String facilityId, int numPatients) {
+    public Duration facilityLevelOperation(String facilityId, int numPatients) {
         return
-            this.logic.facilityLevelOperation(facilityId, numPatients)
-            .stream().reduce(0, (a,b) -> a + b)
+            Duration.ofMillis(
+                this.logic.facilityLevelOperation(facilityId, numPatients)
+                    .stream().reduce(0, (a,b) -> a + b)
+            )
             ;
     }
 
     @Override
-    public int getOperationRunTime() {
+    public Duration getOperationRunTime() {
         return this.operationRunTime;
     }
 
     @Override
-    public int failableAction() {
+    public Duration failableAction() {
         return
             this.getOperationRunTime()
-            + this.logic.failableAction();
+            .plus(this.logic.failableAction());
     }
 }

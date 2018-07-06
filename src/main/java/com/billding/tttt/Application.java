@@ -4,9 +4,11 @@ import com.billding.meta.ServiceStatus;
 import com.billding.tttt.external_services.KafkaCluster;
 import com.billding.tttt.external_services.ThirdPartyResource;
 
+import java.time.Duration;
+
 public class Application implements UnreliableService {
     private static final String SERVICE_NAME_BASE = "application";
-    private final int operationRunTime;
+    private final Duration operationRunTime;
 
     private final String name;
 
@@ -22,7 +24,7 @@ public class Application implements UnreliableService {
         AuthService authService,
         Controller controller,
         ThirdPartyResource github,
-        int operationRunTime
+        Duration operationRunTime
     ){
         this.name = SERVICE_NAME_BASE + "_" + name;
         this.operationRunTime = operationRunTime;
@@ -32,23 +34,23 @@ public class Application implements UnreliableService {
         this.github = github;
     }
 
-    int simpleAction() {
+    Duration simpleAction() {
         return this.failableAction();
     }
 
     @Override
-    public int getOperationRunTime() {
+    public Duration getOperationRunTime() {
         return this.operationRunTime;
     }
 
     @Override
-    public int failableAction() {
+    public Duration failableAction() {
         int numPatients = 5;
         ServiceStatus.ensureServiceIsRunning(SERVICE_NAME_BASE);
         return this.getOperationRunTime()
-            + kafkaCluster.clusterAction()
-            + authService.authenticateUser("userName", "password")
-            + controller.facilityLevelOperation("facilityId", numPatients)
-            + github.communicate();
+            .plus(kafkaCluster.clusterAction())
+            .plus(authService.authenticateUser("userName", "password"))
+            .plus(controller.facilityLevelOperation("facilityId", numPatients))
+            .plus(github.communicate());
     }
 }

@@ -1,6 +1,8 @@
 package com.billding.tttt;
 
 
+import java.time.Duration;
+
 /**
  * The *MOST* important abstraction in the whole project.
  * Every important piece that I'm trying to demonstrate involves unreliable operations.
@@ -11,7 +13,7 @@ public interface UnreliableService {
      * This avoids possible failures
      * @return Runtime of an operation on the service.
      */
-    int getOperationRunTime();
+    Duration getOperationRunTime();
 
     // TODO Fix spelling
 
@@ -22,5 +24,5 @@ public interface UnreliableService {
      *
      * @return Time taken to perform action
      */
-    int failableAction();
+    Duration failableAction();
 }

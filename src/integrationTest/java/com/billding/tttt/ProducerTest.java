@@ -8,6 +8,8 @@ import com.billding.tttt.external_services.Network;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 import static org.testng.Assert.assertEquals;
 
 public class ProducerTest {
@@ -34,7 +36,7 @@ public class ProducerTest {
     public void test_specific(String developer, Producer producer) {
         assertEquals(
         producer.submitEvent(),
-            35
+            Duration.ofMillis(35)
         );
     }
 }

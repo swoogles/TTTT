@@ -2,6 +2,7 @@ package com.billding.meta;
 
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.time.Instant;
 
 import static org.testng.Assert.assertTrue;
@@ -18,6 +19,6 @@ public class ChaoticWorldTest {
 
     @Test
     public void test_do2AssertionsThatNeededToHappenInTheSameMinute() {
-        chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(0);
+        chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(Duration.ofMillis(0));
     }
 }

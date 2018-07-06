@@ -2,25 +2,27 @@ package com.billding.tttt;
 
 import com.billding.meta.ServiceStatus;
 
+import java.time.Duration;
+
 /**
  * This is a bit of software that must be installed on the machine before Selenium tests can execute.
  */
 public class Browser implements UnreliableService {
     // TODO Consider taking different browser names as parameter
     private static final String name = "browser";
-    private final int operationRunTime;
+    private final Duration operationRunTime;
 
-    public Browser(int operationRunTime) {
+    public Browser(Duration operationRunTime) {
         this.operationRunTime = operationRunTime;
     }
 
     @Override
-    public int getOperationRunTime() {
+    public Duration getOperationRunTime() {
         return this.operationRunTime;
     }
 
     @Override
-    public int failableAction() {
+    public Duration failableAction() {
         ServiceStatus.ensureServiceIsRunning(this.name);
         return this.getOperationRunTime();
     }

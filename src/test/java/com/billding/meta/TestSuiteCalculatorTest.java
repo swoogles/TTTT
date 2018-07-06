@@ -2,6 +2,8 @@ package com.billding.meta;
 
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 import static org.testng.Assert.assertEquals;
 
 public class TestSuiteCalculatorTest {
@@ -11,6 +13,6 @@ public class TestSuiteCalculatorTest {
         CodeBase codeBase = new CodeBase("minimal");
         ComponentRunTimes componentRunTimes = new ComponentRunTimes("frozen_runtimes");
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(testEnvironment, componentRunTimes, codeBase);
-        assertEquals(testSuiteCalculator.totalTestRunTime(), 3713);
+        assertEquals(testSuiteCalculator.totalTestRunTime(), Duration.ofMillis(3713));
     }
 }

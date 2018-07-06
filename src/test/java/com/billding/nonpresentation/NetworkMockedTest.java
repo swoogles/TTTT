@@ -5,10 +5,12 @@ import com.billding.meta.TestInstanceCreator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 import static org.testng.Assert.assertEquals;
 
 public class NetworkMockedTest {
-    private static final int networkOperationRunTime = 1;
+    private static final Duration networkOperationRunTime = Duration.ofMillis(1);
 
     @DataProvider(name = "networks")
     public static Object[][] testData() {
