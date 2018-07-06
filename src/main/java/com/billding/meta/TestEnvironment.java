@@ -12,6 +12,11 @@ public final class TestEnvironment {
 
     private final int runsPerDeveloperPerHour;
     private final int numberOfHours;
+
+    public int getNumberOfDevelopers() {
+        return numberOfDevelopers;
+    }
+
     private final int numberOfDevelopers;
     private final int numberOfTimesTestWillBeRun;
 

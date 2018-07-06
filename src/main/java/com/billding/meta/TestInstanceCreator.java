@@ -12,7 +12,7 @@ public class TestInstanceCreator {
         // Currently, this is the single point of control for which environment we want to load.
         final TestEnvironment testEnvironment = DemoScenarios.getTestEnvironment();
         final CodeBase codeBase = DemoScenarios.getCodeBase();
-        return IntStream.range(0, getNumberOfTests.apply(codeBase))
+        return IntStream.range(0, getNumberOfTests.apply(codeBase) * testEnvironment.getNumberOfDevelopers() )
             .mapToObj(idx -> new Object[]{
                 testEnvironment.getRandomDeveloper(),
                 instanceSupplier.apply(idx)
