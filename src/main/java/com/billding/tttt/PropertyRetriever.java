@@ -1,5 +1,7 @@
 package com.billding.tttt;
 
+import java.time.Duration;
+import java.util.IllegalFormatException;
 import java.util.ResourceBundle;
 
 // TODO Oo! This class can demonstrate failures when the filesystem changes!
@@ -27,5 +29,23 @@ public class PropertyRetriever {
 
     public String getString(String name) {
         return this.bundle.getString(name);
+    }
+
+    public Duration getShortDuration(String name) {
+        final String rawValue = getString(name);
+        if (rawValue.endsWith(" ms") ) {
+            int numMilliSeconds = Integer.parseInt(
+            rawValue.substring(0, rawValue.length() - 3)
+            );
+            return Duration.ofMillis(numMilliSeconds);
+        } else if( rawValue.endsWith(" s") ){
+            int numSeconds = Integer.parseInt(
+                rawValue.substring(0, rawValue.length() - 2)
+            );
+            return Duration.ofSeconds(numSeconds);
+        } else {
+            throw new RuntimeException("Failed to parse short duration property");
+        }
+
     }
 }
