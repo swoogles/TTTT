@@ -34,8 +34,9 @@ public class ProducerTest {
 
     @Test(dataProvider = "producers")
     public void test_specific(String developer, Producer producer) {
+        // producer + cluster
         assertEquals(
-        producer.submitEvent(),
+            producer.submitEvent(),
             Duration.ofMillis(35)
         );
     }

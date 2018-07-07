@@ -26,7 +26,8 @@ class Mapper implements UnreliableService {
 
     @Override
     public Duration getOperationRunTime() {
-        return this.operationRunTime;
+        return this.operationRunTime
+            .plus(this.database.getOperationRunTime());
     }
 
 

@@ -25,19 +25,18 @@ public class Controller implements UnreliableService {
             Duration.ofMillis(
                 this.logic.facilityLevelOperation(facilityId, numPatients)
                     .stream().reduce(0, (a,b) -> a + b)
-            )
-            ;
+            ) ;
     }
 
     @Override
     public Duration getOperationRunTime() {
-        return this.operationRunTime;
+        return this.operationRunTime
+            .plus(this.logic.getOperationRunTime());
     }
 
     @Override
     public Duration failableAction() {
-        return
-            this.getOperationRunTime()
-            .plus(this.logic.failableAction());
+        this.logic.failableAction();
+        return this.getOperationRunTime();
     }
 }

@@ -40,7 +40,11 @@ public class Application implements UnreliableService {
 
     @Override
     public Duration getOperationRunTime() {
-        return this.operationRunTime;
+        return this.operationRunTime
+            .plus(kafkaCluster.getOperationRunTime())
+            .plus(authService.getOperationRunTime())
+            .plus(controller.getOperationRunTime())
+            .plus(github.getOperationRunTime());
     }
 
     @Override

@@ -22,6 +22,7 @@ public class ThirdPartyResourceMockedTest {
     public static Object[][] primeNumbers() {
         final Network network = mock(Network.class);
         when(network.httpOperation(200)).thenReturn(mockedOperationRuntime);
+        when(network.getOperationRunTime()).thenReturn(mockedOperationRuntime);
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 

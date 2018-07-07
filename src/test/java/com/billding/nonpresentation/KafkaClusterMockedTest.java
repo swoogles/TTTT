@@ -20,6 +20,7 @@ public class KafkaClusterMockedTest {
     public static Object[][] testData() {
         Network network = mock(Network.class);
         when(network.httpOperation(200)).thenReturn(networkOperationRunTime);
+        when(network.getOperationRunTime()).thenReturn(networkOperationRunTime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 

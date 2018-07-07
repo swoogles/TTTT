@@ -24,6 +24,7 @@ public class MapperMockedTest {
         when(chaoticWorld.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
         final Database database = mock(Database.class);
         when(database.failableAction()).thenReturn(mockedOperationRuntime);
+        when(database.getOperationRunTime()).thenReturn(mockedOperationRuntime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 

@@ -29,7 +29,8 @@ public class KafkaCluster implements UnreliableService {
 
     @Override
     public Duration getOperationRunTime() {
-        return this.operationRunTime;
+        return this.operationRunTime
+            .plus(this.network.getOperationRunTime());
     }
 
     @Override

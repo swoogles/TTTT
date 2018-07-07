@@ -25,6 +25,7 @@ public class ProducerMockedTest {
         when(chaoticWorld.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
         final KafkaCluster kafkaCluster = mock(KafkaCluster.class);
         when(kafkaCluster.clusterAction()).thenReturn(mockedOperationRuntime);
+        when(kafkaCluster.getOperationRunTime()).thenReturn(mockedOperationRuntime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 

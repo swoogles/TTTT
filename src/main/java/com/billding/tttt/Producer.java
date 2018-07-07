@@ -29,13 +29,14 @@ class Producer implements UnreliableService {
     // TODO basically all of these are broken. They're not counting time of substeps. I need to either fix or remove.
     @Override
     public Duration getOperationRunTime() {
-        return this.operationRunTime;
+        return this.operationRunTime
+            .plus(this.kafkaCluster.getOperationRunTime());
     }
 
     @Override
     public Duration failableAction() {
         this.chaoticWorld.currentTime();
-        return this.getOperationRunTime()
-            .plus( this.kafkaCluster.clusterAction() );
+        this.kafkaCluster.clusterAction();
+        return this.getOperationRunTime();
     }
 }

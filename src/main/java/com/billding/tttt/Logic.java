@@ -40,7 +40,8 @@ public class Logic implements UnreliableService {
     public Duration getOperationRunTime() {
         // TODO All of these should be calling .getOperationRunTime() for *each* of their dependencies!
         // Every single UnreliableService
-        return this.operationRunTime;
+        return this.operationRunTime
+            .plus(this.mapper.getOperationRunTime());
     }
 
     @Override

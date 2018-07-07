@@ -46,10 +46,7 @@ public class ControllerIntegrationTest {
     @Test(dataProvider = "controllers")
     public void test_simple(String developer, Controller controller) {
         int numPatients  = 5;
-        assertEquals(
-            controller.facilityLevelOperation("testFacilityId", numPatients),
-            Duration.ofMillis(200)
-        );
+        controller.facilityLevelOperation("testFacilityId", numPatients);
         Duration runTimeOfOperationsInBetween = controller.failableAction();
         chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
     }

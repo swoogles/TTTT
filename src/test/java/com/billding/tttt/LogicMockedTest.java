@@ -20,6 +20,7 @@ public class LogicMockedTest {
         Mapper mapper = mock(Mapper.class);
         when(mapper.CRUD_query()).thenReturn(mockedOperationRuntime);
         when(mapper.failableAction()).thenReturn(mockedOperationRuntime);
+        when(mapper.getOperationRunTime()).thenReturn(mockedOperationRuntime);
         int numPatients = 25;
         final Logic logic = new Logic(
             chaoticWorld,

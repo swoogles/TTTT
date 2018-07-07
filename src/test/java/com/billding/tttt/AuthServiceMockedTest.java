@@ -20,6 +20,7 @@ public class AuthServiceMockedTest {
 
     public AuthServiceMockedTest() {
         when(mockIntraNet.failableAction()).thenReturn(mockedOperationRuntime);
+        when(mockIntraNet.getOperationRunTime()).thenReturn(mockedOperationRuntime);
     }
 
     @Test

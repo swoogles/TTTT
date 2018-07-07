@@ -26,6 +26,7 @@ public class ControllerMockedTest {
         final Logic logicMock = mock(Logic.class);
         when (logicMock.facilityLevelOperation(facilityId, numPatients)).thenReturn(Collections.singletonList(1 ));
         when (logicMock.failableAction()).thenReturn(mockedOperationRuntime );
+        when (logicMock.getOperationRunTime()).thenReturn(mockedOperationRuntime );
 
         return testInstanceCreator.createInstances(
             CodeBase::getNumberOfControllerTests,

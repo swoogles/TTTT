@@ -21,6 +21,7 @@ public class DatabaseMockedTest {
     public static Object[][] primeNumbers() {
         final Network network = mock(Network.class);
         when(network.failableAction()).thenReturn(mockedOperationRuntime);
+        when(network.getOperationRunTime()).thenReturn(mockedOperationRuntime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
