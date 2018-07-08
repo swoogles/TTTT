@@ -27,12 +27,8 @@ public class LogicMockedTest {
             mapper,
             operationRuntime
         );
-        final List<Integer> facilityId = logic.facilityLevelOperation("facilityId", numPatients);
-        // TODO fix bug; this only returns 5.
-//        assertEquals(logic.getOperationRunTime(), 6);
-        for (int i = 0; i < numPatients; i++) {
-            assertEquals(facilityId.get(i), Integer.valueOf(0));
-        }
+        final Duration result = logic.facilityLevelOperation();
+        assertEquals(result, operationRuntime.plus(mockedOperationRuntime));
 
         assertEquals(
             logic.failableAction(),

@@ -36,7 +36,7 @@ public class ApplicationMockedTest {
         when(authService.getOperationRunTime()).thenReturn(mockedOperationRuntime);
         when(authService.authenticateUser("userName", "password")).thenReturn(mockedOperationRuntime);
         when(controller.getOperationRunTime()).thenReturn(mockedOperationRuntime);
-        when(controller.facilityLevelOperation("facilityId", 5)).thenReturn(mockedOperationRuntime);
+        when(controller.facilityLevelOperation()).thenReturn(mockedOperationRuntime);
         when(thirdPartyResource.getOperationRunTime()).thenReturn(mockedOperationRuntime);
         when(thirdPartyResource.communicate()).thenReturn(mockedOperationRuntime);
 

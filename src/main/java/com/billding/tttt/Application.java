@@ -49,12 +49,11 @@ public class Application implements UnreliableService {
 
     @Override
     public Duration failableAction() {
-        int numPatients = 5;
         ServiceStatus.ensureServiceIsRunning(SERVICE_NAME_BASE);
         return this.getOperationRunTime()
             .plus(kafkaCluster.clusterAction())
             .plus(authService.authenticateUser("userName", "password"))
-            .plus(controller.facilityLevelOperation("facilityId", numPatients))
+            .plus(controller.facilityLevelOperation())
             .plus(github.communicate());
     }
 }

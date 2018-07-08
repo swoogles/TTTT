@@ -24,8 +24,6 @@ public class LogicTest {
             ),
             componentRunTimes.getLogic()
         );
-        logic.facilityLevelOperation("facilityId", 25);
-        // TODO Use some kind of "ReasonableExpectation" class/enum to gauge runtime costs
-//        assertEquals(logic.getOperationRunTime(), 45);
+        logic.facilityLevelOperation();
     }
 }

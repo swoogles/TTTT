@@ -23,23 +23,12 @@ public class Logic implements UnreliableService {
         this.operationRunTime = operationRunTime;
     }
 
-    public List<Integer> facilityLevelOperation(String facilityId, int numPatients) {
-        return patientIdsFor(facilityId, numPatients)
-            .stream()
-            .map(
-                // TODO update this with meaningful result
-                patientId -> (int) this.mapper.CRUD_query().toMillis()
-            ).collect(Collectors.toList());
-    }
-
-    private List<String> patientIdsFor(String facilityId, int numPatients) {
-        return IntStream.range(0, numPatients) .mapToObj( i -> facilityId + "_patient_" + i).collect(Collectors.toList());
+    public Duration facilityLevelOperation() {
+        return this.failableAction();
     }
 
     @Override
     public Duration getOperationRunTime() {
-        // TODO All of these should be calling .getOperationRunTime() for *each* of their dependencies!
-        // Every single UnreliableService
         return this.operationRunTime
             .plus(this.mapper.getOperationRunTime());
     }

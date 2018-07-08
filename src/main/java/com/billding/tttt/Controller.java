@@ -20,12 +20,8 @@ public class Controller implements UnreliableService {
     }
 
     // Is the possibility of a null result from this.logic.facilityLevelOperation the last remaining bit to cover?
-    public Duration facilityLevelOperation(String facilityId, int numPatients) {
-        return
-            Duration.ofMillis(
-                this.logic.facilityLevelOperation(facilityId, numPatients)
-                    .stream().reduce(0, (a,b) -> a + b)
-            ) ;
+    public Duration facilityLevelOperation() {
+        return this.failableAction();
     }
 
     @Override

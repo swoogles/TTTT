@@ -24,7 +24,7 @@ public class ControllerMockedTest {
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         final Logic logicMock = mock(Logic.class);
-        when (logicMock.facilityLevelOperation(facilityId, numPatients)).thenReturn(Collections.singletonList(1 ));
+        when (logicMock.facilityLevelOperation()).thenReturn(mockedOperationRuntime);
         when (logicMock.failableAction()).thenReturn(mockedOperationRuntime );
         when (logicMock.getOperationRunTime()).thenReturn(mockedOperationRuntime );
 
@@ -40,7 +40,7 @@ public class ControllerMockedTest {
     public void test_simple(String developer, Controller controller) {
 
         assertEquals(
-        controller.facilityLevelOperation(facilityId, numPatients),
+        controller.facilityLevelOperation(),
             operationRunTime
         );
         assertEquals(
