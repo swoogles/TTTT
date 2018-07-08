@@ -35,7 +35,8 @@ public final class TestEnvironment {
             propertyRetriever.getString("time_window")
 
         );
-        this.numberOfTimesTestWillBeRun = runsPerDeveloperPerHour * numberOfHours * numberOfDevelopers;
+        this.numberOfTimesTestWillBeRun =
+                runsPerDeveloperPerHour * numberOfHours * numberOfDevelopers * (this.timeWindow.getDays());
     }
 
     private final Random random = new Random();
@@ -51,5 +52,9 @@ public final class TestEnvironment {
 
     public Period getTimeWindow() {
         return timeWindow;
+    }
+
+    public int getNumberOfTimesTestWillBeRun() {
+        return numberOfTimesTestWillBeRun;
     }
 }

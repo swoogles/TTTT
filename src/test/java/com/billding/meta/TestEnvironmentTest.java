@@ -31,6 +31,13 @@ public class TestEnvironmentTest {
             testEnvironment.getTimeWindow(),
             Period.ofWeeks(2)
         );
+    }
 
+    @Test
+    public void getNumberOfTimesTestWillBeRun() {
+        assertEquals(
+                testEnvironment.getNumberOfTimesTestWillBeRun(),
+                560
+        );
     }
 }
