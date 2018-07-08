@@ -8,14 +8,14 @@ import java.time.Duration;
 import static org.testng.Assert.assertEquals;
 
 public class WebDriverTest {
-    private final Duration runtime = Duration.ofMillis(10);
-    private final WebDriver webDriver = new WebDriver(runtime);
+    private final Duration runTime = Duration.ofMillis(10);
+    private final WebDriver webDriver = new WebDriver(runTime);
 
     @Test
     public void test_failableOperation() {
         assertEquals(
             webDriver.failableAction(),
-            runtime
+                runTime
         );
 
     }

@@ -13,13 +13,13 @@ class Producer implements UnreliableService {
     private final ChaoticWorld chaoticWorld;
     private static final String name = "producer";
 
-    private final Duration operationRunTime;
+    private final Duration runTime;
 
     // TODO add intranet/network dependency
-    public Producer(KafkaCluster kafkaCluster, ChaoticWorld chaoticWorld, Duration operationRunTime) {
+    public Producer(KafkaCluster kafkaCluster, ChaoticWorld chaoticWorld, Duration runTime) {
         this.chaoticWorld = chaoticWorld;
         this.kafkaCluster = kafkaCluster;
-        this.operationRunTime = operationRunTime;
+        this.runTime = runTime;
     }
 
     public Duration submitEvent() {
@@ -28,15 +28,15 @@ class Producer implements UnreliableService {
 
     // TODO basically all of these are broken. They're not counting time of substeps. I need to either fix or remove.
     @Override
-    public Duration getOperationRunTime() {
-        return this.operationRunTime
-            .plus(this.kafkaCluster.getOperationRunTime());
+    public Duration getRunTime() {
+        return this.runTime
+            .plus(this.kafkaCluster.getRunTime());
     }
 
     @Override
     public Duration failableAction() {
         this.chaoticWorld.currentTime();
         this.kafkaCluster.clusterAction();
-        return this.getOperationRunTime();
+        return this.getRunTime();
     }
 }

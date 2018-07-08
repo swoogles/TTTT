@@ -14,25 +14,25 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class DatabaseMockedTest {
-    private static final Duration operationRunTime = Duration.ofMillis(10);
-    private static final Duration mockedOperationRuntime = Duration.ofMillis(0);
+    private static final Duration runTime = Duration.ofMillis(10);
+    private static final Duration mockedRuntime = Duration.ofMillis(0);
 
     @DataProvider(name = "databases")
     public static Object[][] primeNumbers() {
         final Network network = mock(Network.class);
-        when(network.failableAction()).thenReturn(mockedOperationRuntime);
-        when(network.getOperationRunTime()).thenReturn(mockedOperationRuntime);
+        when(network.failableAction()).thenReturn(mockedRuntime);
+        when(network.getRunTime()).thenReturn(mockedRuntime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
             CodeBase::getNumberOfMapperTests,
-            (idx) -> new Database( network, operationRunTime)
+            (idx) -> new Database( network, runTime)
         );
     }
 
     @Test(dataProvider = "databases")
     public void test_specific(String developer, Database database) {
-        assertEquals(operationRunTime, database.failableAction());
+        assertEquals(runTime, database.failableAction());
     }
 }

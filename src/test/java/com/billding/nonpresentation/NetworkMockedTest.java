@@ -10,7 +10,7 @@ import java.time.Duration;
 import static org.testng.Assert.assertEquals;
 
 public class NetworkMockedTest {
-    private static final Duration networkOperationRunTime = Duration.ofMillis(1);
+    private static final Duration runTime = Duration.ofMillis(1);
 
     @DataProvider(name = "networks")
     public static Object[][] testData() {
@@ -19,13 +19,13 @@ public class NetworkMockedTest {
 
         return testInstanceCreator.createInstances(
             (ignored) -> 1,
-            (idx) -> new Network(networkOperationRunTime)
+            (idx) -> new Network(runTime)
         );
 
     }
 
     @Test(dataProvider = "networks")
     public void test_specific(String developer, Network network) {
-        assertEquals(networkOperationRunTime, network.httpOperation(200));
+        assertEquals(runTime, network.httpOperation(200));
     }
 }

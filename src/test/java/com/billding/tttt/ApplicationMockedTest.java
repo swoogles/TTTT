@@ -14,8 +14,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class ApplicationMockedTest {
-    private static final Duration operationRuntime = Duration.ofMillis(1);
-    private static final Duration mockedOperationRuntime = Duration.ofMillis(0);
+    private static final Duration runTime = Duration.ofMillis(1);
+    private static final Duration mockedRunTime = Duration.ofMillis(0);
 
     private final ChaoticWorld chaoticWorld = new ChaoticWorld();
 
@@ -30,15 +30,15 @@ public class ApplicationMockedTest {
         // TODO This might be automatically mocking the void failableAction method
         final UnreliableService mockSerice = mock(UnreliableService.class);
         // The hoops needed to test this class are pushing me more towards impelementing UnreliableService directly.
-        when(mockSerice.getOperationRunTime()).thenReturn(mockedOperationRuntime);
-        when(kafkaCluster.getOperationRunTime()).thenReturn(mockedOperationRuntime);
-        when(kafkaCluster.clusterAction()).thenReturn(mockedOperationRuntime);
-        when(authService.getOperationRunTime()).thenReturn(mockedOperationRuntime);
-        when(authService.authenticateUser("userName", "password")).thenReturn(mockedOperationRuntime);
-        when(controller.getOperationRunTime()).thenReturn(mockedOperationRuntime);
-        when(controller.facilityLevelOperation()).thenReturn(mockedOperationRuntime);
-        when(thirdPartyResource.getOperationRunTime()).thenReturn(mockedOperationRuntime);
-        when(thirdPartyResource.communicate()).thenReturn(mockedOperationRuntime);
+        when(mockSerice.getRunTime()).thenReturn(mockedRunTime);
+        when(kafkaCluster.getRunTime()).thenReturn(mockedRunTime);
+        when(kafkaCluster.clusterAction()).thenReturn(mockedRunTime);
+        when(authService.getRunTime()).thenReturn(mockedRunTime);
+        when(authService.authenticateUser("userName", "password")).thenReturn(mockedRunTime);
+        when(controller.getRunTime()).thenReturn(mockedRunTime);
+        when(controller.facilityLevelOperation()).thenReturn(mockedRunTime);
+        when(thirdPartyResource.getRunTime()).thenReturn(mockedRunTime);
+        when(thirdPartyResource.communicate()).thenReturn(mockedRunTime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
@@ -50,7 +50,7 @@ public class ApplicationMockedTest {
                         authService,
                         controller,
                         thirdPartyResource,
-                        operationRuntime
+                    runTime
                     )
         );
     }

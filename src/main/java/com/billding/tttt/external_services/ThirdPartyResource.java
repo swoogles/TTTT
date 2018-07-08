@@ -6,15 +6,15 @@ import com.billding.tttt.UnreliableService;
 import java.time.Duration;
 
 public class ThirdPartyResource implements UnreliableService {
-    private final Duration operationRunTime;
+    private final Duration runTime;
     private final Network network;
 
     private final String name;
 
-    public ThirdPartyResource(String name, Network network, Duration operationRunTime) {
+    public ThirdPartyResource(String name, Network network, Duration runTime) {
         this.network = network;
         this.name = "third_party." + name;
-        this.operationRunTime = operationRunTime;
+        this.runTime = runTime;
     }
 
     public Duration communicate() {
@@ -22,15 +22,15 @@ public class ThirdPartyResource implements UnreliableService {
     }
 
     @Override
-    public Duration getOperationRunTime() {
-        return this.operationRunTime
-            .plus(this.network.getOperationRunTime());
+    public Duration getRunTime() {
+        return this.runTime
+            .plus(this.network.getRunTime());
     }
 
     @Override
     public Duration failableAction() {
         ServiceStatus.ensureServiceIsRunning(this.name);
-        return this.getOperationRunTime()
+        return this.getRunTime()
             .plus(this.network.httpOperation(200));
     }
 }

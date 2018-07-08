@@ -3,9 +3,6 @@ package com.billding.tttt;
 import com.billding.meta.ChaoticWorld;
 
 import java.time.Duration;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * Performs more complex operations that involve a {@link Mapper}.
@@ -15,12 +12,12 @@ public class Logic implements UnreliableService {
     private final Mapper mapper;
     private static final String name = "logic";
 
-    private final Duration operationRunTime;
+    private final Duration runTime;
 
-    public Logic(ChaoticWorld chaoticWorld, Mapper mapper, Duration operationRunTime) {
+    public Logic(ChaoticWorld chaoticWorld, Mapper mapper, Duration runTime) {
         this.chaoticWorld = chaoticWorld;
         this.mapper = mapper;
-        this.operationRunTime = operationRunTime;
+        this.runTime = runTime;
     }
 
     public Duration facilityLevelOperation() {
@@ -28,15 +25,15 @@ public class Logic implements UnreliableService {
     }
 
     @Override
-    public Duration getOperationRunTime() {
-        return this.operationRunTime
-            .plus(this.mapper.getOperationRunTime());
+    public Duration getRunTime() {
+        return this.runTime
+            .plus(this.mapper.getRunTime());
     }
 
     @Override
     public Duration failableAction() {
         return
-            this.getOperationRunTime()
+            this.getRunTime()
             .plus(this.mapper.failableAction());
     }
 }

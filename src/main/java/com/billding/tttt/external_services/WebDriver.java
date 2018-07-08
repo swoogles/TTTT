@@ -11,20 +11,20 @@ import java.time.Duration;
 public class WebDriver implements UnreliableService {
     private static final String name = "web_driver";
 
-    private final Duration operationRunTime;
+    private final Duration runTime;
 
-    public WebDriver(Duration operationRunTime) {
-        this.operationRunTime = operationRunTime;
+    public WebDriver(Duration runTime) {
+        this.runTime = runTime;
     }
 
     @Override
-    public Duration getOperationRunTime() {
-        return this.operationRunTime;
+    public Duration getRunTime() {
+        return this.runTime;
     }
 
     @Override
     public Duration failableAction() {
         ServiceStatus.ensureServiceIsRunning(this.name);
-        return this.getOperationRunTime();
+        return this.getRunTime();
     }
 }

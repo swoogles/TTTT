@@ -13,26 +13,26 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class KafkaClusterMockedTest {
-    private static final Duration kafkaClusterOperationRunTime = Duration.ofMillis(20);
-    private static final Duration networkOperationRunTime = Duration.ofMillis(0);
+    private static final Duration runTime = Duration.ofMillis(20);
+    private static final Duration mockedRunTime = Duration.ofMillis(0);
 
     @DataProvider(name = "kafkaClusters")
     public static Object[][] testData() {
         Network network = mock(Network.class);
-        when(network.httpOperation(200)).thenReturn(networkOperationRunTime);
-        when(network.getOperationRunTime()).thenReturn(networkOperationRunTime);
+        when(network.httpOperation(200)).thenReturn(mockedRunTime);
+        when(network.getRunTime()).thenReturn(mockedRunTime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
             (ignored) -> 1,
-            (idx) -> new KafkaCluster(network, kafkaClusterOperationRunTime)
+            (idx) -> new KafkaCluster(network, runTime)
         );
 
     }
 
     @Test(dataProvider = "kafkaClusters")
     public void test_specific(String developer, KafkaCluster kafkaCluster) {
-        assertEquals(kafkaClusterOperationRunTime, kafkaCluster.clusterAction());
+        assertEquals(runTime, kafkaCluster.clusterAction());
     }
 }

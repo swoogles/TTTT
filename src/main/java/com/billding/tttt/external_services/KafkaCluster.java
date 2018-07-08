@@ -12,13 +12,13 @@ import java.time.Duration;
  */
 public class KafkaCluster implements UnreliableService {
     private final Network network;
-    private final Duration operationRunTime;
+    private final Duration runTime;
 
     private static final String name = "kafka_cluster";
 
-    public KafkaCluster(Network network, Duration operationRunTime) {
+    public KafkaCluster(Network network, Duration runTime) {
         this.network = network;
-        this.operationRunTime = operationRunTime;
+        this.runTime = runTime;
     }
 
     public Duration clusterAction() {
@@ -28,9 +28,9 @@ public class KafkaCluster implements UnreliableService {
     }
 
     @Override
-    public Duration getOperationRunTime() {
-        return this.operationRunTime
-            .plus(this.network.getOperationRunTime());
+    public Duration getRunTime() {
+        return this.runTime
+            .plus(this.network.getRunTime());
     }
 
     @Override
@@ -39,7 +39,7 @@ public class KafkaCluster implements UnreliableService {
         // I should emphasize and possibly create test variations for.
         ServiceStatus.ensureServiceIsRunning(this.name);
         return
-            this.getOperationRunTime()
+            this.getRunTime()
                 .plus(this.network.httpOperation(200));
     }
 }

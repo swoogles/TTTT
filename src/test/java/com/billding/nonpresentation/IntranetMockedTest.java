@@ -13,25 +13,25 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class IntranetMockedTest {
-    private static final Duration operationRunTime = Duration.ofMillis(10);
-    private static final Duration mockedOperationRuntime = Duration.ofMillis(0);
+    private static final Duration runTime = Duration.ofMillis(10);
+    private static final Duration mockedRunTime = Duration.ofMillis(0);
 
     @DataProvider(name = "networks")
     public static Object[][] testData() {
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
         final Network network = mock(Network.class);
-        when(network.failableAction()).thenReturn(mockedOperationRuntime);
+        when(network.failableAction()).thenReturn(mockedRunTime);
 
         return testInstanceCreator.createInstances(
             (ignored) -> 1,
-            (idx) -> new Intranet(network, operationRunTime)
+            (idx) -> new Intranet(network, runTime)
         );
 
     }
 
     @Test(dataProvider = "networks")
     public void test_specific(String developer, Intranet intranet) {
-        assertEquals(operationRunTime, intranet.failableAction());
+        assertEquals(runTime, intranet.failableAction());
     }
 }

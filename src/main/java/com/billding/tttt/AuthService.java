@@ -10,12 +10,12 @@ import java.time.Duration;
  */
 public class AuthService implements UnreliableService {
     private final Intranet intranet;
-    private final Duration operationRunTime;
+    private final Duration runTime;
     private static final String name = "auth_service";
 
-    public AuthService(Intranet intranet, Duration operationRunTime) {
+    public AuthService(Intranet intranet, Duration runTime) {
         this.intranet = intranet;
-        this.operationRunTime = operationRunTime;
+        this.runTime = runTime;
     }
 
     public Duration authenticateUser(String username, String password) { // Take params here.
@@ -23,16 +23,16 @@ public class AuthService implements UnreliableService {
     }
 
     @Override
-    public Duration getOperationRunTime() {
-        return this.operationRunTime
-            .plus(this.intranet.getOperationRunTime());
+    public Duration getRunTime() {
+        return this.runTime
+            .plus(this.intranet.getRunTime());
     }
 
     @Override
     public Duration failableAction() {
         ServiceStatus.ensureServiceIsRunning(this.name);
         return
-            this.getOperationRunTime()
+            this.getRunTime()
             .plus(this.intranet.failableAction());
     }
 }

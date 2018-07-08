@@ -15,16 +15,16 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class MapperMockedTest {
-    private static final Duration mapperOperationRunTime = Duration.ofMillis(1);
-    private static final Duration mockedOperationRuntime = Duration.ofMillis(0);
+    private static final Duration runTime = Duration.ofMillis(1);
+    private static final Duration mockedRunTime = Duration.ofMillis(0);
 
     @DataProvider(name = "mappers")
     public static Object[][] primeNumbers() {
         final ChaoticWorld chaoticWorld = mock(ChaoticWorld.class);
         when(chaoticWorld.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
         final Database database = mock(Database.class);
-        when(database.failableAction()).thenReturn(mockedOperationRuntime);
-        when(database.getOperationRunTime()).thenReturn(mockedOperationRuntime);
+        when(database.failableAction()).thenReturn(mockedRunTime);
+        when(database.getRunTime()).thenReturn(mockedRunTime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
@@ -33,13 +33,13 @@ public class MapperMockedTest {
             (idx) -> new Mapper(
                         database,
                         chaoticWorld,
-                        mapperOperationRunTime
+                    runTime
                     )
         );
     }
 
     @Test(dataProvider = "mappers")
     public void test_specific(String developer, Mapper mapper) {
-        assertEquals(mapperOperationRunTime, mapper.CRUD_query());
+        assertEquals(runTime, mapper.CRUD_query());
     }
 }

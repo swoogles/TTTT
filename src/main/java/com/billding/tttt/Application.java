@@ -8,7 +8,7 @@ import java.time.Duration;
 
 public class Application implements UnreliableService {
     private static final String SERVICE_NAME_BASE = "application";
-    private final Duration operationRunTime;
+    private final Duration runTime;
 
     private final String name;
 
@@ -24,10 +24,10 @@ public class Application implements UnreliableService {
         AuthService authService,
         Controller controller,
         ThirdPartyResource github,
-        Duration operationRunTime
+        Duration runTime
     ){
         this.name = SERVICE_NAME_BASE + "_" + name;
-        this.operationRunTime = operationRunTime;
+        this.runTime = runTime;
         this.kafkaCluster = kafkaCluster;
         this.authService = authService;
         this.controller = controller;
@@ -39,18 +39,18 @@ public class Application implements UnreliableService {
     }
 
     @Override
-    public Duration getOperationRunTime() {
-        return this.operationRunTime
-            .plus(kafkaCluster.getOperationRunTime())
-            .plus(authService.getOperationRunTime())
-            .plus(controller.getOperationRunTime())
-            .plus(github.getOperationRunTime());
+    public Duration getRunTime() {
+        return this.runTime
+            .plus(kafkaCluster.getRunTime())
+            .plus(authService.getRunTime())
+            .plus(controller.getRunTime())
+            .plus(github.getRunTime());
     }
 
     @Override
     public Duration failableAction() {
         ServiceStatus.ensureServiceIsRunning(SERVICE_NAME_BASE);
-        return this.getOperationRunTime()
+        return this.getRunTime()
             .plus(kafkaCluster.clusterAction())
             .plus(authService.authenticateUser("userName", "password"))
             .plus(controller.facilityLevelOperation())

@@ -11,7 +11,7 @@ import static org.testng.Assert.assertEquals;
 
 public class BrowserMockedTest {
     // TODO Pass as constructor arg
-    private static final Duration browserOperationRunTime = Duration.ofMillis(30);
+    private static final Duration runTime = Duration.ofMillis(30);
 
     @DataProvider(name = "browsers")
     public static Object[][] testData() {
@@ -20,13 +20,13 @@ public class BrowserMockedTest {
 
         return testInstanceCreator.createInstances(
             (ignored) -> 1,
-            (idx) -> new Browser(browserOperationRunTime)
+            (idx) -> new Browser(runTime)
         );
 
     }
 
     @Test(dataProvider = "browsers")
     public void test_specific(String developer, Browser browser) {
-        assertEquals(browserOperationRunTime, browser.failableAction());
+        assertEquals(runTime, browser.failableAction());
     }
 }

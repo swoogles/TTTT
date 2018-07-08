@@ -16,7 +16,7 @@ import java.time.Duration;
 import static org.testng.Assert.assertTrue;
 
 public class SeleniumTest {
-    private static final Duration operationRunTime = Duration.ofMillis(20);
+    private static final Duration runTime = Duration.ofMillis(20);
 
     private static class SeleniumTestClass implements UnreliableService {
         private final Application application;
@@ -35,13 +35,13 @@ public class SeleniumTest {
 
 
         @Override
-        public Duration getOperationRunTime() {
+        public Duration getRunTime() {
             return this.operationRunTime;
         }
 
         @Override
         public Duration failableAction() {
-            return this.getOperationRunTime()
+            return this.getRunTime()
                 .plus(this.application.failableAction())
                 .plus(this.browser.failableAction())
                 .plus(this.webDriver.failableAction())
@@ -59,7 +59,7 @@ public class SeleniumTest {
 
         final Database database = new Database(network, componentRunTimes.getDatabase());
         final Browser browser = new Browser(componentRunTimes.getBrowser());
-        final WebDriver webDriver = new WebDriver(operationRunTime);
+        final WebDriver webDriver = new WebDriver(runTime);
         final Duration javaScriptCdnOperationRunTime = Duration.ofMillis(20);
         final ThirdPartyResource javascriptCDN =
             new ThirdPartyResource("javascriptCDN", network, javaScriptCdnOperationRunTime);
@@ -101,7 +101,7 @@ public class SeleniumTest {
 
         return testInstanceCreator.createInstances(
             (ignored) -> 1,
-            (idx) -> new SeleniumTestClass(application, browser, webDriver, javascriptCDN, operationRunTime));
+            (idx) -> new SeleniumTestClass(application, browser, webDriver, javascriptCDN, runTime));
     }
 
     @Test(dataProvider = "seleniumTests")

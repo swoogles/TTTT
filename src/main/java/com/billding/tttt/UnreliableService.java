@@ -13,7 +13,7 @@ public interface UnreliableService {
      * This avoids possible failures
      * @return Runtime of an operation on the service.
      */
-    Duration getOperationRunTime();
+    Duration getRunTime();
 
     // TODO Fix spelling
 

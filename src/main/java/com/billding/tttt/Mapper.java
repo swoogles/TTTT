@@ -9,15 +9,15 @@ import java.time.Duration;
  * Performs simple operations on a {@link Database}.
  */
 class Mapper implements UnreliableService {
-    private final Duration operationRunTime;
+    private final Duration runTime;
     private final Database database;
     private final ChaoticWorld chaoticWorld;
     private static final String name = "Mapper";
 
-    public Mapper(Database database, ChaoticWorld chaoticWorld, Duration operationRunTime) {
+    public Mapper(Database database, ChaoticWorld chaoticWorld, Duration runTime) {
         this.chaoticWorld = chaoticWorld;
         this.database = database;
-        this.operationRunTime = operationRunTime;
+        this.runTime = runTime;
     }
 
     public Duration CRUD_query() {
@@ -25,16 +25,16 @@ class Mapper implements UnreliableService {
     }
 
     @Override
-    public Duration getOperationRunTime() {
-        return this.operationRunTime
-            .plus(this.database.getOperationRunTime());
+    public Duration getRunTime() {
+        return this.runTime
+            .plus(this.database.getRunTime());
     }
 
 
     @Override
     public Duration failableAction() {
         this.chaoticWorld.currentTime();
-        return this.getOperationRunTime()
+        return this.getRunTime()
             .plus( this.database.failableAction() );
     }
 }

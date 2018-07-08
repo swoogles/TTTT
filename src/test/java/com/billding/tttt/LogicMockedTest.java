@@ -4,35 +4,34 @@ import com.billding.meta.ChaoticWorld;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.util.List;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class LogicMockedTest {
-    private static final Duration operationRuntime = Duration.ofMillis(5);
-    private static final Duration mockedOperationRuntime = Duration.ofMillis(0);
+    private static final Duration runTime = Duration.ofMillis(5);
+    private static final Duration mockedRunTime = Duration.ofMillis(0);
     private final ChaoticWorld chaoticWorld = new ChaoticWorld();
 
     @Test
     public void test_simple() {
         Mapper mapper = mock(Mapper.class);
-        when(mapper.CRUD_query()).thenReturn(mockedOperationRuntime);
-        when(mapper.failableAction()).thenReturn(mockedOperationRuntime);
-        when(mapper.getOperationRunTime()).thenReturn(mockedOperationRuntime);
+        when(mapper.CRUD_query()).thenReturn(mockedRunTime);
+        when(mapper.failableAction()).thenReturn(mockedRunTime);
+        when(mapper.getRunTime()).thenReturn(mockedRunTime);
         int numPatients = 25;
         final Logic logic = new Logic(
             chaoticWorld,
             mapper,
-            operationRuntime
+                runTime
         );
         final Duration result = logic.facilityLevelOperation();
-        assertEquals(result, operationRuntime.plus(mockedOperationRuntime));
+        assertEquals(result, runTime.plus(mockedRunTime));
 
         assertEquals(
             logic.failableAction(),
-            operationRuntime.plus(mockedOperationRuntime)
+            runTime.plus(mockedRunTime)
         );
     }
 }

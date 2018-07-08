@@ -6,32 +6,28 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.util.Collections;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class ControllerMockedTest {
-    private static final Duration operationRunTime = Duration.ofMillis(1);
-    private static final Duration mockedOperationRuntime = Duration.ofMillis(0);
-
-    private static final int numPatients  = 5;
-    private static final String facilityId = "test_facility_id";
+    private static final Duration runTime = Duration.ofMillis(1);
+    private static final Duration mockedRunTime = Duration.ofMillis(0);
 
     @DataProvider(name = "applications")
     public static Object[][] primeNumbers() {
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         final Logic logicMock = mock(Logic.class);
-        when (logicMock.facilityLevelOperation()).thenReturn(mockedOperationRuntime);
-        when (logicMock.failableAction()).thenReturn(mockedOperationRuntime );
-        when (logicMock.getOperationRunTime()).thenReturn(mockedOperationRuntime );
+        when (logicMock.facilityLevelOperation()).thenReturn(mockedRunTime);
+        when (logicMock.failableAction()).thenReturn(mockedRunTime);
+        when (logicMock.getRunTime()).thenReturn(mockedRunTime);
 
         return testInstanceCreator.createInstances(
             CodeBase::getNumberOfControllerTests,
             (idx) -> new Controller(
-                operationRunTime,
+                    runTime,
                 logicMock
             ));
     }
@@ -41,11 +37,11 @@ public class ControllerMockedTest {
 
         assertEquals(
         controller.facilityLevelOperation(),
-            operationRunTime
+                runTime
         );
         assertEquals(
-            controller.getOperationRunTime(),
-            operationRunTime
+            controller.getRunTime(),
+                runTime
         );
         controller.failableAction();
     }

@@ -10,10 +10,10 @@ import java.time.Duration;
 public class Network implements UnreliableService {
     private static final String name = "network";
 
-    private final Duration operationRunTime;
+    private final Duration runTime;
 
-    public Network(Duration operationRunTime) {
-        this.operationRunTime = operationRunTime;
+    public Network(Duration runTime) {
+        this.runTime = runTime;
     }
 
     public Duration httpOperation(int httpCode) {
@@ -21,13 +21,13 @@ public class Network implements UnreliableService {
     }
 
     @Override
-    public Duration getOperationRunTime() {
-        return this.operationRunTime;
+    public Duration getRunTime() {
+        return this.runTime;
     }
 
     @Override
     public Duration failableAction() {
         ServiceStatus.ensureServiceIsRunning(this.name);
-        return this.getOperationRunTime();
+        return this.getRunTime();
     }
 }

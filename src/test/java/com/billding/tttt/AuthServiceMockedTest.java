@@ -9,22 +9,22 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
 public class AuthServiceMockedTest {
-    private static final Duration authServiceRunTime = Duration.ofMillis(1);
-    private static final Duration mockedOperationRuntime = Duration.ofMillis(0);
+    private static final Duration runTime = Duration.ofMillis(1);
+    private static final Duration mockedRunTime = Duration.ofMillis(0);
     private final Intranet mockIntraNet = mock(Intranet.class);
     private final AuthService authService =
         new AuthService(
             mockIntraNet,
-            authServiceRunTime
+                runTime
         );
 
     public AuthServiceMockedTest() {
-        when(mockIntraNet.failableAction()).thenReturn(mockedOperationRuntime);
-        when(mockIntraNet.getOperationRunTime()).thenReturn(mockedOperationRuntime);
+        when(mockIntraNet.failableAction()).thenReturn(mockedRunTime);
+        when(mockIntraNet.getRunTime()).thenReturn(mockedRunTime);
     }
 
     @Test
     public void test_simple() {
-        assertEquals(authServiceRunTime, this.authService.authenticateUser("testUserName", "testPassword"));
+        assertEquals(runTime, this.authService.authenticateUser("testUserName", "testPassword"));
     }
 }

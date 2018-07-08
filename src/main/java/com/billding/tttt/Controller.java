@@ -12,11 +12,11 @@ public class Controller implements UnreliableService {
     private final Logic logic;
     private static final String name = "controller";
 
-    private final Duration operationRunTime;
+    private final Duration runTime;
 
-    public Controller(Duration operationRunTime, Logic logic) {
+    public Controller(Duration runTime, Logic logic) {
         this.logic = logic;
-        this.operationRunTime = operationRunTime;
+        this.runTime = runTime;
     }
 
     // Is the possibility of a null result from this.logic.facilityLevelOperation the last remaining bit to cover?
@@ -25,14 +25,14 @@ public class Controller implements UnreliableService {
     }
 
     @Override
-    public Duration getOperationRunTime() {
-        return this.operationRunTime
-            .plus(this.logic.getOperationRunTime());
+    public Duration getRunTime() {
+        return this.runTime
+            .plus(this.logic.getRunTime());
     }
 
     @Override
     public Duration failableAction() {
         this.logic.failableAction();
-        return this.getOperationRunTime();
+        return this.getRunTime();
     }
 }
