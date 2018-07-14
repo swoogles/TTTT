@@ -10,23 +10,23 @@ title: Types of Tests and Testable Types
 
 ## Types of Tests
 
-  #### Unit Tests
+### Unit Tests
 
-  #### Integration Tests
+### Integration Tests
 
-  #### Selenium Tests
+### Selenium Tests
 
-  #### Boundary Tests
+### Boundary Tests
 
 ## Exhaustive Coverage
 
 ## Numbers and Charts
-  #### Number of Dependencies for each Service
-  #### Runtimes
-  #### UnpredictableFailures
+### Number of Dependencies for each Service
+### Runtimes
+### UnpredictableFailures
 
 ## Testable Types
-  #### Avoid static calls
-  #### Use the constructor
-  #### Stay in your layer
+### Avoid static calls
+### Use the constructor
+### Stay in your layer
   
