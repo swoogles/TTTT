@@ -13,8 +13,6 @@ public class StaticController implements UnreliableService {
     private final static ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
     private final Duration runTime = componentRunTimes.getController();
 
-    public StaticController() { }
-
     // Is the possibility of a null result from this.logic.facilityLevelOperation the last remaining bit to cover?
     public Duration facilityLevelOperation() {
         return this.failableAction();

@@ -40,17 +40,7 @@ public class Logic implements UnreliableService {
             .plus(this.mapper.failableAction());
     }
 
-    // TODO this stuff might belong in a separate file
-    public static Duration staticFacilityLevelOperation() {
-        return StaticInstance().facilityLevelOperation();
-    }
-
-    static public Duration staticGetRunTime() {
-        return StaticInstance().runTime
-                .plus(StaticInstance().mapper.getRunTime());
-    }
-
-    public static Logic StaticInstance() {
+    public static Logic staticInstance() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
         final ChaoticWorld chaoticWorld = new ChaoticWorld();

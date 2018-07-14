@@ -20,6 +20,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.powermock.configuration.ConfigurationType.PowerMock;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 //@PrepareForTest(StaticLogic.class)
 public class StaticControllerMockedTest extends PowerMockTestCase {
@@ -72,9 +73,16 @@ public class StaticControllerMockedTest extends PowerMockTestCase {
     */
 
 
-//    @Test
+    @Test
     public void noData() {
-        PowerMockito.mockStatic(StaticLogic.class);
-        Mockito.when(StaticLogic.facilityLevelOperation()).thenReturn(mockedRunTime);
+        StaticController staticController = new StaticController();
+        staticController.facilityLevelOperation();
+        staticController.failableAction();
+        assertNotNull(
+                staticController.getRunTime()
+        );
+
+//        PowerMockito.mockStatic(StaticLogic.class);
+//        Mockito.when(StaticLogic.facilityLevelOperation()).thenReturn(mockedRunTime);
     }
 }

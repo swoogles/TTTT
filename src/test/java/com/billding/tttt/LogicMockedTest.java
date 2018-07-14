@@ -8,6 +8,7 @@ import java.time.Duration;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 public class LogicMockedTest {
     private static final Duration runTime = Duration.ofMillis(5);
@@ -32,6 +33,13 @@ public class LogicMockedTest {
         assertEquals(
             logic.failableAction(),
             runTime.plus(mockedRunTime)
+        );
+    }
+
+    @Test
+    public void staticInstance() {
+        assertNotNull(
+                Logic.staticInstance()
         );
     }
 }
