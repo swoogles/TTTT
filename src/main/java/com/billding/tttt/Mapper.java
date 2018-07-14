@@ -8,7 +8,7 @@ import java.time.Duration;
 /**
  * Performs simple operations on a {@link Database}.
  */
-class Mapper implements UnreliableService {
+public class Mapper implements UnreliableService {
     private final Duration runTime;
     private final Database database;
     private final ChaoticWorld chaoticWorld;

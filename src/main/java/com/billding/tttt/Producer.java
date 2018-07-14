@@ -26,7 +26,6 @@ class Producer implements UnreliableService {
         return this.failableAction();
     }
 
-    // TODO basically all of these are broken. They're not counting time of substeps. I need to either fix or remove.
     @Override
     public Duration getRunTime() {
         return this.runTime
