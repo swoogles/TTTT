@@ -1,3 +1,7 @@
+---
+title: Types of Tests and Testable Types
+---
+
 # Types of Tests and Testable Types
 
 ## Teaser Questions
