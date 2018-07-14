@@ -5,11 +5,12 @@ import com.billding.tttt.external_services.Database;
 import com.billding.tttt.external_services.KafkaCluster;
 import com.billding.tttt.external_services.Network;
 import com.billding.tttt.external_services.ThirdPartyResource;
+import org.testng.annotations.Test;
 
 public class TestSuiteCalculatorIntegrationTest {
+    final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
     public void setup() {
         final ChaoticWorld chaoticWorld = new ChaoticWorld();
-        final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
 
 
@@ -51,5 +52,19 @@ public class TestSuiteCalculatorIntegrationTest {
                         ),
                         componentRunTimes.getApplication()
                 ));
+    }
+
+    @Test
+    public void test_basic() {
+        final TestEnvironment testEnvironment = new TestEnvironment("solo_project");
+        final CodeBase codeBase = new CodeBase("minimal");
+        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
+                testEnvironment,
+                componentRunTimes,
+                codeBase
+        );
+        System.out.println(
+                "Runtime: "  + testSuiteCalculator.totalTestRunTime()
+        );
     }
 }
