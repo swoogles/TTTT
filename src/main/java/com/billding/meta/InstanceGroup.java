@@ -76,21 +76,10 @@ public class InstanceGroup {
 
     }
 
-    public Network getNetwork() {
-        return network;
-    }
-
-    public Intranet getIntranet() {
-        return intranet;
-    }
-
-    public AuthService getAuthService() {
-        return authService;
-    }
-
-    public Database getDatabase() {
-        return database;
-    }
+    // TODO reinstate.
+//    public AuthService getAuthService() {
+//        return authService;
+//    }
 
     public Mapper getMapper() {
         return mapper;

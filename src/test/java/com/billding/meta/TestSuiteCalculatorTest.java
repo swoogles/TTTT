@@ -14,7 +14,7 @@ public class TestSuiteCalculatorTest {
         ComponentRunTimes componentRunTimes = new ComponentRunTimes("frozen_runtimes");
         InstanceGroup instanceGroup = new InstanceGroup();
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(testEnvironment, componentRunTimes, codeBase, instanceGroup);
-        assertEquals(testSuiteCalculator.totalTestRunTime(), Duration.ofSeconds(3).plusMillis(100));
-        assertEquals(testSuiteCalculator.runTimeDuringWindow(), Duration.ofMinutes(28).plusSeconds(56));
+        assertEquals(testSuiteCalculator.totalTestRunTime(), Duration.ofSeconds(3).plusMillis(550));
+        assertEquals(testSuiteCalculator.runTimeDuringWindow(), Duration.ofMinutes(33).plusSeconds(8));
     }
 }

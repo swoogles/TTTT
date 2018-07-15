@@ -27,6 +27,7 @@ public class TestSuiteCalculator {
     public Duration totalTestRunTime() {
                 Duration currentlyIncorrectCalculations =
             this.instanceGroup.getMapper().getRunTime().multipliedBy(this.codeBase.getNumberOfMapperTests())
+                    .plus(this.instanceGroup.getLogic().getRunTime().multipliedBy(this.codeBase.getNumberOfLogicTests()))
                 .plus(this.instanceGroup.getProducer().getRunTime().multipliedBy(this.codeBase.getNumberOfProducerTests())
                 .plus(this.instanceGroup.getApplication().getRunTime().multipliedBy(this.codeBase.getNumberOfApplicationTests()))
                 .plus(this.instanceGroup.getController().getRunTime().multipliedBy(this.codeBase.getNumberOfControllerTests()))

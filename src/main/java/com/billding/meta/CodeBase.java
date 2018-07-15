@@ -8,6 +8,7 @@ import com.billding.tttt.PropertyRetriever;
 public class CodeBase {
     private final int numberOfApplicationTests;
     private final int numberOfMapperTests;
+    private final int numberOfLogicTests;
     private final int numberOfControllerTests;
     private final int numberOfThirdPartyResourceTests;
     private final int numberOfProducerTests;
@@ -17,6 +18,7 @@ public class CodeBase {
         final PropertyRetriever propertyRetriever = new PropertyRetriever("codebases/" + propertyFileName);
         this.numberOfApplicationTests = propertyRetriever.getInt("num_tests.application");
         this.numberOfMapperTests = propertyRetriever.getInt("num_tests.mappers");
+        this.numberOfLogicTests = propertyRetriever.getInt("num_tests.logic");
         this.numberOfControllerTests = propertyRetriever.getInt("num_tests.controllers");
         this.numberOfThirdPartyResourceTests = propertyRetriever.getInt("num_tests.third_party_resources");
         this.numberOfProducerTests = propertyRetriever.getInt("num_tests.producer");
@@ -50,4 +52,7 @@ public class CodeBase {
         return numberOfProducerTests;
     }
 
+    public int getNumberOfLogicTests() {
+        return numberOfLogicTests;
+    }
 }
