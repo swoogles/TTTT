@@ -24,6 +24,7 @@ title: Types of Tests and Testable Types
 ### Number of Dependencies for each Service
 ### Runtimes
 ### UnpredictableFailures
+### To retry the suite or not to retry?
 
 ## Testable Types
 ### Avoid static calls
