@@ -6,6 +6,9 @@ import java.time.Duration;
 
 import static org.testng.Assert.assertEquals;
 
+/* TODO This class should use frozen values, as I will continue to tinker with all
+    values in the various codebases/testenvironments/runtimes
+ */
 public class TestSuiteCalculatorTest {
     @Test
     public void test_totalTestRunTime() {
