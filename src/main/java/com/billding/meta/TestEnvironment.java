@@ -36,7 +36,8 @@ public final class TestEnvironment {
 
         );
         this.numberOfTimesTestWillBeRun =
-                runsPerDeveloperPerHour * numberOfHours * numberOfDevelopers * this.timeWindow.getDays();
+                // TODO Improve super janky day calculation
+                runsPerDeveloperPerHour * numberOfHours * numberOfDevelopers * ( ( (int) this.timeWindow.toTotalMonths()) *  30);
     }
 
     private final Random random = new Random();
