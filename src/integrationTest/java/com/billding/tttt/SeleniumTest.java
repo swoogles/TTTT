@@ -67,10 +67,13 @@ public class SeleniumTest {
 
         Application application = new Application(
             "selenium_test_case",
-            new KafkaCluster(
-                network,
-                componentRunTimes.getKafkaCluster()
-            ),
+                new Producer(
+                        new KafkaCluster(
+                                network,
+                                componentRunTimes.getKafkaCluster()
+                        ),
+                        chaoticWorld, componentRunTimes.getProducer()
+                ),
             new AuthService(
                 new Intranet(
                     network,

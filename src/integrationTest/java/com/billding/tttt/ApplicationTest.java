@@ -27,9 +27,13 @@ public class ApplicationTest {
             (ignored) -> 1,
             (idx) -> new Application(
                     "test_app" + idx,
-                    new KafkaCluster(
-                        network,
-                        componentRunTimes.getKafkaCluster()
+                    new Producer(
+                            new KafkaCluster(
+                                    network,
+                                    componentRunTimes.getKafkaCluster()
+                            ),
+                            chaoticWorld,
+                            componentRunTimes.getProducer()
                     ),
                     new AuthService(
                         new Intranet(

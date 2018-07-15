@@ -36,7 +36,7 @@ public final class TestEnvironment {
 
         );
         this.numberOfTimesTestWillBeRun =
-                runsPerDeveloperPerHour * numberOfHours * numberOfDevelopers * (this.timeWindow.getDays());
+                runsPerDeveloperPerHour * numberOfHours * numberOfDevelopers * this.timeWindow.getDays();
     }
 
     private final Random random = new Random();

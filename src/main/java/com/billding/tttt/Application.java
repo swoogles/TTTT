@@ -12,7 +12,7 @@ public class Application implements UnreliableService {
 
     private final String name;
 
-    private final KafkaCluster kafkaCluster;
+    private final Producer producer;
     private final AuthService authService;
     private final Controller controller;
     private final ThirdPartyResource github;
@@ -20,7 +20,7 @@ public class Application implements UnreliableService {
     // TODO Should probably only care about controller instances at this level.
     public Application(
         String name,
-        KafkaCluster kafkaCluster,
+        Producer producer,
         AuthService authService,
         Controller controller,
         ThirdPartyResource github,
@@ -28,7 +28,7 @@ public class Application implements UnreliableService {
     ){
         this.name = SERVICE_NAME_BASE + "_" + name;
         this.runTime = runTime;
-        this.kafkaCluster = kafkaCluster;
+        this.producer = producer;
         this.authService = authService;
         this.controller = controller;
         this.github = github;
@@ -41,7 +41,7 @@ public class Application implements UnreliableService {
     @Override
     public Duration getRunTime() {
         return this.runTime
-            .plus(kafkaCluster.getRunTime())
+            .plus(producer.getRunTime())
             .plus(authService.getRunTime())
             .plus(controller.getRunTime())
             .plus(github.getRunTime());
@@ -51,7 +51,7 @@ public class Application implements UnreliableService {
     public Duration failableAction() {
         ServiceStatus.ensureServiceIsRunning(SERVICE_NAME_BASE);
         return this.getRunTime()
-            .plus(kafkaCluster.clusterAction())
+            .plus(producer.submitEvent())
             .plus(authService.authenticateUser("userName", "password"))
             .plus(controller.facilityLevelOperation())
             .plus(github.communicate());

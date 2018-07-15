@@ -21,7 +21,7 @@ public class ApplicationMockedTest {
 
     @DataProvider(name = "applications")
     public static Object[][] primeNumbers() {
-        final KafkaCluster kafkaCluster = mock(KafkaCluster.class);
+        final Producer producer = mock(Producer.class);
         final AuthService authService = mock(AuthService.class);
         final Controller controller = mock(Controller.class);
         final ThirdPartyResource thirdPartyResource = mock(ThirdPartyResource.class);
@@ -31,8 +31,8 @@ public class ApplicationMockedTest {
         final UnreliableService mockSerice = mock(UnreliableService.class);
         // The hoops needed to test this class are pushing me more towards impelementing UnreliableService directly.
         when(mockSerice.getRunTime()).thenReturn(mockedRunTime);
-        when(kafkaCluster.getRunTime()).thenReturn(mockedRunTime);
-        when(kafkaCluster.clusterAction()).thenReturn(mockedRunTime);
+        when(producer.getRunTime()).thenReturn(mockedRunTime);
+        when(producer.submitEvent()).thenReturn(mockedRunTime);
         when(authService.getRunTime()).thenReturn(mockedRunTime);
         when(authService.authenticateUser("userName", "password")).thenReturn(mockedRunTime);
         when(controller.getRunTime()).thenReturn(mockedRunTime);
@@ -46,7 +46,7 @@ public class ApplicationMockedTest {
             CodeBase::getNumberOfApplicationTests,
             (idx) -> new Application(
                         "test_app" + idx,
-                        kafkaCluster,
+                        producer,
                         authService,
                         controller,
                         thirdPartyResource,

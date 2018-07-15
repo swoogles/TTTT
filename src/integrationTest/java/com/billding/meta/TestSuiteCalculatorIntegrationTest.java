@@ -27,9 +27,13 @@ public class TestSuiteCalculatorIntegrationTest {
                 (ignored) -> 1,
                 (idx) -> new Application(
                         "test_app" + idx,
-                        new KafkaCluster(
-                                network,
-                                componentRunTimes.getKafkaCluster()
+                        new Producer(
+                                new KafkaCluster(
+                                        network,
+                                        componentRunTimes.getKafkaCluster()
+                                ),
+                                chaoticWorld,
+                                componentRunTimes.getProducer()
                         ),
                         new AuthService(
                                 new Intranet(
@@ -58,11 +62,12 @@ public class TestSuiteCalculatorIntegrationTest {
     public void test_basic() {
         final TestEnvironment testEnvironment = new TestEnvironment("solo_project");
         final CodeBase codeBase = new CodeBase("minimal");
+        final InstanceGroup instanceGroup = new InstanceGroup();
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
                 testEnvironment,
                 componentRunTimes,
-                codeBase
-        );
+                codeBase,
+                instanceGroup);
         System.out.println(
                 "Runtime: "  + testSuiteCalculator.totalTestRunTime()
         );

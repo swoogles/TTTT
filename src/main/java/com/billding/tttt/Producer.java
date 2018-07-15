@@ -8,7 +8,7 @@ import java.time.Duration;
 /**
  * Performs simple operations on a {@link KafkaCluster}.
  */
-class Producer implements UnreliableService {
+public class Producer implements UnreliableService {
     private final KafkaCluster kafkaCluster;
     private final ChaoticWorld chaoticWorld;
     private static final String name = "producer";
