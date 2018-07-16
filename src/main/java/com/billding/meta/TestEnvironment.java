@@ -35,9 +35,11 @@ public final class TestEnvironment {
             propertyRetriever.getString("time_window")
 
         );
+        int monthDays = (int) this.timeWindow.toTotalMonths() * 30;
+        int days = this.timeWindow.getDays();
         this.numberOfTimesTestWillBeRun =
                 // TODO Improve super janky day calculation
-                runsPerDeveloperPerHour * numberOfHours * numberOfDevelopers * ( ( (int) this.timeWindow.toTotalMonths()) *  30);
+                runsPerDeveloperPerHour * numberOfHours * numberOfDevelopers * (days + monthDays);
     }
 
     private final Random random = new Random();
