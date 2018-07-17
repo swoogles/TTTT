@@ -30,4 +30,5 @@ title: Types of Tests and Testable Types
 ### Avoid static calls
 ### Use the constructor
 ### Stay in your layer
+### Don't return null
   
