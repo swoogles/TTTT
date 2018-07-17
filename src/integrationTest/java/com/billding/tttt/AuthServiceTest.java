@@ -16,6 +16,6 @@ public class AuthServiceTest {
 
     @Test
     public void test_simple() {
-        this.authService.authenticateUser("testUserName", "testPassword");
+        this.authService.failableAction();
     }
 }

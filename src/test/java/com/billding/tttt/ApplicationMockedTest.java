@@ -32,13 +32,13 @@ public class ApplicationMockedTest {
         // The hoops needed to test this class are pushing me more towards impelementing UnreliableService directly.
         when(mockSerice.getRunTime()).thenReturn(mockedRunTime);
         when(producer.getRunTime()).thenReturn(mockedRunTime);
-        when(producer.submitEvent()).thenReturn(mockedRunTime);
+        when(producer.failableAction()).thenReturn(mockedRunTime);
         when(authService.getRunTime()).thenReturn(mockedRunTime);
-        when(authService.authenticateUser("userName", "password")).thenReturn(mockedRunTime);
+        when(authService.failableAction()).thenReturn(mockedRunTime);
         when(controller.getRunTime()).thenReturn(mockedRunTime);
-        when(controller.facilityLevelOperation()).thenReturn(mockedRunTime);
+        when(controller.failableAction()).thenReturn(mockedRunTime);
         when(thirdPartyResource.getRunTime()).thenReturn(mockedRunTime);
-        when(thirdPartyResource.communicate()).thenReturn(mockedRunTime);
+        when(thirdPartyResource.failableAction()).thenReturn(mockedRunTime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 

@@ -51,9 +51,9 @@ public class Application implements UnreliableService {
     public Duration failableAction() {
         ServiceStatus.ensureServiceIsRunning(SERVICE_NAME_BASE);
         return this.getRunTime()
-            .plus(producer.submitEvent())
-            .plus(authService.authenticateUser("userName", "password"))
-            .plus(controller.facilityLevelOperation())
-            .plus(github.communicate());
+            .plus(producer.failableAction())
+            .plus(authService.failableAction())
+            .plus(controller.failableAction())
+            .plus(github.failableAction());
     }
 }

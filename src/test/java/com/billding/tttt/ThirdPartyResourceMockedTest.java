@@ -38,7 +38,7 @@ public class ThirdPartyResourceMockedTest {
                 runTime
         );
         assertEquals(
-            thirdPartyResource.communicate(),
+            thirdPartyResource.failableAction(),
                 runTime
         );
     }

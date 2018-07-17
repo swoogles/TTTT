@@ -5,8 +5,6 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-import static org.mockito.Mockito.mock;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
 //@PrepareForTest(StaticLogic.class)

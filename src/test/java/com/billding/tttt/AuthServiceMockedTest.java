@@ -25,6 +25,6 @@ public class AuthServiceMockedTest {
 
     @Test
     public void test_simple() {
-        assertEquals(runTime, this.authService.authenticateUser("testUserName", "testPassword"));
+        assertEquals(runTime, this.authService.failableAction());
     }
 }

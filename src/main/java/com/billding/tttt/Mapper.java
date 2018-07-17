@@ -20,10 +20,6 @@ public class Mapper implements UnreliableService {
         this.runTime = runTime;
     }
 
-    public Duration CRUD_query() {
-        return this.failableAction();
-    }
-
     @Override
     public Duration getRunTime() {
         return this.runTime

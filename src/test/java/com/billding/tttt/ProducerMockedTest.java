@@ -42,6 +42,6 @@ public class ProducerMockedTest {
 
     @Test(dataProvider = "mappers")
     public void test_specific(String developer, Producer producer) {
-        assertEquals(runTime, producer.submitEvent());
+        assertEquals(runTime, producer.failableAction());
     }
 }

@@ -36,7 +36,7 @@ public class ProducerTest {
     public void test_specific(String developer, Producer producer) {
         // producer + cluster
         assertEquals(
-            producer.submitEvent(),
+            producer.failableAction(),
             Duration.ofMillis(35)
         );
     }

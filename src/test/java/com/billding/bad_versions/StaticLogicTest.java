@@ -12,7 +12,6 @@ public class StaticLogicTest {
         assertNotNull(
                 new StaticLogic()
         );
-        StaticLogic.facilityLevelOperation();
         StaticLogic.failableAction();
         StaticLogic.getRunTime();
     }

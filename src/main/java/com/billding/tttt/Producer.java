@@ -22,10 +22,6 @@ public class Producer implements UnreliableService {
         this.runTime = runTime;
     }
 
-    public Duration submitEvent() {
-        return this.failableAction();
-    }
-
     @Override
     public Duration getRunTime() {
         return this.runTime

@@ -14,9 +14,6 @@ public final class StaticLogic {
     public static Duration failableAction() {
         return instance.failableAction();
     }
-    public static Duration facilityLevelOperation() {
-        return instance.facilityLevelOperation();
-    }
 
     static public Duration getRunTime() {
         return instance.getRunTime();

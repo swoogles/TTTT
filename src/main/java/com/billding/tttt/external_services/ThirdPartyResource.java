@@ -17,10 +17,6 @@ public class ThirdPartyResource implements UnreliableService {
         this.runTime = runTime;
     }
 
-    public Duration communicate() {
-        return this.failableAction();
-    }
-
     @Override
     public Duration getRunTime() {
         return this.runTime

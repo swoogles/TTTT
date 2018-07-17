@@ -40,6 +40,6 @@ public class MapperMockedTest {
 
     @Test(dataProvider = "mappers")
     public void test_specific(String developer, Mapper mapper) {
-        assertEquals(runTime, mapper.CRUD_query());
+        assertEquals(runTime, mapper.failableAction());
     }
 }

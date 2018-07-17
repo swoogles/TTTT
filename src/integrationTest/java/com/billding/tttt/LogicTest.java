@@ -24,6 +24,6 @@ public class LogicTest {
             ),
             componentRunTimes.getLogic()
         );
-        logic.facilityLevelOperation();
+        logic.failableAction();
     }
 }

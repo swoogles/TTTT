@@ -18,10 +18,6 @@ public class AuthService implements UnreliableService {
         this.runTime = runTime;
     }
 
-    public Duration authenticateUser(String username, String password) { // Take params here.
-        return failableAction();
-    }
-
     @Override
     public Duration getRunTime() {
         return this.runTime

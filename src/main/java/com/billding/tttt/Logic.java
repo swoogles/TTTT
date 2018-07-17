@@ -23,10 +23,6 @@ public class Logic implements UnreliableService {
         this.runTime = runTime;
     }
 
-    public Duration facilityLevelOperation() {
-        return this.failableAction();
-    }
-
     @Override
     public Duration getRunTime() {
         return this.runTime

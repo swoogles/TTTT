@@ -18,7 +18,6 @@ public class LogicMockedTest {
     @Test
     public void test_simple() {
         Mapper mapper = mock(Mapper.class);
-        when(mapper.CRUD_query()).thenReturn(mockedRunTime);
         when(mapper.failableAction()).thenReturn(mockedRunTime);
         when(mapper.getRunTime()).thenReturn(mockedRunTime);
         int numPatients = 25;
@@ -27,7 +26,7 @@ public class LogicMockedTest {
             mapper,
                 runTime
         );
-        final Duration result = logic.facilityLevelOperation();
+        final Duration result = logic.failableAction();
         assertEquals(result, runTime.plus(mockedRunTime));
 
         assertEquals(

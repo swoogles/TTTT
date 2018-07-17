@@ -20,7 +20,6 @@ public class ControllerMockedTest {
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         final Logic logicMock = mock(Logic.class);
-        when (logicMock.facilityLevelOperation()).thenReturn(mockedRunTime);
         when (logicMock.failableAction()).thenReturn(mockedRunTime);
         when (logicMock.getRunTime()).thenReturn(mockedRunTime);
 
@@ -36,14 +35,13 @@ public class ControllerMockedTest {
     public void test_simple(String developer, Controller controller) {
 
         assertEquals(
-        controller.facilityLevelOperation(),
+        controller.failableAction(),
                 runTime
         );
         assertEquals(
             controller.getRunTime(),
                 runTime
         );
-        controller.failableAction();
     }
 
 }

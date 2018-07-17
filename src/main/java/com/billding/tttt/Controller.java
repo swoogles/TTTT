@@ -19,11 +19,6 @@ public class Controller implements UnreliableService {
         this.runTime = runTime;
     }
 
-    // Is the possibility of a null result from this.logic.facilityLevelOperation the last remaining bit to cover?
-    public Duration facilityLevelOperation() {
-        return this.failableAction();
-    }
-
     @Override
     public Duration getRunTime() {
         return this.runTime

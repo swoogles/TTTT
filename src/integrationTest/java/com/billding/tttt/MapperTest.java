@@ -35,6 +35,6 @@ public class MapperTest {
 
     @Test(dataProvider = "mappers")
     public void test_specific(String developer, Mapper mapper) {
-        mapper.CRUD_query();
+        mapper.failableAction();
     }
 }
