@@ -8,30 +8,15 @@ import java.time.Duration;
 /**
  * Performs simple operations on a {@link KafkaCluster}.
  */
-public class Producer implements UnreliableService {
-    private final KafkaCluster kafkaCluster;
+public class Producer extends AbstractUnreliableService {
+    // TODO find an approriate ChaoticWorld use or remove
     private final ChaoticWorld chaoticWorld;
     private static final String name = "producer";
 
-    private final Duration runTime;
-
     // TODO add intranet/network dependency
     public Producer(KafkaCluster kafkaCluster, ChaoticWorld chaoticWorld, Duration runTime) {
+        super(null, runTime, kafkaCluster);
         this.chaoticWorld = chaoticWorld;
-        this.kafkaCluster = kafkaCluster;
-        this.runTime = runTime;
     }
 
-    @Override
-    public Duration getRunTime() {
-        return this.runTime
-            .plus(this.kafkaCluster.getRunTime());
-    }
-
-    @Override
-    public Duration failableAction() {
-        this.chaoticWorld.currentTime();
-        this.kafkaCluster.clusterAction();
-        return this.getRunTime();
-    }
 }

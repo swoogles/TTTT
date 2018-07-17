@@ -21,7 +21,7 @@ public class ThirdPartyResourceMockedTest {
     @DataProvider(name = "thirdPartyResources")
     public static Object[][] primeNumbers() {
         final Network network = mock(Network.class);
-        when(network.httpOperation(200)).thenReturn(mockedRunTime);
+        when(network.failableAction()).thenReturn(mockedRunTime);
         when(network.getRunTime()).thenReturn(mockedRunTime);
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();

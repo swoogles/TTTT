@@ -16,7 +16,7 @@ public class TestSuiteCalculatorTest {
         CodeBase codeBase = new CodeBase("minimal");
         InstanceGroup instanceGroup = new InstanceGroup();
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(testEnvironment, codeBase, instanceGroup);
-        assertEquals(testSuiteCalculator.totalTestRunTime(), Duration.ofSeconds(3).plusMillis(550));
-        assertEquals(testSuiteCalculator.runTimeDuringWindow(), Duration.ofMinutes(33).plusSeconds(8));
+        assertEquals(testSuiteCalculator.totalTestRunTime(), Duration.ofSeconds(3).plusMillis(750));
+        assertEquals(testSuiteCalculator.runTimeDuringWindow(), Duration.ofMinutes(35));
     }
 }

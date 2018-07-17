@@ -58,7 +58,7 @@ public class ApplicationMockedTest {
     @Test(dataProvider = "applications")
     public void test_simple(String developer, Application application) {
         Duration runTimeOfOperationsInBetween = application.failableAction();
-        application.simpleAction();
+        application.failableAction();
 //        assertEquals(runTimeOfOperationsInBetween, 10);
         chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
     }

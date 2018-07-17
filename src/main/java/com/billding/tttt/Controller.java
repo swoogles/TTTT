@@ -8,26 +8,11 @@ import java.time.Duration;
 /**
  * Performs more complex operations that involve a {@link Logic}.
  */
-public class Controller implements UnreliableService {
-    private final Logic logic;
+public class Controller extends AbstractUnreliableService {
     private static final String name = "controller";
 
-    private final Duration runTime;
-
     public Controller(Duration runTime, Logic logic) {
-        this.logic = logic;
-        this.runTime = runTime;
+        super(null, runTime, logic);
     }
 
-    @Override
-    public Duration getRunTime() {
-        return this.runTime
-            .plus(this.logic.getRunTime());
-    }
-
-    @Override
-    public Duration failableAction() {
-        this.logic.failableAction();
-        return this.getRunTime();
-    }
 }

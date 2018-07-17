@@ -7,17 +7,13 @@ import java.time.Duration;
 
 import static org.testng.Assert.assertEquals;
 
+// TODO This can go away if we make a SeleniumTest unit test.
 public class WebDriverTest {
     private final Duration runTime = Duration.ofMillis(10);
-    private final WebDriver webDriver = new WebDriver(runTime);
 
     @Test
     public void test_failableOperation() {
-        assertEquals(
-            webDriver.failableAction(),
-                runTime
-        );
-
+        new WebDriver(runTime);
     }
 
 }

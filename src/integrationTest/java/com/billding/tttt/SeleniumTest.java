@@ -18,34 +18,9 @@ import static org.testng.Assert.assertTrue;
 public class SeleniumTest {
     private static final Duration runTime = Duration.ofMillis(20);
 
-    private static class SeleniumTestClass implements UnreliableService {
-        private final Application application;
-        private final Browser browser;
-        private final WebDriver webDriver;
-        private final Duration operationRunTime;
-        private final ThirdPartyResource javascriptCDN;
-
+    private static class SeleniumTestClass extends AbstractUnreliableService {
         private SeleniumTestClass(Application application, Browser browser, WebDriver webDriver, ThirdPartyResource javascriptCDN, Duration operationRunTime) {
-            this.application = application;
-            this.browser = browser;
-            this.webDriver = webDriver;
-            this.javascriptCDN = javascriptCDN;
-            this.operationRunTime = operationRunTime;
-        }
-
-
-        @Override
-        public Duration getRunTime() {
-            return this.operationRunTime;
-        }
-
-        @Override
-        public Duration failableAction() {
-            return this.getRunTime()
-                .plus(this.application.failableAction())
-                .plus(this.browser.failableAction())
-                .plus(this.webDriver.failableAction())
-                .plus(this.javascriptCDN.failableAction());
+            super(null, operationRunTime, application, browser, webDriver, javascriptCDN);
         }
     }
 
