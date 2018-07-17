@@ -2,10 +2,15 @@ package com.billding.meta;
 
 import com.billding.tttt.PropertyRetriever;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Period;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Stream;
 
 // TODO make new instances to demonstrate different real-world circumstances.
 public final class TestEnvironment {
@@ -23,9 +28,7 @@ public final class TestEnvironment {
     private final int numberOfDevelopers;
     private final int numberOfTimesTestWillBeRun;
 
-
     public TestEnvironment(String propertyFileName) {
-        // TODO Consider less Stringy files.
         final PropertyRetriever propertyRetriever = new PropertyRetriever("test_environments/" + propertyFileName);
         this.developers = parseDevelopers(propertyRetriever.getString("developers"));
         this.numberOfDevelopers = developers.size();
