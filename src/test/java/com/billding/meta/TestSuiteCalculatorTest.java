@@ -14,9 +14,8 @@ public class TestSuiteCalculatorTest {
     public void test_totalTestRunTime() {
         TestEnvironment testEnvironment = new TestEnvironment("solo_project");
         CodeBase codeBase = new CodeBase("minimal");
-        ComponentRunTimes componentRunTimes = new ComponentRunTimes("frozen_runtimes");
         InstanceGroup instanceGroup = new InstanceGroup();
-        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(testEnvironment, componentRunTimes, codeBase, instanceGroup);
+        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(testEnvironment, codeBase, instanceGroup);
         assertEquals(testSuiteCalculator.totalTestRunTime(), Duration.ofSeconds(3).plusMillis(550));
         assertEquals(testSuiteCalculator.runTimeDuringWindow(), Duration.ofMinutes(33).plusSeconds(8));
     }

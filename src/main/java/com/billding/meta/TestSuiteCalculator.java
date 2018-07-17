@@ -10,13 +10,11 @@ import java.time.Duration;
  */
 public class TestSuiteCalculator {
     private final TestEnvironment testEnvironment;
-    private final ComponentRunTimes componentRunTimes;
     private final CodeBase codeBase;
     private final InstanceGroup instanceGroup;
 
-    public TestSuiteCalculator(TestEnvironment testEnvironment, ComponentRunTimes componentRunTimes, CodeBase codeBase, InstanceGroup instanceGroup) {
+    public TestSuiteCalculator(TestEnvironment testEnvironment, CodeBase codeBase, InstanceGroup instanceGroup) {
         this.testEnvironment = testEnvironment;
-        this.componentRunTimes = componentRunTimes;
         this.codeBase = codeBase;
         this.instanceGroup = instanceGroup;
     }

@@ -65,7 +65,6 @@ public class TestSuiteCalculatorIntegrationTest {
         final InstanceGroup instanceGroup = new InstanceGroup();
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
                 testEnvironment,
-                componentRunTimes,
                 codeBase,
                 instanceGroup);
         System.out.println(

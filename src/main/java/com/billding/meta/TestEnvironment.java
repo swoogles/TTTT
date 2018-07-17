@@ -16,9 +16,6 @@ import java.util.stream.Stream;
 public final class TestEnvironment {
     private final List<String> developers;
 
-    private final int runsPerDeveloperPerHour;
-    private final int numberOfHours;
-
     private final Period timeWindow;
 
     public int getNumberOfDevelopers() {
@@ -32,8 +29,8 @@ public final class TestEnvironment {
         final PropertyRetriever propertyRetriever = new PropertyRetriever("test_environments/" + propertyFileName);
         this.developers = parseDevelopers(propertyRetriever.getString("developers"));
         this.numberOfDevelopers = developers.size();
-        this.numberOfHours = propertyRetriever.getInt("hours_in_work_day");
-        this.runsPerDeveloperPerHour = propertyRetriever.getInt("runs_per_developer_per_hour");
+        int numberOfHours = propertyRetriever.getInt("hours_in_work_day");
+        int runsPerDeveloperPerHour = propertyRetriever.getInt("runs_per_developer_per_hour");
         this.timeWindow = Period.parse(
             propertyRetriever.getString("time_window")
 
