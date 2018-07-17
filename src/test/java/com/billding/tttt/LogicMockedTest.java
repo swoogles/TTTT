@@ -8,7 +8,6 @@ import java.time.Duration;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 
 public class LogicMockedTest {
     private static final Duration runTime = Duration.ofMillis(5);
@@ -20,7 +19,6 @@ public class LogicMockedTest {
         Mapper mapper = mock(Mapper.class);
         when(mapper.failableAction()).thenReturn(mockedRunTime);
         when(mapper.getRunTime()).thenReturn(mockedRunTime);
-        int numPatients = 25;
         final Logic logic = new Logic(
             chaoticWorld,
             mapper,
@@ -35,10 +33,4 @@ public class LogicMockedTest {
         );
     }
 
-    @Test
-    public void staticInstance() {
-        assertNotNull(
-                Logic.staticInstance()
-        );
-    }
 }

@@ -3,7 +3,6 @@ package com.billding.bad_versions;
 import com.billding.meta.ComponentRunTimes;
 import com.billding.tttt.AbstractUnreliableService;
 import com.billding.tttt.Logic;
-import com.billding.tttt.UnreliableService;
 
 import java.time.Duration;
 
@@ -13,14 +12,13 @@ import java.time.Duration;
  * be correctly configured.
  */
 public class StaticController extends AbstractUnreliableService {
-    private final static ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
 
     public Duration facilityLevelOperation() {
         return this.failableAction();
     }
 
     public StaticController() {
-        super(null, new ComponentRunTimes("runtimes").getController(), Logic.staticInstance());
+        super(null, new ComponentRunTimes("runtimes").getController(), StaticLogic.staticInstance());
     }
 
 }
