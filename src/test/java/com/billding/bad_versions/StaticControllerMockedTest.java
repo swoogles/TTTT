@@ -1,24 +1,11 @@
-package com.billding.static_versions;
+package com.billding.bad_versions;
 
-import com.billding.meta.CodeBase;
-import com.billding.meta.TestInstanceCreator;
-import com.billding.tttt.Controller;
-import com.billding.tttt.Logic;
-import org.mockito.Mockito;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.testng.PowerMockTestCase;
-import org.testng.IObjectFactory;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.ObjectFactory;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.powermock.configuration.ConfigurationType.PowerMock;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 

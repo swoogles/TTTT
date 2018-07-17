@@ -1,4 +1,4 @@
-package com.billding.static_versions;
+package com.billding.bad_versions;
 
 import org.testng.annotations.Test;
 

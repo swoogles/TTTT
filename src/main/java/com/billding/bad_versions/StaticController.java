@@ -1,4 +1,4 @@
-package com.billding.static_versions;
+package com.billding.bad_versions;
 
 import com.billding.meta.ComponentRunTimes;
 import com.billding.tttt.Logic;

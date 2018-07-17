@@ -22,8 +22,6 @@ public class TestSuiteCalculator {
     }
 
     // TODO Make sure this is exhaustive.
-    // this is wrong, because we're just getting the values from any one layer, it's not calling
-    // getRunTime and using the costs of the dependencies
     public Duration totalTestRunTime() {
                 Duration currentlyIncorrectCalculations =
             this.instanceGroup.getMapper().getRunTime().multipliedBy(this.codeBase.getNumberOfMapperTests())
