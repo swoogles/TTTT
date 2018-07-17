@@ -8,12 +8,13 @@ import java.time.Duration;
 
 /**
  * Performs more complex operations that involve a {@link Logic}.
+ * Since nothing is passed in as a parameter, the Logic, Mapper, & Database must all
+ * be correctly configured.
  */
 public class StaticController implements UnreliableService {
     private final static ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
     private final Duration runTime = componentRunTimes.getController();
 
-    // Is the possibility of a null result from this.logic.facilityLevelOperation the last remaining bit to cover?
     public Duration facilityLevelOperation() {
         return this.failableAction();
     }
