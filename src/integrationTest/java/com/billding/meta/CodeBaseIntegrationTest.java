@@ -8,11 +8,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-public class TestEnvironmentIntegrationTest {
+public class CodeBaseIntegrationTest {
 
     @Test
     public void validateEnvironments() throws IOException {
-        validateEnvironments("./src/main/resources/test_environments");
+        validateEnvironments("./src/main/resources/codebases");
     }
 
     private void validateEnvironments(String directoryPath) throws IOException {
@@ -21,7 +21,7 @@ public class TestEnvironmentIntegrationTest {
                     .filter(Files::isRegularFile)
                     .map(file->file.getFileName().toString())
                     .map(fileName->fileName.replace(".properties", ""))
-                    .forEach(TestEnvironment::new);
+                    .forEach(CodeBase::new);
         }
 
     }
