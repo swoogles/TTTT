@@ -20,6 +20,8 @@ title: Types of Tests and Testable Types
 
 ## Exhaustive Coverage
 
+## Writing simple test cases
+
 ## Numbers and Charts
 ### Number of Dependencies for each Service
 ### Runtimes
