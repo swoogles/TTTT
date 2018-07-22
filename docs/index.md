@@ -8,7 +8,7 @@ title: Types of Tests and Testable Types
 
 ## Non-Objectives
 
-## Types of Tests
+## [Types of Tests](types_of_tests.md)
 
 ### Unit Tests
 
