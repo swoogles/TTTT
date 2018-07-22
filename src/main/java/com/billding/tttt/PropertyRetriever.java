@@ -2,6 +2,7 @@ package com.billding.tttt;
 
 import java.time.Duration;
 import java.util.IllegalFormatException;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 // TODO Oo! This class can demonstrate failures when the filesystem changes!
@@ -20,11 +21,21 @@ public class PropertyRetriever {
     }
 
     public boolean getBoolean(String name) {
-        return this.bundle.containsKey(name) && this.bundle.getString(name).equals("true");
+        try {
+            return this.bundle.getString(name).equals("true");
+        } catch (MissingResourceException ex) {
+            // TODO Put this error handling in string method and/or unify with duration error reporting
+            throw new RuntimeException("resource file: " + bundle.getBaseBundleName() + "  key: " + name, ex);
+        }
     }
 
     public int getInt(String name) {
-        return Integer.parseInt(this.bundle.getString(name));
+        try {
+            return Integer.parseInt(this.bundle.getString(name));
+        } catch (MissingResourceException ex) {
+            // TODO Put this error handling in string method and/or unify with duration error reporting
+            throw new RuntimeException("resource file: " + bundle.getBaseBundleName() + "  key: " + name, ex);
+        }
     }
 
     public String getString(String name) {

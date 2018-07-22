@@ -26,6 +26,10 @@ public class PropertyRetrieverMocked {
         assertEquals(propertyRetriever.getInt("int"), 7);
     }
 
+    @Test(expectedExceptions = RuntimeException.class)
+    public void test_getInt_missing() {
+        propertyRetriever.getInt("missing_int");
+    }
 
     @Test
     public void test_getString() {
