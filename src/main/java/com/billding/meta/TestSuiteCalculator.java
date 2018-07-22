@@ -21,22 +21,6 @@ public class TestSuiteCalculator {
         this.instanceGroup = instanceGroup;
     }
 
-    // TODO One possibility for simplifying the calculations below. Doesn't look worth it right now.
-    private class TestGroup {
-        private final UnreliableService service;
-        private final int testCount;
-
-        private TestGroup(UnreliableService service, int testCount) {
-            this.service = service;
-            this.testCount = testCount;
-        }
-
-        Duration totalTime() {
-            return this.service.getRunTime().multipliedBy(this.testCount);
-
-        }
-    }
-
     private Duration runTimeFor(UnreliableService service, int testCount) {
         return service.getRunTime().multipliedBy(testCount);
     }

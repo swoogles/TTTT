@@ -5,11 +5,16 @@ import com.billding.tttt.PropertyRetriever;
 import java.time.Duration;
 
 public class ComponentRunTimes {
-    // TODO Make entries for all components
+    // These are external entities that wouldn't actually be represented by our code.
     private final Duration mapper;
     private final Duration database;
     private final Duration producer;
+    private final Duration browser;
+    private final Duration kafkaCluster;
+    private final Duration webDriver;
 
+
+    // Actual code classes
     private final Duration network;
     private final Duration intranet;
     private final Duration logic;
@@ -18,10 +23,6 @@ public class ComponentRunTimes {
     private final Duration application;
     private final Duration seleniumTest;
     private final Duration thirdPartyResource;
-
-    private final Duration browser;
-    private final Duration kafkaCluster;
-    private final Duration webDriver;
 
     // TODO Consider improved error msg for missing property.
     public ComponentRunTimes(String propertyFileName) {

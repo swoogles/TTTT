@@ -20,6 +20,7 @@ public class InstanceGroup {
     private final Controller controller;
     private final ThirdPartyResource github;
     private final Application application;
+//    private final SeleniumTest;
 
     public InstanceGroup() {
 
