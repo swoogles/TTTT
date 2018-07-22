@@ -12,6 +12,7 @@ public class CodeBase {
     private final int numberOfControllerTests;
     private final int numberOfThirdPartyResourceTests;
     private final int numberOfProducerTests;
+    private final int numberOfSeleniumTests;
 
     public CodeBase(String propertyFileName) {
         // TODO Consider less Stringy files.
@@ -22,6 +23,7 @@ public class CodeBase {
         this.numberOfControllerTests = propertyRetriever.getInt("num_tests.controllers");
         this.numberOfThirdPartyResourceTests = propertyRetriever.getInt("num_tests.third_party_resources");
         this.numberOfProducerTests = propertyRetriever.getInt("num_tests.producer");
+        this.numberOfSeleniumTests = propertyRetriever.getInt("num_tests.selenium");
     }
 
     public int getNumberOfApplicationTests() {
@@ -54,5 +56,9 @@ public class CodeBase {
 
     public int getNumberOfLogicTests() {
         return numberOfLogicTests;
+    }
+
+    public int getNumberOfSeleniumTests() {
+        return numberOfSeleniumTests;
     }
 }

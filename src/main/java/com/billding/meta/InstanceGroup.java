@@ -1,10 +1,7 @@
 package com.billding.meta;
 
 import com.billding.tttt.*;
-import com.billding.tttt.external_services.Database;
-import com.billding.tttt.external_services.KafkaCluster;
-import com.billding.tttt.external_services.Network;
-import com.billding.tttt.external_services.ThirdPartyResource;
+import com.billding.tttt.external_services.*;
 
 public class InstanceGroup {
 
@@ -20,7 +17,7 @@ public class InstanceGroup {
     private final Controller controller;
     private final ThirdPartyResource github;
     private final Application application;
-//    private final SeleniumTest;
+    private final SeleniumTestClass seleniumTestClass;
 
     public InstanceGroup() {
 
@@ -75,6 +72,18 @@ public class InstanceGroup {
                 componentRunTimes.getApplication()
         );
 
+        this.seleniumTestClass = new SeleniumTestClass(
+                application,
+                new Browser(componentRunTimes.getBrowser()),
+                new WebDriver(componentRunTimes.getWebDriver()),
+                new ThirdPartyResource(
+                        "javascript_cdn",
+                        network,
+                        componentRunTimes.getThirdPartyResource()
+                ),
+                componentRunTimes.getSeleniumTest()
+        );
+
     }
 
     // TODO reinstate.
@@ -106,4 +115,7 @@ public class InstanceGroup {
         return producer;
     }
 
+    public SeleniumTestClass getSeleniumTestClass() {
+        return seleniumTestClass;
+    }
 }

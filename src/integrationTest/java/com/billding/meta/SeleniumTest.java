@@ -1,8 +1,6 @@
-package com.billding.tttt;
+package com.billding.meta;
 
-import com.billding.meta.ChaoticWorld;
-import com.billding.meta.ComponentRunTimes;
-import com.billding.meta.TestInstanceCreator;
+import com.billding.tttt.*;
 import com.billding.tttt.external_services.Database;
 import com.billding.tttt.external_services.KafkaCluster;
 import com.billding.tttt.external_services.Network;
@@ -17,13 +15,6 @@ import static org.testng.Assert.assertTrue;
 
 public class SeleniumTest {
     private static final Duration runTime = Duration.ofMillis(20);
-
-    private static class SeleniumTestClass extends AbstractUnreliableService {
-        private SeleniumTestClass(Application application, Browser browser, WebDriver webDriver, ThirdPartyResource javascriptCDN, Duration operationRunTime) {
-            super(null, operationRunTime, application, browser, webDriver, javascriptCDN);
-        }
-    }
-
 
 
     @DataProvider(name = "seleniumTests")
@@ -78,7 +69,7 @@ public class SeleniumTest {
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            (ignored) -> 1,
+            CodeBase::getNumberOfSeleniumTests,
             (idx) -> new SeleniumTestClass(application, browser, webDriver, javascriptCDN, runTime));
     }
 
