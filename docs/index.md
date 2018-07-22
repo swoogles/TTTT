@@ -4,33 +4,14 @@ title: Types of Tests and Testable Types
 
 # Types of Tests and Testable Types
 
-## Teaser Questions
-
-## Non-Objectives
+## [Priming the people](priming.md)
 
 ## [Types of Tests](types_of_tests.md)
-
-### Unit Tests
-
-### Integration Tests
-
-### Selenium Tests
-
-### Boundary Tests
 
 ## Exhaustive Coverage
 
 ## Writing simple test cases
 
-## Numbers and Charts
-### Number of Dependencies for each Service
-### Runtimes
-### UnpredictableFailures
-### To retry the suite or not to retry?
+## [Numbers and Charts](numbers.md)
 
-## Testable Types
-### Avoid static calls
-### Use the constructor
-### Stay in your layer
-### Don't return null
-  
+## [Testable Types](testable_types.md)
