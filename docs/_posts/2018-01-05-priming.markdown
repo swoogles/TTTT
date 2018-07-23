@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Title Page"
-categories: priming
+title:  "Priming page"
+categories: jekyll update
 ---
 
-Maybe I'll get some values here?
+Let's ask some questions!
 
 [Previous]({{page.previous.url}})
 [Next]({{page.next.url}})
