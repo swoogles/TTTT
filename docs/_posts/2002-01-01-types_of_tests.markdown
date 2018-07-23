@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Priming page"
-categories: jekyll update
+title:  "Types of Tests"
+categories: types-of-tests
 ---
 
-Let's ask some questions!
+Types of Tests
 
 [Previous]({{page.previous.url}})
 [Next]({{page.next.url}})
