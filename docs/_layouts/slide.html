@@ -7,8 +7,8 @@ layout: default
 -->
 
 <h3> {{site.github.repository_name}}</h3>
-<a href="{{site.url}}/{{page.previous.url}}">Previous</a>
-<a href="{{site.url}}/{{page.next.url}}">Next</a>
+<a href="{{site.url}}/{{page.previous.url | relative_url}}">Previous</a>
+<a href="{{site.url}}/{{page.next.url | relative_url}}">Next</a>
 
 <!-- TODO Figure out how to jump to beginning of section.
         Something like looking for a post where category matches this one and also has "section-intro" category.
