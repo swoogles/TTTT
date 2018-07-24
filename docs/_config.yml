@@ -2,7 +2,7 @@ theme: jekyll-theme-hacker
 paginate: 5
 #url: "swoogles.github.io"
 # site.github.repository_name: TTTT
-#baseurl: /TTTT
+baseurl: /TTTT
 url: https://swoogles.github.io
 
 
