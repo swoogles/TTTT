@@ -10,6 +10,10 @@ import com.billding.tttt.external_services.Network;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
+import static com.billding.meta.SlowTestExecution.executeWithRunTime;
+
 public class MapperTest {
 
     @DataProvider(name = "mappers")
@@ -35,6 +39,6 @@ public class MapperTest {
 
     @Test(dataProvider = "mappers")
     public void test_specific(String developer, Mapper mapper) {
-        mapper.failableAction();
+        executeWithRunTime(mapper);
     }
 }

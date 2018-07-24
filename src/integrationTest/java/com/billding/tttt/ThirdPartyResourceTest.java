@@ -10,6 +10,8 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+import static com.billding.meta.SlowTestExecution.executeWithRunTime;
+
 public class ThirdPartyResourceTest {
     private final ChaoticWorld chaoticWorld = new ChaoticWorld();
 
@@ -27,8 +29,7 @@ public class ThirdPartyResourceTest {
 
     @Test(dataProvider = "thirdPartyResources")
     public void test_simple(String developer, ThirdPartyResource thirdPartyResource) {
-        Duration runTimeOfOperationsInBetween = thirdPartyResource.failableAction();
-//        assertEquals(runTimeOfOperationsInBetween, 10);
-        chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
+        Duration duration = executeWithRunTime(thirdPartyResource);
+        chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(duration);
     }
 }

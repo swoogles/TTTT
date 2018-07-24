@@ -12,6 +12,8 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+import static com.billding.meta.SlowTestExecution.executeWithRunTime;
+
 public class ApplicationTest {
     private final ChaoticWorld chaoticWorld = new ChaoticWorld();
 
@@ -64,8 +66,6 @@ public class ApplicationTest {
 
     @Test(dataProvider = "applications")
     public void test_simple(String developer, Application application) {
-        Duration runTimeOfOperationsInBetween = application.failableAction();
-//        assertEquals(runTimeOfOperationsInBetween, 10);
-        chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
+        executeWithRunTime(application);
     }
 }

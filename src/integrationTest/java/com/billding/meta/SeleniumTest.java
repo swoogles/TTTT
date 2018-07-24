@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 import static org.testng.Assert.assertTrue;
 
 public class SeleniumTest {
@@ -75,8 +76,8 @@ public class SeleniumTest {
 
     @Test(dataProvider = "seleniumTests")
     public void test_simple(String developer, SeleniumTestClass seleniumTestClass) {
-        assertTrue(
-            seleniumTestClass.failableAction().compareTo(Duration.ofMillis(0)) > 0
+        executeWithRunTime(
+                seleniumTestClass
         );
     }
 }

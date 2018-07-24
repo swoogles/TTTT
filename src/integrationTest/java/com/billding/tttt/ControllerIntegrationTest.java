@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 import static org.testng.Assert.assertEquals;
 
 public class ControllerIntegrationTest {
@@ -45,7 +46,7 @@ public class ControllerIntegrationTest {
 
     @Test(dataProvider = "controllers")
     public void test_simple(String developer, Controller controller) {
-        Duration runTimeOfOperationsInBetween = controller.failableAction();
+        Duration runTimeOfOperationsInBetween = executeWithRunTime(controller);
         chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
     }
 }

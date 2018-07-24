@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 import static org.testng.Assert.assertEquals;
 
 public class ProducerTest {
@@ -34,10 +35,6 @@ public class ProducerTest {
 
     @Test(dataProvider = "producers")
     public void test_specific(String developer, Producer producer) {
-        // producer + cluster
-        assertEquals(
-            producer.failableAction(),
-            Duration.ofMillis(35)
-        );
+        executeWithRunTime(producer);
     }
 }
