@@ -1,7 +1,7 @@
 header { border-bottom: 1px solid #000; }
 header h1 { display: inline; }
 header h2 {  display: inline; }
-header a {  margin-left: 100px; }
+header a {  align: right; }
 
 .center {
     text-align: center;
