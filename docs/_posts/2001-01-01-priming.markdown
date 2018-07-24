@@ -4,7 +4,11 @@ title:  "Priming page"
 categories: priming
 ---
 
-Let's ask some questions!
+* How many times has a test failed because of something *completely* unrelated to your code?
+* Do you ever think "Maybe if I run the exact same tests again, they will pass." ?
+* Are your test cases regularly 50+ lines long?
+* Will the logic tests you've written fail if the Database schema changes?
+
 
 [Previous]({{page.previous.url}})
 [Next]({{page.next.url}})
