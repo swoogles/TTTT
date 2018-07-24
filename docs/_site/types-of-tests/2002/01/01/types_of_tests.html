@@ -47,6 +47,45 @@
 
 <p>Types of Tests</p>
 
+<h2 id="unit">Unit</h2>
+<ul>
+  <li>Extremely Simple to setup</li>
+  <li>Do not depend on any external implementations</li>
+  <li>No periodic failures</li>
+</ul>
+
+<h2 id="integration">Integration</h2>
+<ul>
+  <li>More complicated to setup</li>
+  <li>Depends on 1+ external implementations</li>
+  <li>Can introduce periodic failures</li>
+</ul>
+
+<h2 id="selenium">Selenium</h2>
+<ul>
+  <li>Most complicated to setup</li>
+  <li>Depends on many things:
+    <ul>
+      <li>All implementations for the entire application</li>
+      <li>running server</li>
+      <li>WebDriver</li>
+      <li>Browser</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="boundary">Boundary</h2>
+<ul>
+  <li>Depends on exactly 1 live external implementations</li>
+  <li>Necessary to see what happens when the rubber meets the road</li>
+  <li>For example:
+    <ul>
+      <li>Data layer</li>
+      <li>REST API Client</li>
+    </ul>
+  </li>
+</ul>
+
 <p><a href="/priming/2001/01/01/priming.html">Previous</a>
 <a href="">Next</a></p>
 

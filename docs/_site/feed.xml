@@ -1,10 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-07-22T22:35:52-06:00</updated><id>http://localhost:4000/</id><title type="html">TTTT</title><subtitle>Testable Types and Types of Testing</subtitle><entry><title type="html">Types of Tests</title><link href="http://localhost:4000/types-of-tests/2002/01/01/types_of_tests.html" rel="alternate" type="text/html" title="Types of Tests" /><published>2002-01-01T00:00:00-07:00</published><updated>2002-01-01T00:00:00-07:00</updated><id>http://localhost:4000/types-of-tests/2002/01/01/types_of_tests</id><content type="html" xml:base="http://localhost:4000/types-of-tests/2002/01/01/types_of_tests.html">&lt;p&gt;Types of Tests&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-07-23T18:50:23-06:00</updated><id>http://localhost:4000/</id><title type="html">TTTT</title><subtitle>Testable Types and Types of Testing</subtitle><entry><title type="html">Types of Tests</title><link href="http://localhost:4000/types-of-tests/2002/01/01/types_of_tests.html" rel="alternate" type="text/html" title="Types of Tests" /><published>2002-01-01T00:00:00-07:00</published><updated>2002-01-01T00:00:00-07:00</updated><id>http://localhost:4000/types-of-tests/2002/01/01/types_of_tests</id><content type="html" xml:base="http://localhost:4000/types-of-tests/2002/01/01/types_of_tests.html">&lt;p&gt;Types of Tests&lt;/p&gt;
+
+&lt;h2 id=&quot;unit&quot;&gt;Unit&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Extremely Simple to setup&lt;/li&gt;
+  &lt;li&gt;Do not depend on any external implementations&lt;/li&gt;
+  &lt;li&gt;No periodic failures&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;integration&quot;&gt;Integration&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;More complicated to setup&lt;/li&gt;
+  &lt;li&gt;Depends on 1+ external implementations&lt;/li&gt;
+  &lt;li&gt;Can introduce periodic failures&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;selenium&quot;&gt;Selenium&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Most complicated to setup&lt;/li&gt;
+  &lt;li&gt;Depends on many things:
+    &lt;ul&gt;
+      &lt;li&gt;All implementations for the entire application&lt;/li&gt;
+      &lt;li&gt;running server&lt;/li&gt;
+      &lt;li&gt;WebDriver&lt;/li&gt;
+      &lt;li&gt;Browser&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;boundary&quot;&gt;Boundary&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Depends on exactly 1 live external implementations&lt;/li&gt;
+  &lt;li&gt;Necessary to see what happens when the rubber meets the road&lt;/li&gt;
+  &lt;li&gt;For example:
+    &lt;ul&gt;
+      &lt;li&gt;Data layer&lt;/li&gt;
+      &lt;li&gt;REST API Client&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;a href=&quot;/priming/2001/01/01/priming.html&quot;&gt;Previous&lt;/a&gt;
-&lt;a href=&quot;&quot;&gt;Next&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Types of Tests</summary></entry><entry><title type="html">Priming page</title><link href="http://localhost:4000/priming/2001/01/01/priming.html" rel="alternate" type="text/html" title="Priming page" /><published>2001-01-01T00:00:00-07:00</published><updated>2001-01-01T00:00:00-07:00</updated><id>http://localhost:4000/priming/2001/01/01/priming</id><content type="html" xml:base="http://localhost:4000/priming/2001/01/01/priming.html">&lt;p&gt;Let’s ask some questions!&lt;/p&gt;
+&lt;a href=&quot;&quot;&gt;Next&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Types of Tests</summary></entry><entry><title type="html">Priming page</title><link href="http://localhost:4000/priming/2001/01/01/priming.html" rel="alternate" type="text/html" title="Priming page" /><published>2001-01-01T00:00:00-07:00</published><updated>2001-01-01T00:00:00-07:00</updated><id>http://localhost:4000/priming/2001/01/01/priming</id><content type="html" xml:base="http://localhost:4000/priming/2001/01/01/priming.html">&lt;ul&gt;
+  &lt;li&gt;How many times has a test failed because of something &lt;em&gt;completely&lt;/em&gt; unrelated to your code?&lt;/li&gt;
+  &lt;li&gt;Do you ever think “Maybe if I run the exact same tests again, they will pass.” ?&lt;/li&gt;
+  &lt;li&gt;Are your test cases regularly 50+ lines long?&lt;/li&gt;
+  &lt;li&gt;Will the logic tests you’ve written fail if the Database schema changes?&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;a href=&quot;/title/2000/01/01/title.html&quot;&gt;Previous&lt;/a&gt;
-&lt;a href=&quot;/types-of-tests/2002/01/01/types_of_tests.html&quot;&gt;Next&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Let’s ask some questions!</summary></entry><entry><title type="html">Title Page</title><link href="http://localhost:4000/title/2000/01/01/title.html" rel="alternate" type="text/html" title="Title Page" /><published>2000-01-01T00:00:00-07:00</published><updated>2000-01-01T00:00:00-07:00</updated><id>http://localhost:4000/title/2000/01/01/title</id><content type="html" xml:base="http://localhost:4000/title/2000/01/01/title.html">&lt;p&gt;Maybe I’ll get some values here?&lt;/p&gt;
+&lt;a href=&quot;/types-of-tests/2002/01/01/types_of_tests.html&quot;&gt;Next&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">How many times has a test failed because of something completely unrelated to your code? Do you ever think “Maybe if I run the exact same tests again, they will pass.” ? Are your test cases regularly 50+ lines long? Will the logic tests you’ve written fail if the Database schema changes?</summary></entry><entry><title type="html">Title Page</title><link href="http://localhost:4000/title/2000/01/01/title.html" rel="alternate" type="text/html" title="Title Page" /><published>2000-01-01T00:00:00-07:00</published><updated>2000-01-01T00:00:00-07:00</updated><id>http://localhost:4000/title/2000/01/01/title</id><content type="html" xml:base="http://localhost:4000/title/2000/01/01/title.html">&lt;p&gt;Maybe I’ll get some values here?&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;&quot;&gt;Previous&lt;/a&gt;
-&lt;a href=&quot;/priming/2001/01/01/priming.html&quot;&gt;Next&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Maybe I’ll get some values here?</summary></entry></feed>
+&lt;a href=&quot;/priming/2001/01/01/priming.html&quot;&gt;Next&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://localhost:4000&quot;&gt;Home&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Maybe I’ll get some values here?</summary></entry></feed>
