@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: slide
 title:  "Priming page"
 categories: priming
 ---
@@ -8,6 +8,3 @@ categories: priming
 * Do you ever think "Maybe if I run the exact same tests again, they will pass." ?
 * Are your test cases regularly 50+ lines long?
 * Will the logic tests you've written fail if the Database schema changes?
-
-
-{% include slide_footer.md %}

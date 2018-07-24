@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: slide
 title:  "Types of Tests"
 categories: types-of-tests
 ---
@@ -28,5 +28,3 @@ categories: types-of-tests
 * For example:
     * Data layer
     * REST API Client
-
-{% include slide_footer.md %}
