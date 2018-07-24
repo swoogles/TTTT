@@ -7,4 +7,3 @@ categories: title
 Maybe I'll get some values here?
 
 {% include slide_footer.md %}
-

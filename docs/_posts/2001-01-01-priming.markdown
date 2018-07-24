@@ -10,5 +10,4 @@ categories: priming
 * Will the logic tests you've written fail if the Database schema changes?
 
 
-[Previous]({{page.previous.url}})
-[Next]({{page.next.url}})
+{% include slide_footer.md %}

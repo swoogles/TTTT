@@ -4,8 +4,6 @@ title:  "Types of Tests"
 categories: types-of-tests
 ---
 
-Types of Tests
-
 ## Unit
 * Extremely Simple to setup
 * Do not depend on any external implementations
@@ -31,5 +29,4 @@ Types of Tests
     * Data layer
     * REST API Client
 
-[Previous]({{page.previous.url}})
-[Next]({{page.next.url}})
+{% include slide_footer.md %}
