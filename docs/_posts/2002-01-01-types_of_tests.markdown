@@ -1,7 +1,7 @@
 ---
 layout: slide
 title:  "Types of Tests"
-categories: types-of-tests
+categories: types-of-tests section-title
 ---
 
 ## Unit

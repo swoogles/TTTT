@@ -11,3 +11,5 @@ categories: types-of-tests
     * running server
     * WebDriver
     * Browser
+* Slow enough you can watch them happen in real time!
+* Necessary because JSPs cannot be compiled/executed in isolation.

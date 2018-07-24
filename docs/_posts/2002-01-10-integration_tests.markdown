@@ -1,6 +1,6 @@
 ---
 layout: slide
-title:  "Types of Tests"
+title:  "Integration Tests"
 categories: types-of-tests
 ---
 
