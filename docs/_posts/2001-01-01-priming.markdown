@@ -1,6 +1,6 @@
 ---
 layout: slide
-title:  "Priming page"
+title:  "Priming Page"
 categories: priming
 ---
 

@@ -5,9 +5,6 @@ categories: types-of-tests
 ---
 
 ## Unit
-* Extremely Simple to setup
-* Do not depend on any external implementations
-* No periodic failures
 
 ## Integration
 * More complicated to setup
