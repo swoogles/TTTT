@@ -6,5 +6,5 @@ categories: title
 
 Maybe I'll get some values here?
 
-[Previous]({{page.previous.url}})
-[Next]({{page.next.url}})
+{% include slide_footer.md %}
+
