@@ -5,10 +5,8 @@ layout: default
     This started as the Hacker layout here:
         https://github.com/pages-themes/hacker/blob/master/_layouts/post.html)
 -->
-
-<h3> {{site.github.repository_name}}</h3>
-<a href="{{site.url}}/{{page.previous.url | relative_url}}">Previous</a>
-<a href="{{site.url}}/{{page.next.url | relative_url}}">Next</a>
+<a href="{{site.url}}{{page.previous.url | relative_url}}">Previous</a>
+<a href="{{site.url}}{{page.next.url | relative_url}}">Next</a>
 
 <!-- TODO Figure out how to jump to beginning of section.
         Something like looking for a post where category matches this one and also has "section-intro" category.
@@ -16,19 +14,6 @@ layout: default
 <h1>{{ page.title }}</h1>
 
 {{content}}
-
-<p>
-    {{page.next}}
-</p>
-
-<p>
-    {{paginator.previous_page}}
-</p>
-
-<p>
-    {{paginator.posts}}
-</p>
-
 
 <br>
 <a href="{{site.url}}{{site.baseurl}}">Home</a>
