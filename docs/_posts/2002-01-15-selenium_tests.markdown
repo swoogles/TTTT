@@ -1,10 +1,9 @@
 ---
 layout: slide
-title:  "Types of Tests"
+title:  "Selenium Tests"
 categories: types-of-tests
 ---
 
-## Selenium
 * Most complicated to setup
 * Depends on many things:
     * All implementations for the entire application
