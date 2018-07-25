@@ -1,6 +1,7 @@
 package com.billding.tttt;
 
 import com.billding.meta.ChaoticWorld;
+import com.billding.meta.CodeBase;
 import com.billding.meta.ComponentRunTimes;
 import com.billding.meta.TestInstanceCreator;
 import com.billding.tttt.external_services.Database;
@@ -25,7 +26,7 @@ public class ControllerIntegrationTest {
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            (ignored) -> 1,
+            CodeBase::getNumberOfControllerTests,
             (idx) ->
                 new Controller(
                     componentRunTimes.getController(),
