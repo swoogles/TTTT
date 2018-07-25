@@ -34,11 +34,6 @@ public class InstanceGroupMockTimes implements InstanceGroup {
         this.network = new Network(componentRunTimes.getNetwork());
         Network mockedNetwork = new Network(mockRunTime);
 
-        KafkaCluster kafkaCluster = new KafkaCluster(
-                mockedNetwork,
-                componentRunTimes.getKafkaCluster()
-        );
-
         KafkaCluster mockedKafkaClusterDependency = new KafkaCluster(
                 mockedNetwork,
                 mockRunTime
