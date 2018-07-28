@@ -6,6 +6,7 @@ import com.billding.tttt.PropertyRetriever;
  * Contains totals for the number of different types of tests in the project.
  */
 public class CodeBase {
+    private final String name;
     private final int numberOfApplicationTests;
     private final int numberOfMapperTests;
     private final int numberOfLogicTests;
@@ -15,6 +16,7 @@ public class CodeBase {
     private final int numberOfSeleniumTests;
 
     public CodeBase(String propertyFileName) {
+        this.name = propertyFileName;
         // TODO Consider less Stringy files.
         final PropertyRetriever propertyRetriever = new PropertyRetriever("codebases/" + propertyFileName);
         this.numberOfApplicationTests = propertyRetriever.getInt("num_tests.application");
@@ -60,5 +62,9 @@ public class CodeBase {
 
     public int getNumberOfSeleniumTests() {
         return numberOfSeleniumTests;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -37,7 +37,9 @@ public class TestSuiteCalculatorIntegrationTest {
                 new InstanceGroupMockTimes()
         );
         System.out.println(
-                "paramaterized runtime: "  + testSuiteCalculator.totalTestRunTime()
+                "environment: " + testEnvironment.getName()
+                + "codebase: " + codeBase.getName()
+                + " runtime: "  + testSuiteCalculator.totalTestRunTime()
         );
     }
 
