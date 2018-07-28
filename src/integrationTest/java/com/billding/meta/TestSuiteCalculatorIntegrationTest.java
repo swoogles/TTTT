@@ -1,26 +1,67 @@
 package com.billding.meta;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class TestSuiteCalculatorIntegrationTest {
-    @Test
-    public void test_basic() {
-        final TestEnvironment testEnvironment =
-                new TestEnvironment("solo_project");
-        final CodeBase codeBase = new CodeBase("minimal");
-        // TODO This is a pretty important example. Make sure to highlight it in presentation.
-        // I might also just have pre-determined setups as different cases here, rather
-        // than fiddling with the live_demo.properties file.
-        final InstanceGroup instanceGroup =
-                new InstanceGroupMockTimes();
-//                new InstanceGroupRealTimes();
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+// TODO These are important examples. Make sure to highlight them in presentation.
+public class TestSuiteCalculatorIntegrationTest {
+    @DataProvider(name = "scenarios")
+    public static Object[][] logicInstances() {
+        Stream<Object[]> scenarios = Stream.of(
+                "solo_project", "startup", "midsized")
+                .map(TestEnvironment::new)
+                .flatMap(environment -> {
+                            return Stream.of(
+                                    "minimal", "adolescent", "established")
+                                    .map(CodeBase::new)
+                                    .map(codeBase -> new Object[]{environment, codeBase});
+                        }
+
+                );
+
+        return scenarios
+                .toArray(size -> new Object[size][2]);
+    }
+
+
+    @Test(dataProvider = "scenarios")
+    public void test_scenarios_mocked(TestEnvironment testEnvironment, CodeBase codeBase) {
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
                 testEnvironment,
                 codeBase,
-                instanceGroup);
+                new InstanceGroupMockTimes()
+        );
         System.out.println(
-                "Runtime: "  + testSuiteCalculator.totalTestRunTime()
+                "paramaterized runtime: "  + testSuiteCalculator.totalTestRunTime()
+        );
+    }
+
+    @Test
+    public void mockInstances_tiny() {
+        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
+                new TestEnvironment("solo_project"),
+                new CodeBase("minimal"),
+                new InstanceGroupMockTimes()
+        );
+        System.out.println(
+                "Mock instances tiny runtime: "  + testSuiteCalculator.totalTestRunTime()
+        );
+    }
+
+    @Test
+    public void realInstances_tiny() {
+        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
+                new TestEnvironment("solo_project"),
+                new CodeBase("minimal"),
+                new InstanceGroupRealTimes()
+        );
+        System.out.println(
+                "Real instances tiny runtime: "  + testSuiteCalculator.totalTestRunTime()
         );
     }
 }
