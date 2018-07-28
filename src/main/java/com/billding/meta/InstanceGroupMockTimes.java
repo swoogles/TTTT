@@ -10,6 +10,9 @@ import java.time.Duration;
     .001ms value for all dependencies.
  */
 public class InstanceGroupMockTimes implements InstanceGroup {
+    public String getName() {
+        return "Mocks";
+    }
 
     private final Network network;
 

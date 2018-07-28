@@ -8,6 +8,9 @@ import com.billding.tttt.external_services.*;
     .001ms value for all dependencies.
  */
 public class InstanceGroupRealTimes implements InstanceGroup {
+    public String getName() {
+        return "Real";
+    }
 
     private final Network network;
 

@@ -3,9 +3,6 @@ package com.billding.meta;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 // TODO These are important examples. Make sure to highlight them in presentation.
@@ -19,7 +16,13 @@ public class TestSuiteCalculatorIntegrationTest {
                             return Stream.of(
                                     "minimal", "adolescent", "established")
                                     .map(CodeBase::new)
-                                    .map(codeBase -> new Object[]{environment, codeBase});
+                                    .flatMap(codeBase -> {
+                                        return Stream.of(
+                                                new InstanceGroupMockTimes(),
+                                                new InstanceGroupRealTimes()
+                                        ).map(instanceGroup -> new Object[]{environment, codeBase, instanceGroup});
+
+                                    });
                         }
 
                 );
@@ -30,16 +33,26 @@ public class TestSuiteCalculatorIntegrationTest {
 
 
     @Test(dataProvider = "scenarios")
-    public void test_scenarios_mocked(TestEnvironment testEnvironment, CodeBase codeBase) {
+    public void test_scenarios_mocked(TestEnvironment testEnvironment, CodeBase codeBase, InstanceGroup instanceGroup) {
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
                 testEnvironment,
                 codeBase,
-                new InstanceGroupMockTimes()
+                instanceGroup
         );
+        // This isn't factoring in environment AT ALL. Only codebases and the instances.
+        /*
         System.out.println(
                 "environment: " + testEnvironment.getName()
-                + "codebase: " + codeBase.getName()
-                + " runtime: "  + testSuiteCalculator.totalTestRunTime()
+                + " codebase: " + codeBase.getName()
+                + " single runtime: "  + testSuiteCalculator.totalTestRunTime()
+        );
+        */
+
+        System.out.println(
+                "environment: " + testEnvironment.getName()
+                        + " codebase: " + codeBase.getName()
+                        + " instances: " + instanceGroup.getName()
+                        + " runtime in window: "  + testSuiteCalculator.runTimeDuringWindow()
         );
     }
 
