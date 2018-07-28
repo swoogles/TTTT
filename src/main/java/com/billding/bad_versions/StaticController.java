@@ -18,7 +18,11 @@ public class StaticController extends AbstractUnreliableService {
     }
 
     public StaticController() {
-        super(null, new ComponentRunTimes("runtimes").getController(), StaticLogic.staticInstance());
+        super(
+                null,
+                new ComponentRunTimes("runtimes").getController(),
+                StaticLogic.staticInstance()
+        );
     }
 
 }
