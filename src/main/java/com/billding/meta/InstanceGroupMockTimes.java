@@ -46,14 +46,30 @@ public class InstanceGroupMockTimes implements InstanceGroup {
                         componentRunTimes.getProducer()
                 );
 
+        Producer mockedProducerDependency = new Producer(
+                mockedKafkaClusterDependency,
+                chaoticWorld,
+                mockRunTime
+        );
+
         this.intranet = new Intranet(
                 this.network,
                 componentRunTimes.getIntranet());
 
+        Intranet mockedIntranetDependency = new Intranet(
+                mockedNetwork,
+                mockRunTime);
+
         this.authService = new AuthService(
-                intranet,
+                this.intranet,
                 componentRunTimes.getAuthService()
         );
+
+        AuthService mockedAuthService = new AuthService(
+                mockedIntranetDependency,
+                mockRunTime
+        );
+
         this.database = new Database(this.network, componentRunTimes.getDatabase());
         Database mockedDatabaseDependency = new Database(mockedNetwork, mockRunTime);
         this.mapper = new Mapper(
@@ -92,7 +108,7 @@ public class InstanceGroupMockTimes implements InstanceGroup {
                 componentRunTimes.getThirdPartyResource()
         );
 
-        new ThirdPartyResource(
+        ThirdPartyResource mockedGithub = new ThirdPartyResource(
                 "github",
                 this.network,
                 mockRunTime
@@ -100,15 +116,24 @@ public class InstanceGroupMockTimes implements InstanceGroup {
 
         this.application = new Application(
                 "test_app",
-                producer,
-                authService,
+                mockedProducerDependency,
+                mockedAuthService,
                 mockedControllerDependency,
-                github,
+                mockedGithub,
                 componentRunTimes.getApplication()
         );
 
+        Application mockedApplicationDependency = new Application(
+                "test_app",
+                mockedProducerDependency,
+                mockedAuthService,
+                mockedControllerDependency,
+                mockedGithub,
+                mockRunTime
+        );
+
         this.seleniumTestClass = new SeleniumTestClass(
-                application,
+                mockedApplicationDependency,
                 new Browser(componentRunTimes.getBrowser()),
                 new WebDriver(componentRunTimes.getWebDriver()),
                 new ThirdPartyResource(
