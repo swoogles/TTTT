@@ -8,6 +8,7 @@ import com.billding.tttt.external_services.*;
     .001ms value for all dependencies.
  */
 public class InstanceGroupRealTimes implements InstanceGroup {
+    @Override
     public String getName() {
         return "Real";
     }

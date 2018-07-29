@@ -6,12 +6,12 @@ import com.billding.tttt.PropertyRetriever;
 class DemoScenarios {
     private static final PropertyRetriever propertyRetriever = new PropertyRetriever("live_demo");
 
-    static TestEnvironment getTestEnvironment() {
+    static Organization getTestEnvironment() {
         return TEST_ENVIRONMENT;
     }
 
-    private static final TestEnvironment TEST_ENVIRONMENT =
-        new TestEnvironment(
+    private static final Organization TEST_ENVIRONMENT =
+        new Organization(
             propertyRetriever.getString("test_environment")
         );
 

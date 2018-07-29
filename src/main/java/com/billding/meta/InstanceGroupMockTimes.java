@@ -10,6 +10,7 @@ import java.time.Duration;
     .001ms value for all dependencies.
  */
 public class InstanceGroupMockTimes implements InstanceGroup {
+    @Override
     public String getName() {
         return "Mocks";
     }

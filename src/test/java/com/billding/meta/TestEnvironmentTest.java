@@ -7,12 +7,12 @@ import java.time.Period;
 import static org.testng.Assert.assertEquals;
 
 public class TestEnvironmentTest {
-    private final TestEnvironment testEnvironment = new TestEnvironment("solo_project");
+    private final Organization organization = new Organization("solo_project");
 
     @Test
     public void getNumberOfDevelopers() {
         assertEquals(
-            testEnvironment.getNumberOfDevelopers(),
+            organization.getNumberOfDevelopers(),
             1
         );
     }
@@ -20,7 +20,7 @@ public class TestEnvironmentTest {
     @Test
     public void getRandomDeveloper() {
         assertEquals(
-            testEnvironment.getRandomDeveloper(),
+            organization.getRandomDeveloper(),
             "Bill"
         );
     }
@@ -28,7 +28,7 @@ public class TestEnvironmentTest {
     @Test
     public void getTimeWindow() {
         assertEquals(
-            testEnvironment.getTimeWindow(),
+            organization.getTimeWindow(),
             Period.ofWeeks(2)
         );
     }
@@ -36,7 +36,7 @@ public class TestEnvironmentTest {
     @Test
     public void getNumberOfTimesTestWillBeRun() {
         assertEquals(
-                testEnvironment.getNumberOfTimesTestWillBeRun(),
+                organization.getNumberOfTimesTestWillBeRun(),
                 560
         );
     }

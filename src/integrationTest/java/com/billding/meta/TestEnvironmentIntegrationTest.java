@@ -17,7 +17,7 @@ public class TestEnvironmentIntegrationTest {
                 .filter(Files::isRegularFile)
                 .map(file->file.getFileName().toString())
                 .map(fileName->fileName.replace(".properties", ""))
-                .forEach(TestEnvironment::new);
+                .forEach(Organization::new);
         }
     }
 

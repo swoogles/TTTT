@@ -11,12 +11,12 @@ import java.time.Duration;
  * Note- Doesn't include any overhead factor for the tests themselves
  */
 public class TestSuiteCalculator {
-    private final TestEnvironment testEnvironment;
+    private final Organization organization;
     private final CodeBase codeBase;
     private final InstanceGroup instanceGroup;
 
-    public TestSuiteCalculator(TestEnvironment testEnvironment, CodeBase codeBase, InstanceGroup instanceGroup) {
-        this.testEnvironment = testEnvironment;
+    public TestSuiteCalculator(Organization organization, CodeBase codeBase, InstanceGroup instanceGroup) {
+        this.organization = organization;
         this.codeBase = codeBase;
         this.instanceGroup = instanceGroup;
     }
@@ -39,6 +39,6 @@ public class TestSuiteCalculator {
 
     public Duration runTimeDuringWindow() {
         return totalTestRunTime()
-                .multipliedBy(this.testEnvironment.getNumberOfTimesTestWillBeRun());
+                .multipliedBy(this.organization.getNumberOfTimesTestWillBeRun());
     }
 }

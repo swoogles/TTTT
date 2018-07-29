@@ -11,7 +11,7 @@ public class TestSuiteCalculatorIntegrationTest {
     public static Object[][] logicInstances() {
         Stream<Object[]> scenarios = Stream.of(
                 "solo_project", "startup", "midsized")
-                .map(TestEnvironment::new)
+                .map(Organization::new)
                 .flatMap(environment -> {
                             return Stream.of(
                                     "minimal", "adolescent", "established")
@@ -33,23 +33,23 @@ public class TestSuiteCalculatorIntegrationTest {
 
 
     @Test(dataProvider = "scenarios")
-    public void test_scenarios_mocked(TestEnvironment testEnvironment, CodeBase codeBase, InstanceGroup instanceGroup) {
+    public void test_scenarios_mocked(Organization organization, CodeBase codeBase, InstanceGroup instanceGroup) {
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
-                testEnvironment,
+                organization,
                 codeBase,
                 instanceGroup
         );
         // This isn't factoring in environment AT ALL. Only codebases and the instances.
         /*
         System.out.println(
-                "environment: " + testEnvironment.getName()
+                "environment: " + organization.getName()
                 + " codebase: " + codeBase.getName()
                 + " single runtime: "  + testSuiteCalculator.totalTestRunTime()
         );
         */
 
         System.out.println(
-                "environment: " + testEnvironment.getName()
+                "environment: " + organization.getName()
                         + " codebase: " + codeBase.getName()
                         + " instances: " + instanceGroup.getName()
                         + " runtime in window: "  + testSuiteCalculator.runTimeDuringWindow()
@@ -59,7 +59,7 @@ public class TestSuiteCalculatorIntegrationTest {
     @Test
     public void mockInstances_tiny() {
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
-                new TestEnvironment("solo_project"),
+                new Organization("solo_project"),
                 new CodeBase("minimal"),
                 new InstanceGroupMockTimes()
         );
@@ -71,7 +71,7 @@ public class TestSuiteCalculatorIntegrationTest {
     @Test
     public void realInstances_tiny() {
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
-                new TestEnvironment("solo_project"),
+                new Organization("solo_project"),
                 new CodeBase("minimal"),
                 new InstanceGroupRealTimes()
         );
