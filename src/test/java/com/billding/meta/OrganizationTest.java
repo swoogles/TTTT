@@ -6,7 +6,7 @@ import java.time.Period;
 
 import static org.testng.Assert.assertEquals;
 
-public class TestEnvironmentTest {
+public class OrganizationTest {
     private final Organization organization = new Organization("solo_project");
 
     @Test
@@ -41,4 +41,12 @@ public class TestEnvironmentTest {
         );
     }
 
+
+    @Test
+    public void getName() {
+        assertEquals(
+                organization.getName(),
+                "solo_project"
+        );
+    }
 }

@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-public class TestEnvironmentIntegrationTest {
+public class OrganizationIntegrationTest {
 
     @Test
     public void validateEnvironments() throws IOException {
