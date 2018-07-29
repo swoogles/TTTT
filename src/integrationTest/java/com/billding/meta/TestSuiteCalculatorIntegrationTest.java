@@ -7,6 +7,13 @@ import java.util.stream.Stream;
 
 // TODO These are important examples. Make sure to highlight them in presentation.
 public class TestSuiteCalculatorIntegrationTest {
+
+    public TestSuiteCalculatorIntegrationTest() {
+        System.out.println("|organization | codebase | instances | runtime |");
+        System.out.println("|-------|--------|---------|--------|\n");
+
+    }
+
     @DataProvider(name = "scenarios")
     public static Object[][] logicInstances() {
         Stream<Object[]> scenarios = Stream.of(
@@ -48,35 +55,17 @@ public class TestSuiteCalculatorIntegrationTest {
         );
         */
 
+        long s = testSuiteCalculator.runTimeDuringWindow().getSeconds();
+        String formattedDuration = String.format("%d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
+
+
         System.out.println(
-                "environment: " + organization.getName()
-                        + " codebase: " + codeBase.getName()
-                        + " instances: " + instanceGroup.getName()
-                        + " runtime in window: "  + testSuiteCalculator.runTimeDuringWindow()
+                "| " + organization.getName()
+                        + " | " + codeBase.getName()
+                        + " | " + instanceGroup.getName()
+                        + " | "  + formattedDuration
+                + " |"
         );
     }
 
-    @Test
-    public void mockInstances_tiny() {
-        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
-                new Organization("solo_project"),
-                new CodeBase("minimal"),
-                new InstanceGroupMockTimes()
-        );
-        System.out.println(
-                "Mock instances tiny runtime: "  + testSuiteCalculator.totalTestRunTime()
-        );
-    }
-
-    @Test
-    public void realInstances_tiny() {
-        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
-                new Organization("solo_project"),
-                new CodeBase("minimal"),
-                new InstanceGroupRealTimes()
-        );
-        System.out.println(
-                "Real instances tiny runtime: "  + testSuiteCalculator.totalTestRunTime()
-        );
-    }
 }
