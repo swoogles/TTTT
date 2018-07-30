@@ -7,11 +7,7 @@ categories: title
 {:.center}
 # Exciting Title Page!
 
-{% highlight java %}
-public void doSomeStuff(Type parameter) {
-    System.out.println("I do stuff!");
-}
-{% endhighlight %}
+{% include code_with_bullets.markdown notes = site.data.simple_list  %}
 
 |organization | codebase | instances | runtime |
 |-------|--------|---------|--------|
