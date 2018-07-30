@@ -1,7 +1,7 @@
 package com.billding.tttt;
 
 import com.billding.meta.ChaoticWorld;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.time.Duration;
 
