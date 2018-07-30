@@ -23,7 +23,7 @@ public class TestSuiteCalculatorIntegrationTest {
         this.outputFile = Paths.get("./docs/_data/first.csv");
         Files.delete(this.outputFile);
         String columnNames = "organization,codebase,instances,runtime\n";
-        Files.write(outputFile, columnNames.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        Files.write(outputFile, columnNames.getBytes("UTF8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
     }
 
     @DataProvider(name = "scenarios")
@@ -77,7 +77,7 @@ public class TestSuiteCalculatorIntegrationTest {
                 formattedDuration
         ).collect(Collectors.joining(",")) + "\n";
 
-        Files.write(outputFile, line.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        Files.write(outputFile, line.getBytes("UTF8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
 
         System.out.println(
                 "| " + organization.getName()
