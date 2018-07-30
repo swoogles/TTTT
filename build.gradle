@@ -109,3 +109,7 @@ javadoc {
 // TODO Consider if this should be connected
 // to run coverage verification during the build (and fail when appropriate)
 check.dependsOn jacocoTestCoverageVerification
+
+springBoot {
+    mainClassName = 'com.billding.spring.Application'
+}
