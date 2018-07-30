@@ -9,7 +9,6 @@ categories: testable-types
 
 {% highlight java %}
 public class AmbitiousEndpoint {
-    ...
     public Response get(String userId) {
         User user = userMapper.get(userId);
         
