@@ -3,8 +3,10 @@ package com.billding.meta;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.stream.Collectors;
@@ -12,11 +14,16 @@ import java.util.stream.Stream;
 
 // TODO These are important examples. Make sure to highlight them in presentation.
 public class TestSuiteCalculatorIntegrationTest {
+    private final Path outputFile;
 
-    public TestSuiteCalculatorIntegrationTest() {
+    public TestSuiteCalculatorIntegrationTest() throws IOException {
         System.out.println(Paths.get(".").toAbsolutePath());
         System.out.println("|organization | codebase | instances | runtime |");
         System.out.println("|-------|--------|---------|--------|\n");
+        this.outputFile = Paths.get("./docs/_data/first.csv");
+        Files.delete(this.outputFile);
+        String columnNames = "organization,codebase,instances,runtime\n";
+        Files.write(outputFile, columnNames.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
     }
 
     @DataProvider(name = "scenarios")
@@ -26,7 +33,7 @@ public class TestSuiteCalculatorIntegrationTest {
                 .map(Organization::new)
                 .flatMap(environment -> {
                             return Stream.of(
-                                    "minimal", "adolescent", "established")
+                                    "minimal", "adolescent", "established", "mature")
                                     .map(CodeBase::new)
                                     .flatMap(codeBase -> {
                                         return Stream.of(
@@ -68,10 +75,9 @@ public class TestSuiteCalculatorIntegrationTest {
                 codeBase.getName(),
                 instanceGroup.getName(),
                 formattedDuration
-        ).collect(Collectors.joining(","));
+        ).collect(Collectors.joining(",")) + "\n";
 
-        Files.delete(Paths.get("./docs/_data/first.csv"));
-        Files.write(Paths.get("./docs/_data/first.csv"), line.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        Files.write(outputFile, line.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
 
         System.out.println(
                 "| " + organization.getName()
