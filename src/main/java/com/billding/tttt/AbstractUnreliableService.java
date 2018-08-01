@@ -41,6 +41,7 @@ public abstract class AbstractUnreliableService implements UnreliableService {
     public Duration failableAction() {
         // TODO reinstate this?
 //        this.chaoticWorld.currentTime();
+        this.requiredService.ifPresent(ServiceStatus::ensureServiceIsRunning);
         return this.services.stream()
                 .map(UnreliableService::failableAction)
                 // TODO I thought should be using this instead, but I think I'm wrong now.
