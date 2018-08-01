@@ -29,7 +29,7 @@ public class SeleniumTest {
         final WebDriver webDriver = new WebDriver(runTime);
         final Duration javaScriptCdnOperationRunTime = Duration.ofMillis(20);
         final ThirdPartyResource javascriptCDN =
-            new ThirdPartyResource("javascriptCDN", network, javaScriptCdnOperationRunTime);
+            new ThirdPartyResource("javascript_cdn", network, javaScriptCdnOperationRunTime);
 
 
         Application application = new Application(

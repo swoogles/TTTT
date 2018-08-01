@@ -13,6 +13,7 @@ import java.time.Instant;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class MapperMockedTest {
     private static final Duration runTime = Duration.ofMillis(1);
@@ -40,6 +41,6 @@ public class MapperMockedTest {
 
     @Test(dataProvider = "mappers")
     public void test_specific(String developer, Mapper mapper) {
-        assertEquals(runTime, mapper.failableAction());
+        assertTrue(mapper.failableAction().compareTo(runTime) > 0  );
     }
 }
