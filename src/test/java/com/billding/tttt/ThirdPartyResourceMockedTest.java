@@ -2,6 +2,7 @@ package com.billding.tttt;
 
 import com.billding.meta.ChaoticWorld;
 import com.billding.meta.TestInstanceCreator;
+import com.billding.meta.World;
 import com.billding.tttt.external_services.Network;
 import com.billding.tttt.external_services.ThirdPartyResource;
 import org.testng.annotations.DataProvider;
@@ -16,7 +17,7 @@ import static org.testng.Assert.assertEquals;
 public class ThirdPartyResourceMockedTest {
     private static final Duration runTime = Duration.ofMillis(1);
     private static final Duration mockedRunTime = Duration.ofMillis(0);
-    private final ChaoticWorld chaoticWorld = new ChaoticWorld();
+    private final World world = new ChaoticWorld();
 
     @DataProvider(name = "thirdPartyResources")
     public static Object[][] primeNumbers() {

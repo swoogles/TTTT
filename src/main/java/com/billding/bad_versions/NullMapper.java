@@ -1,6 +1,6 @@
 package com.billding.bad_versions;
 
-import com.billding.meta.ChaoticWorld;
+import com.billding.meta.World;
 import com.billding.tttt.Mapper;
 import com.billding.tttt.external_services.Database;
 
@@ -12,12 +12,12 @@ import java.time.Duration;
 public class NullMapper extends Mapper {
     private final Duration runTime;
     private final Database database;
-    private final ChaoticWorld chaoticWorld;
+    private final World world;
     private static final String name = "Mapper";
 
-    public NullMapper(Database database, ChaoticWorld chaoticWorld, Duration runTime) {
-        super(database, chaoticWorld, runTime);
-        this.chaoticWorld = chaoticWorld;
+    public NullMapper(Database database, World world, Duration runTime) {
+        super(database, world, runTime);
+        this.world = world;
         this.database = database;
         this.runTime = runTime;
     }
@@ -36,7 +36,7 @@ public class NullMapper extends Mapper {
     @Override
     public Duration failableAction() {
         try {
-            this.chaoticWorld.currentTime();
+            this.world.currentTime();
             return this.getRunTime()
                     .plus( this.database.failableAction() );
         } catch (Exception ex) {

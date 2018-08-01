@@ -3,6 +3,7 @@ package com.billding.tttt;
 import com.billding.meta.ChaoticWorld;
 import com.billding.meta.ComponentRunTimes;
 import com.billding.meta.TestInstanceCreator;
+import com.billding.meta.World;
 import com.billding.tttt.external_services.Database;
 import com.billding.tttt.external_services.KafkaCluster;
 import com.billding.tttt.external_services.Network;
@@ -10,16 +11,14 @@ import com.billding.tttt.external_services.ThirdPartyResource;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
 import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 
 public class ApplicationTest {
-    private final ChaoticWorld chaoticWorld = new ChaoticWorld();
+    private final World world = new ChaoticWorld();
 
     @DataProvider(name = "applications")
     public static Object[][] primeNumbers() {
-        final ChaoticWorld chaoticWorld = new ChaoticWorld();
+        final World world = new ChaoticWorld();
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
 
@@ -34,7 +33,7 @@ public class ApplicationTest {
                                     network,
                                     componentRunTimes.getKafkaCluster()
                             ),
-                            chaoticWorld,
+                            world,
                             componentRunTimes.getProducer()
                     ),
                     new AuthService(
@@ -46,10 +45,10 @@ public class ApplicationTest {
                     new Controller(
                         componentRunTimes.getController(),
                        new Logic(
-                            chaoticWorld,
+                               world,
                             new Mapper(
                                 new Database(network, componentRunTimes.getDatabase()),
-                                chaoticWorld,
+                                    world,
                                 componentRunTimes.getMapper()
                             ),
                             componentRunTimes.getLogic()

@@ -1,6 +1,6 @@
 package com.billding.bad_versions;
 
-import com.billding.meta.ChaoticWorld;
+import com.billding.meta.World;
 import com.billding.tttt.Mapper;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -14,7 +14,7 @@ import static org.mockito.Mockito.when;
 
 public class FieldInjectedLogicTest {
     @Mock
-    ChaoticWorld chaoticWorld;
+    World world;
 
     @Mock
     Mapper mapper;

@@ -10,7 +10,7 @@ import java.util.Random;
  * database to be consistent in between requests, this is where the trouble should
  * arise.
  */
-public class ChaoticWorld {
+public class ChaoticWorld implements World {
     /* TODO Figure out how to best convey failures here. Autoblowing up might be too
         heavy-handed for the point I'm trying to make.o
         Maybe something like
@@ -20,6 +20,7 @@ public class ChaoticWorld {
         );
         // throw with 1 in 60 chance
         */
+    @Override
     public Instant currentTime() {
         // TODO Make % a parameter/property
         final Instant now = Instant.now();
@@ -32,6 +33,7 @@ public class ChaoticWorld {
 
     private final Random random = new Random();
 
+    @Override
     public void do2AssertionsThatNeededToHappenInTheSameMinute(Duration runTimeOfOperationsInBetween) {
         /* TODO Reinstate when appropriate
         int millisecondsAnAnHour = 60 * 1000;

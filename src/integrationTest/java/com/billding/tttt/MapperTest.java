@@ -1,9 +1,6 @@
 package com.billding.tttt;
 
-import com.billding.meta.ChaoticWorld;
-import com.billding.meta.CodeBase;
-import com.billding.meta.ComponentRunTimes;
-import com.billding.meta.TestInstanceCreator;
+import com.billding.meta.*;
 import com.billding.tttt.external_services.Database;
 import com.billding.tttt.external_services.Network;
 import org.testng.annotations.DataProvider;
@@ -17,7 +14,7 @@ public class MapperTest {
     public static Object[][] primeNumbers() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
-        final ChaoticWorld chaoticWorld = new ChaoticWorld();
+        final World world = new ChaoticWorld();
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
@@ -28,7 +25,7 @@ public class MapperTest {
                             network,
                             componentRunTimes.getDatabase()
                         ),
-                        chaoticWorld,
+                    world,
                         componentRunTimes.getMapper()
                     )
         );

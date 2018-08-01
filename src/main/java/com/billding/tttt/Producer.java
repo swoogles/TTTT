@@ -1,6 +1,6 @@
 package com.billding.tttt;
 
-import com.billding.meta.ChaoticWorld;
+import com.billding.meta.World;
 import com.billding.tttt.external_services.KafkaCluster;
 
 import java.time.Duration;
@@ -10,13 +10,13 @@ import java.time.Duration;
  */
 public class Producer extends AbstractUnreliableService {
     // TODO find an approriate ChaoticWorld use or remove
-    private final ChaoticWorld chaoticWorld;
+    private final World world;
     private static final String name = "producer";
 
     // TODO add intranet/network dependency
-    public Producer(KafkaCluster kafkaCluster, ChaoticWorld chaoticWorld, Duration runTime) {
+    public Producer(KafkaCluster kafkaCluster, World world, Duration runTime) {
         super(null, runTime, kafkaCluster);
-        this.chaoticWorld = chaoticWorld;
+        this.world = world;
     }
 
 }

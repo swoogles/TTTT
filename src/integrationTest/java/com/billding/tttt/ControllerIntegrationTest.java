@@ -1,9 +1,6 @@
 package com.billding.tttt;
 
-import com.billding.meta.ChaoticWorld;
-import com.billding.meta.CodeBase;
-import com.billding.meta.ComponentRunTimes;
-import com.billding.meta.TestInstanceCreator;
+import com.billding.meta.*;
 import com.billding.tttt.external_services.Database;
 import com.billding.tttt.external_services.Network;
 import org.testng.annotations.DataProvider;
@@ -15,11 +12,11 @@ import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 import static org.testng.Assert.assertEquals;
 
 public class ControllerIntegrationTest {
-    private final ChaoticWorld chaoticWorld = new ChaoticWorld();
+    private final World world = new ChaoticWorld();
 
     @DataProvider(name = "controllers")
     public static Object[][] primeNumbers() {
-        final ChaoticWorld chaoticWorld = new ChaoticWorld();
+        final World world = new ChaoticWorld();
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
 
@@ -31,13 +28,13 @@ public class ControllerIntegrationTest {
                 new Controller(
                     componentRunTimes.getController(),
                     new Logic(
-                        chaoticWorld,
+                            world,
                         new Mapper(
                             new Database(
                                 network,
                                 componentRunTimes.getDatabase()
                             ),
-                            chaoticWorld,
+                                world,
                             componentRunTimes.getMapper()
                         ),
                         componentRunTimes.getLogic()
@@ -48,6 +45,6 @@ public class ControllerIntegrationTest {
     @Test(dataProvider = "controllers")
     public void test_simple(String developer, Controller controller) {
         Duration runTimeOfOperationsInBetween = executeWithRunTime(controller);
-        chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
+        world.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
     }
 }

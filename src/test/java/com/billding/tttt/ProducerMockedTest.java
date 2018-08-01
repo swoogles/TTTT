@@ -3,6 +3,7 @@ package com.billding.tttt;
 import com.billding.meta.ChaoticWorld;
 import com.billding.meta.CodeBase;
 import com.billding.meta.TestInstanceCreator;
+import com.billding.meta.World;
 import com.billding.tttt.external_services.KafkaCluster;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -21,8 +22,8 @@ public class ProducerMockedTest {
 
     @DataProvider(name = "mappers")
     public static Object[][] testData() {
-        final ChaoticWorld chaoticWorld = mock(ChaoticWorld.class);
-        when(chaoticWorld.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
+        final World world = mock(ChaoticWorld.class);
+        when(world.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
         final KafkaCluster kafkaCluster = mock(KafkaCluster.class);
         when(kafkaCluster.failableAction()).thenReturn(mockedRunTime);
         when(kafkaCluster.getRunTime()).thenReturn(mockedRunTime);
@@ -33,7 +34,7 @@ public class ProducerMockedTest {
             CodeBase::getNumberOfProducerTests,
             (idx) -> new Producer(
                         kafkaCluster,
-                        chaoticWorld,
+                    world,
                     runTime
                     )
         );

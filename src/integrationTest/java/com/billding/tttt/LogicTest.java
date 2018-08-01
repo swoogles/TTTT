@@ -1,9 +1,6 @@
 package com.billding.tttt;
 
-import com.billding.meta.ChaoticWorld;
-import com.billding.meta.CodeBase;
-import com.billding.meta.ComponentRunTimes;
-import com.billding.meta.TestInstanceCreator;
+import com.billding.meta.*;
 import com.billding.tttt.external_services.Database;
 import com.billding.tttt.external_services.Network;
 import org.testng.annotations.DataProvider;
@@ -17,19 +14,19 @@ public class LogicTest {
     @DataProvider(name = "logic")
     public static Object[][] logicInstances() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
-        final ChaoticWorld chaoticWorld = new ChaoticWorld();
+        final World world = new ChaoticWorld();
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
                 CodeBase::getNumberOfLogicTests,
                 (idx) -> new Logic(
-            chaoticWorld,
+                        world,
             new Mapper(
                 new Database(
                     new Network(componentRunTimes.getNetwork()),
                     componentRunTimes.getDatabase()),
-                chaoticWorld,
+                    world,
                 componentRunTimes.getMapper()
             ),
             componentRunTimes.getLogic()

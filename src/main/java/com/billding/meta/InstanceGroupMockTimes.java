@@ -33,7 +33,7 @@ public class InstanceGroupMockTimes implements InstanceGroup {
 
     public InstanceGroupMockTimes() {
 
-        final ChaoticWorld chaoticWorld = new ChaoticWorld();
+        final World world = new ChaoticWorld();
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         this.network = new Network(componentRunTimes.getNetwork());
         Network mockedNetwork = new Network(mockRunTime);
@@ -46,13 +46,13 @@ public class InstanceGroupMockTimes implements InstanceGroup {
         this.producer =
                 new Producer(
                         mockedKafkaClusterDependency,
-                        chaoticWorld,
+                        world,
                         componentRunTimes.getProducer()
                 );
 
         Producer mockedProducerDependency = new Producer(
                 mockedKafkaClusterDependency,
-                chaoticWorld,
+                world,
                 mockRunTime
         );
 
@@ -78,21 +78,21 @@ public class InstanceGroupMockTimes implements InstanceGroup {
         Database mockedDatabaseDependency = new Database(mockedNetwork, mockRunTime);
         this.mapper = new Mapper(
                 this.database,
-                chaoticWorld,
+                world,
                 componentRunTimes.getMapper()
         );
         Mapper mockedMapperDependency = new Mapper(
                 mockedDatabaseDependency,
-                chaoticWorld,
+                world,
                 mockRunTime
         );
         this.logic = new Logic(
-                chaoticWorld,
+                world,
                 mockedMapperDependency,
                 componentRunTimes.getLogic()
         );
         Logic mockedLogicDependency = new Logic(
-                chaoticWorld,
+                world,
                 mockedMapperDependency,
                 mockRunTime
         );

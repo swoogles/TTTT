@@ -1,6 +1,6 @@
 package com.billding.bad_versions;
 
-import com.billding.meta.ChaoticWorld;
+import com.billding.meta.World;
 import com.billding.tttt.Mapper;
 import com.billding.tttt.UnreliableService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  */
 public class FieldInjectedLogic {
     @Autowired
-    private ChaoticWorld chaoticWorld;
+    private World world;
 
     @Autowired
     private Mapper mapper;
@@ -24,7 +24,7 @@ public class FieldInjectedLogic {
     private Duration runtime;
 
     public Duration failableAction() {
-        this.chaoticWorld.currentTime();
+        this.world.currentTime();
         return Stream.of(mapper)
                 .map(UnreliableService::failableAction)
                 .reduce(this.runtime, Duration::plus);

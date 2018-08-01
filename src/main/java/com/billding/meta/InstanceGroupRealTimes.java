@@ -29,7 +29,7 @@ public class InstanceGroupRealTimes implements InstanceGroup {
 
     public InstanceGroupRealTimes() {
 
-        final ChaoticWorld chaoticWorld = new ChaoticWorld();
+        final World world = new ChaoticWorld();
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         this.network = new Network(componentRunTimes.getNetwork());
         KafkaCluster kafkaCluster = new KafkaCluster(
@@ -39,7 +39,7 @@ public class InstanceGroupRealTimes implements InstanceGroup {
         this.producer =
                 new Producer(
                         kafkaCluster,
-                        chaoticWorld,
+                        world,
                         componentRunTimes.getProducer()
                 );
         this.intranet = new Intranet(
@@ -53,11 +53,11 @@ public class InstanceGroupRealTimes implements InstanceGroup {
         this.database = new Database(network, componentRunTimes.getDatabase());
         this.mapper = new Mapper(
                 database,
-                chaoticWorld,
+                world,
                 componentRunTimes.getMapper()
         );
         this.logic = new Logic(
-                chaoticWorld,
+                world,
                 mapper,
                 componentRunTimes.getLogic()
         );

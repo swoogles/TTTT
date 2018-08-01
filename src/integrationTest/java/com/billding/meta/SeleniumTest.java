@@ -20,7 +20,7 @@ public class SeleniumTest {
 
     @DataProvider(name = "seleniumTests")
     public static Object[][] primeNumbers() {
-        final ChaoticWorld chaoticWorld = new ChaoticWorld();
+        final World world = new ChaoticWorld();
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
 
@@ -39,7 +39,7 @@ public class SeleniumTest {
                                 network,
                                 componentRunTimes.getKafkaCluster()
                         ),
-                        chaoticWorld, componentRunTimes.getProducer()
+                        world, componentRunTimes.getProducer()
                 ),
             new AuthService(
                 new Intranet(
@@ -49,10 +49,10 @@ public class SeleniumTest {
             ),
             new Controller(
                 componentRunTimes.getController(), new Logic(
-                chaoticWorld,
+                    world,
                 new Mapper(
                     database,
-                    chaoticWorld,
+                        world,
                     componentRunTimes.getMapper()
 
                 ),

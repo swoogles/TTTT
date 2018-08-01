@@ -3,6 +3,7 @@ package com.billding.tttt;
 import com.billding.meta.ChaoticWorld;
 import com.billding.meta.CodeBase;
 import com.billding.meta.TestInstanceCreator;
+import com.billding.meta.World;
 import com.billding.tttt.external_services.Database;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -20,8 +21,8 @@ public class MapperMockedTest {
 
     @DataProvider(name = "mappers")
     public static Object[][] primeNumbers() {
-        final ChaoticWorld chaoticWorld = mock(ChaoticWorld.class);
-        when(chaoticWorld.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
+        final World world = mock(ChaoticWorld.class);
+        when(world.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
         final Database database = mock(Database.class);
         when(database.failableAction()).thenReturn(mockedRunTime);
         when(database.getRunTime()).thenReturn(mockedRunTime);
@@ -32,7 +33,7 @@ public class MapperMockedTest {
             CodeBase::getNumberOfMapperTests,
             (idx) -> new Mapper(
                         database,
-                        chaoticWorld,
+                    world,
                     runTime
                     )
         );

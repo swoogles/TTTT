@@ -3,6 +3,7 @@ package com.billding.bad_versions;
 import com.billding.meta.ChaoticWorld;
 import com.billding.meta.CodeBase;
 import com.billding.meta.TestInstanceCreator;
+import com.billding.meta.World;
 import com.billding.tttt.external_services.Database;
 import com.billding.tttt.external_services.Network;
 import org.testng.annotations.DataProvider;
@@ -21,8 +22,8 @@ public class NullMapperTest {
 
     @DataProvider(name = "mappers")
     public static Object[][] primeNumbers() {
-        final ChaoticWorld chaoticWorld = mock(ChaoticWorld.class);
-        when(chaoticWorld.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
+        final World world = mock(ChaoticWorld.class);
+        when(world.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
         Network network = mock(Network.class);
         when(network.getRunTime()).thenReturn(mockedRunTime);
         when(network.failableAction()).thenReturn(mockedRunTime);
@@ -39,7 +40,7 @@ public class NullMapperTest {
                 CodeBase::getNumberOfMapperTests,
                 (idx) -> new NullMapper(
                         database,
-                        chaoticWorld,
+                        world,
                         runTime
                 )
         );
@@ -53,8 +54,8 @@ public class NullMapperTest {
 
     @Test
     public void test_forcedFailure() {
-        final ChaoticWorld chaoticWorld = mock(ChaoticWorld.class);
-        when(chaoticWorld.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
+        final World world = mock(ChaoticWorld.class);
+        when(world.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
         Network network = mock(Network.class);
         when(network.getRunTime()).thenReturn(mockedRunTime);
         when(network.failableAction()).thenThrow(new RuntimeException("Forced failure for code coverage"));
@@ -66,7 +67,7 @@ public class NullMapperTest {
         );
         NullMapper mapper = new NullMapper(
                 database,
-                chaoticWorld,
+                world,
                 runTime
         );
         mapper.failableAction();

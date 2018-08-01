@@ -3,7 +3,7 @@ package com.billding.tttt;
 import com.billding.meta.ChaoticWorld;
 import com.billding.meta.CodeBase;
 import com.billding.meta.TestInstanceCreator;
-import com.billding.tttt.external_services.KafkaCluster;
+import com.billding.meta.World;
 import com.billding.tttt.external_services.ThirdPartyResource;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -17,7 +17,7 @@ public class ApplicationMockedTest {
     private static final Duration runTime = Duration.ofMillis(1);
     private static final Duration mockedRunTime = Duration.ofMillis(0);
 
-    private final ChaoticWorld chaoticWorld = new ChaoticWorld();
+    private final World world = new ChaoticWorld();
 
     @DataProvider(name = "applications")
     public static Object[][] primeNumbers() {
@@ -60,6 +60,6 @@ public class ApplicationMockedTest {
         Duration runTimeOfOperationsInBetween = application.failableAction();
         application.failableAction();
 //        assertEquals(runTimeOfOperationsInBetween, 10);
-        chaoticWorld.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
+        world.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
     }
 }
