@@ -3,6 +3,7 @@ package com.billding.tttt;
 import java.time.Duration;
 import java.util.IllegalFormatException;
 import java.util.MissingResourceException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 // TODO Oo! This class can demonstrate failures when the filesystem changes!
@@ -39,7 +40,7 @@ public class PropertyRetriever {
     }
 
     public String getString(String name) {
-        return this.bundle.getString(name);
+        return Objects.requireNonNull(bundle.getString(name));
     }
 
     public Duration getShortDuration(String name) {
