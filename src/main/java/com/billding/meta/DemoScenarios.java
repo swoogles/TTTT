@@ -24,7 +24,7 @@ class DemoScenarios {
             propertyRetriever.getString("codebase")
         );
 
-    private static final World getWorld() {
+    public static final World getWorld() {
         String worldType = propertyRetriever.getString("world");
         switch (worldType) {
             case "chaotic":

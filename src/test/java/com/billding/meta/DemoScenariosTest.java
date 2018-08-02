@@ -9,7 +9,10 @@ public class DemoScenariosTest {
     public void simple() {
         new DemoScenarios();
         assertNotNull(
-        DemoScenarios.getTestEnvironment()
+            DemoScenarios.getTestEnvironment()
+        );
+        assertNotNull(
+                DemoScenarios.getWorld()
         );
     }
 }
