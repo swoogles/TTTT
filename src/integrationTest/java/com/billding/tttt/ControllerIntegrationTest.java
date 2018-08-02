@@ -12,11 +12,10 @@ import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 import static org.testng.Assert.assertEquals;
 
 public class ControllerIntegrationTest {
-    private final World world = new ChaoticWorld();
+    private static final World world = DemoScenarios.getWorld();
 
     @DataProvider(name = "controllers")
     public static Object[][] primeNumbers() {
-        final World world = new ChaoticWorld();
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
 

@@ -23,6 +23,8 @@ public class ProducerMockedTest {
 
     @DataProvider(name = "mappers")
     public static Object[][] testData() {
+        // TODO USE THIS instead of a mocked world.
+//        final World world = DemoScenarios.getPlatonicWorld();
         final World world = mock(ChaoticWorld.class);
         when(world.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
         final KafkaCluster kafkaCluster = mock(KafkaCluster.class);

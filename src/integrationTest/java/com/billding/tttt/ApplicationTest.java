@@ -1,9 +1,6 @@
 package com.billding.tttt;
 
-import com.billding.meta.ChaoticWorld;
-import com.billding.meta.ComponentRunTimes;
-import com.billding.meta.TestInstanceCreator;
-import com.billding.meta.World;
+import com.billding.meta.*;
 import com.billding.tttt.external_services.Database;
 import com.billding.tttt.external_services.KafkaCluster;
 import com.billding.tttt.external_services.Network;
@@ -14,11 +11,10 @@ import org.testng.annotations.Test;
 import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 
 public class ApplicationTest {
-    private final World world = new ChaoticWorld();
+    private static final World world = DemoScenarios.getWorld();
 
     @DataProvider(name = "applications")
     public static Object[][] primeNumbers() {
-        final World world = new ChaoticWorld();
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
 

@@ -1,6 +1,7 @@
 package com.billding.boundary_tests;
 
 import com.billding.meta.ChaoticWorld;
+import com.billding.meta.DemoScenarios;
 import com.billding.meta.World;
 import com.billding.tttt.Logic;
 import com.billding.tttt.Mapper;
@@ -15,7 +16,7 @@ import static org.testng.Assert.assertEquals;
 public class LogicMockedTest {
     private static final Duration runTime = Duration.ofMillis(5);
     private static final Duration mockedRunTime = Duration.ofMillis(0);
-    private final World world = new ChaoticWorld();
+    private static final World world = DemoScenarios.getPlatonicWorld();
 
     @Test
     public void test_simple() {

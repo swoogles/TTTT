@@ -1,8 +1,6 @@
 package com.billding.tttt;
 
-import com.billding.meta.ChaoticWorld;
-import com.billding.meta.ComponentRunTimes;
-import com.billding.meta.TestInstanceCreator;
+import com.billding.meta.*;
 import com.billding.tttt.external_services.KafkaCluster;
 import com.billding.tttt.external_services.Network;
 import org.testng.annotations.DataProvider;
@@ -14,6 +12,7 @@ import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 import static org.testng.Assert.assertEquals;
 
 public class ProducerTest {
+    private static final World world = DemoScenarios.getWorld();
 
     @DataProvider(name = "producers")
     public static Object[][] testData() {
@@ -28,7 +27,7 @@ public class ProducerTest {
                             new Network(componentRunTimes.getNetwork()),
                             componentRunTimes.getKafkaCluster()
                         ),
-                        new ChaoticWorld(),
+                        world,
                         componentRunTimes.getProducer()
                     ));
     }

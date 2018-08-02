@@ -21,4 +21,19 @@ public class ChaoticWorldTest {
     public void test_do2AssertionsThatNeededToHappenInTheSameMinute() {
         world.do2AssertionsThatNeededToHappenInTheSameMinute(Duration.ofMillis(0));
     }
+
+    @Test
+    public void getWorld_chaotic() {
+        World.getWorld("chaotic");
+    }
+
+    @Test(expectedExceptions = RuntimeException.class)
+    public void getWorld_platonic() {
+        World.getWorld("platonic");
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void getWorld_invalid() {
+        World.getWorld("invalid");
+    }
 }

@@ -9,12 +9,12 @@ import org.testng.annotations.Test;
 import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 
 public class MapperTest {
+    private static final World world = DemoScenarios.getWorld();
 
     @DataProvider(name = "mappers")
     public static Object[][] primeNumbers() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
-        final World world = new ChaoticWorld();
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 

@@ -29,7 +29,7 @@ public class InstanceGroupRealTimes implements InstanceGroup {
 
     public InstanceGroupRealTimes() {
 
-        final World world = new ChaoticWorld();
+        final World world = DemoScenarios.getWorld();
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         this.network = new Network(componentRunTimes.getNetwork());
         KafkaCluster kafkaCluster = new KafkaCluster(

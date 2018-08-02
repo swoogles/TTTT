@@ -20,8 +20,7 @@ public class MapperMockedTest {
 
     @DataProvider(name = "mappers")
     public static Object[][] primeNumbers() {
-        final World world = mock(ChaoticWorld.class);
-        when(world.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
+        final World world = DemoScenarios.getPlatonicWorld();
 
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Database database =

@@ -1,6 +1,7 @@
 package com.billding.boundary_tests;
 
 import com.billding.meta.ChaoticWorld;
+import com.billding.meta.DemoScenarios;
 import com.billding.meta.TestInstanceCreator;
 import com.billding.meta.World;
 import com.billding.tttt.external_services.Network;
@@ -17,7 +18,8 @@ import static org.testng.Assert.assertEquals;
 public class ThirdPartyResourceMockedTest {
     private static final Duration runTime = Duration.ofMillis(1);
     private static final Duration mockedRunTime = Duration.ofMillis(0);
-    private final World world = new ChaoticWorld();
+    // TODO This should be a parameter to the Network & to the Resource.
+    private static final World world = DemoScenarios.getPlatonicWorld();
 
     @DataProvider(name = "thirdPartyResources")
     public static Object[][] primeNumbers() {

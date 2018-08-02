@@ -8,13 +8,12 @@ import org.testng.annotations.Test;
 
 import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 
-// TODO This needs to use a data provider to run the proper number of tests
 public class LogicTest {
+    private static final World world = DemoScenarios.getWorld();
 
     @DataProvider(name = "logic")
     public static Object[][] logicInstances() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
-        final World world = new ChaoticWorld();
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 

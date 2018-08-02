@@ -3,7 +3,7 @@ package com.billding.meta;
 import com.billding.tttt.PropertyRetriever;
 
 // The static-ness of this file makes it harder to get logs/trackstaces about causes for failure.
-class DemoScenarios {
+public class DemoScenarios {
     private static final PropertyRetriever propertyRetriever = new PropertyRetriever("live_demo");
 
     static Organization getTestEnvironment() {
@@ -26,13 +26,11 @@ class DemoScenarios {
 
     public static final World getWorld() {
         String worldType = propertyRetriever.getString("world");
-        switch (worldType) {
-            case "chaotic":
-                return new ChaoticWorld();
-            case "platonic":
-                throw new RuntimeException("Haven't created platonic world yet.");
-            default:
-                throw new IllegalArgumentException("Not a valid world type");
-        }
+        return World.getWorld(worldType);
+    }
+
+    public static final World getPlatonicWorld() {
+        // TODO THIS IS INCORRECT!!!!!
+        return new ChaoticWorld();
     }
 }

@@ -1,9 +1,6 @@
 package com.billding.tttt;
 
-import com.billding.meta.ChaoticWorld;
-import com.billding.meta.ComponentRunTimes;
-import com.billding.meta.TestInstanceCreator;
-import com.billding.meta.World;
+import com.billding.meta.*;
 import com.billding.tttt.external_services.Network;
 import com.billding.tttt.external_services.ThirdPartyResource;
 import org.testng.annotations.DataProvider;
@@ -14,7 +11,7 @@ import java.time.Duration;
 import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 
 public class ThirdPartyResourceTest {
-    private final World world = new ChaoticWorld();
+    private static final World world = DemoScenarios.getWorld();
 
     @DataProvider(name = "thirdPartyResources")
     public static Object[][] primeNumbers() {

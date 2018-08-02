@@ -16,4 +16,15 @@ public interface World {
     Instant currentTime();
 
     void do2AssertionsThatNeededToHappenInTheSameMinute(Duration runTimeOfOperationsInBetween);
+
+    static World getWorld(String worldType) {
+        switch (worldType) {
+            case "chaotic":
+                return new ChaoticWorld();
+            case "platonic":
+                throw new RuntimeException("Haven't created platonic world yet.");
+            default:
+                throw new IllegalArgumentException("Not a valid world type");
+        }
+    }
 }

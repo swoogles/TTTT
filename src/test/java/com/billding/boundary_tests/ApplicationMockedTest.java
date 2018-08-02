@@ -1,9 +1,6 @@
 package com.billding.boundary_tests;
 
-import com.billding.meta.ChaoticWorld;
-import com.billding.meta.CodeBase;
-import com.billding.meta.TestInstanceCreator;
-import com.billding.meta.World;
+import com.billding.meta.*;
 import com.billding.tttt.*;
 import com.billding.tttt.external_services.ThirdPartyResource;
 import org.testng.annotations.DataProvider;
@@ -18,7 +15,7 @@ public class ApplicationMockedTest {
     private static final Duration runTime = Duration.ofMillis(1);
     private static final Duration mockedRunTime = Duration.ofMillis(0);
 
-    private final World world = new ChaoticWorld();
+    private static final World world = DemoScenarios.getPlatonicWorld();
 
     @DataProvider(name = "applications")
     public static Object[][] primeNumbers() {

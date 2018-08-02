@@ -33,7 +33,7 @@ public class InstanceGroupMockTimes implements InstanceGroup {
 
     public InstanceGroupMockTimes() {
 
-        final World world = new ChaoticWorld();
+        final World world = DemoScenarios.getWorld();
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         this.network = new Network(componentRunTimes.getNetwork());
         Network mockedNetwork = new Network(mockRunTime);

@@ -2,6 +2,7 @@ package com.billding.bad_versions;
 
 import com.billding.meta.ChaoticWorld;
 import com.billding.meta.ComponentRunTimes;
+import com.billding.meta.DemoScenarios;
 import com.billding.meta.World;
 import com.billding.tttt.Logic;
 import com.billding.tttt.Mapper;
@@ -27,7 +28,7 @@ public final class StaticLogic {
     public static Logic staticInstance() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
-        final World world = new ChaoticWorld();
+        final World world = DemoScenarios.getWorld();
         return new Logic(world,
                 new Mapper(
                         new Database(
