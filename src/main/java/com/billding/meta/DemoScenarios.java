@@ -23,4 +23,16 @@ class DemoScenarios {
         new CodeBase(
             propertyRetriever.getString("codebase")
         );
+
+    private static final World getWorld() {
+        String worldType = propertyRetriever.getString("world");
+        switch (worldType) {
+            case "chaotic":
+                return new ChaoticWorld();
+            case "platonic":
+                throw new RuntimeException("Haven't created platonic world yet.");
+            default:
+                throw new IllegalArgumentException("Not a valid world type");
+        }
+    }
 }
