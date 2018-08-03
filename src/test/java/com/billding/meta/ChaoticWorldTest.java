@@ -27,7 +27,7 @@ public class ChaoticWorldTest {
         World.getWorld("chaotic");
     }
 
-    @Test(expectedExceptions = RuntimeException.class)
+    @Test
     public void getWorld_platonic() {
         World.getWorld("platonic");
     }
