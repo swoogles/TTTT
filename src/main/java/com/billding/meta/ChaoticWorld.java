@@ -35,13 +35,12 @@ public class ChaoticWorld implements World {
 
     @Override
     public void do2AssertionsThatNeededToHappenInTheSameMinute(Duration runTimeOfOperationsInBetween) {
-        /* TODO Reinstate when appropriate
-        int millisecondsAnAnHour = 60 * 1000;
-        int possibleOutComes  = millisecondsAnAnHour;
-        if( Math.abs(random.nextInt()) % possibleOutComes < runTimeOfOperationsInBetween) {
-            throw new RuntimeException("Happened at the worst millisecond in the whole hour");
+        int millisecondsInAMinute = 60 * 1000;
+        int possibleOutComes  = millisecondsInAMinute;
+        // TODO Check this math
+        if( Math.abs(random.nextInt()) % possibleOutComes < runTimeOfOperationsInBetween.toMillis()) {
+            throw new RuntimeException("Happened at the worst millisecond in the whole minute");
         }
-        */
     }
 
 }

@@ -22,7 +22,7 @@ public interface World {
             case "chaotic":
                 return new ChaoticWorld();
             case "platonic":
-                throw new RuntimeException("Haven't created platonic world yet.");
+                return new PlatonicWorld();
             default:
                 throw new IllegalArgumentException("Not a valid world type");
         }
