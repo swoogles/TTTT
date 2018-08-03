@@ -36,4 +36,11 @@ public class ChaoticWorldTest {
     public void getWorld_invalid() {
         World.getWorld("invalid");
     }
+
+    @Test(expectedExceptions = RuntimeException.class)
+    public void forceAssertionFailure() {
+        World chaotic = World.getWorld("chaotic");
+        chaotic.do2AssertionsThatNeededToHappenInTheSameMinute(Duration.ofHours(1));
+
+    }
 }

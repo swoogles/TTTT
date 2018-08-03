@@ -38,7 +38,7 @@ public class ChaoticWorld implements World {
         int millisecondsInAMinute = 60 * 1000;
         int possibleOutComes  = millisecondsInAMinute;
         // TODO Check this math
-        if( Math.abs(random.nextInt()) % possibleOutComes < runTimeOfOperationsInBetween.toMillis()) {
+        if( random.nextInt(Integer.MAX_VALUE) % possibleOutComes < runTimeOfOperationsInBetween.toMillis()) {
             throw new RuntimeException("Happened at the worst millisecond in the whole minute");
         }
     }
