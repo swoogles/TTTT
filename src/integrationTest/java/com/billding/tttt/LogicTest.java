@@ -6,6 +6,8 @@ import com.billding.tttt.external_services.Network;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 
 public class LogicTest {
@@ -35,6 +37,7 @@ public class LogicTest {
 
     @Test(dataProvider = "logic")
     public void test_specific(String developer, Logic logic) {
-        executeWithRunTime(logic);
+        Duration duration = executeWithRunTime(logic);
+        world.do2AssertionsThatNeededToHappenInTheSameMinute(duration);
     }
 }
