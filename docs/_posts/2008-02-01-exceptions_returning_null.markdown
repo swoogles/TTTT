@@ -1,6 +1,6 @@
 ---
 layout: slide
-title:  "Catching Exceptions and Returning Null"
+title:  "Exceptions and Returning Null"
 categories: testable-types
 ---
 
@@ -18,4 +18,3 @@ public void getRecordFromDatabase(String id) {
 {% endhighlight %}
 
 * Now your test for `Logic.getFor(String id)` fails.
-    * The Logic test is the scape-goat when the problem occurred in the Mapper.
