@@ -10,6 +10,13 @@ public class DemoScenarios {
         return TEST_ENVIRONMENT;
     }
 
+    public static boolean shouldUseRealRuntimes() {
+        return useRealRuntimes;
+    }
+
+    private static final boolean useRealRuntimes =
+            propertyRetriever.getBoolean("use_real_runtimes");
+
     private static final Organization TEST_ENVIRONMENT =
         new Organization(
             propertyRetriever.getString("test_environment")
@@ -24,13 +31,13 @@ public class DemoScenarios {
             propertyRetriever.getString("codebase")
         );
 
-    public static final World getWorld() {
+    public static World getWorld() {
         String worldType = propertyRetriever.getString("world");
         return World.getWorld(worldType);
     }
 
-    public static final World getPlatonicWorld() {
-        // TODO THIS IS INCORRECT!!!!!
-        return new ChaoticWorld();
+    public static World getPlatonicWorld() {
+        return new PlatonicWorld();
     }
+
 }
