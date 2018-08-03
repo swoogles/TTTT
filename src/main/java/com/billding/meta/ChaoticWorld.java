@@ -22,11 +22,7 @@ public class ChaoticWorld implements World {
         */
     @Override
     public Instant currentTime() {
-        // TODO Make % a parameter/property
         final Instant now = Instant.now();
-        // TODO Reinstate when appropriate
-//        if (now.toEpochMilli() % 1000 == 0)
-//            throw new RuntimeException("Uh oh! This happened to round at the wrong moment! Fail!");
         return now;
     }
 
