@@ -1,5 +1,6 @@
 package com.billding.tttt;
 
+import javax.naming.ConfigurationException;
 import java.time.Duration;
 import java.util.IllegalFormatException;
 import java.util.MissingResourceException;
@@ -21,9 +22,19 @@ public class PropertyRetriever {
         this.bundle = ResourceBundle.getBundle(resourceName);
     }
 
-    public boolean getBoolean(String name) {
+    public boolean getBinaryBoolean(String name) {
         try {
-            return this.bundle.getString(name).equals("true");
+            String propertyValue = this.bundle.getString(name);
+            if(propertyValue.equals("1")) {
+                return true;
+            } else if (propertyValue.equals("0")) {
+                return false;
+            } else {
+                throw new IllegalArgumentException(
+                        "Unrecogized boolean value. \n"
+                        + "Provided: " + propertyValue + "\n"
+                        + "Required: 0 or 1" );
+            }
         } catch (MissingResourceException ex) {
             // TODO Put this error handling in string method and/or unify with duration error reporting
             throw new RuntimeException("resource file: " + bundle.getBaseBundleName() + "  key: " + name, ex);

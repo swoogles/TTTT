@@ -8,6 +8,6 @@ public class PropertyRetrieverTest {
     @Test
     public void test_simple() {
         PropertyRetriever propertyRetriever = new PropertyRetriever("service_status");
-        assertTrue(propertyRetriever.getBoolean("database"));
+        assertTrue(propertyRetriever.getBinaryBoolean("database"));
     }
 }

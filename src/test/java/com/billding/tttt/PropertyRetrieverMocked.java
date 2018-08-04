@@ -13,12 +13,12 @@ public class PropertyRetrieverMocked {
 
     @Test
     public void test_getBoolean_true() {
-        assertTrue(propertyRetriever.getBoolean("true_boolean"));
+        assertTrue(propertyRetriever.getBinaryBoolean("true_boolean"));
     }
 
     @Test
     public void test_getBoolean_false() {
-        assertFalse(propertyRetriever.getBoolean("false_boolean"));
+        assertFalse(propertyRetriever.getBinaryBoolean("false_boolean"));
     }
 
     @Test

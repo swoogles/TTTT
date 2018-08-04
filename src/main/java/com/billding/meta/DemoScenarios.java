@@ -15,7 +15,7 @@ public class DemoScenarios {
     }
 
     private static final boolean useRealRuntimes =
-            propertyRetriever.getBoolean("use_real_runtimes");
+            propertyRetriever.getBinaryBoolean("use_real_runtimes");
 
     private static final Organization TEST_ENVIRONMENT =
         new Organization(
