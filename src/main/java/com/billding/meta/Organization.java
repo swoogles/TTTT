@@ -23,8 +23,6 @@ public final class Organization {
         final PropertyRetriever propertyRetriever = new PropertyRetriever("test_environments/" + propertyFileName);
         this.developers = parseDevelopers(propertyRetriever.getString("developers"));
         this.numberOfDevelopers = developers.size();
-        int numberOfHours = propertyRetriever.getInt("hours_in_work_day");
-        int runsPerDeveloperPerHour = propertyRetriever.getInt("runs_per_developer_per_hour");
     }
 
     private final Random random = new Random();
