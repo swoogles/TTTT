@@ -20,7 +20,7 @@ public class PropertyRetrieverMocked {
         assertFalse(propertyRetriever.getBinaryBoolean("false_boolean"));
     }
 
-    @Test
+    @Test(expectedExceptions = IllegalArgumentException.class)
     public void test_getBoolean_invalid() {
         assertFalse(propertyRetriever.getBinaryBoolean("invalid_boolean"));
     }
