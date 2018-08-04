@@ -26,6 +26,7 @@ public class TestSuiteCalculatorIntegrationTest {
 
     @DataProvider(name = "scenarios")
     public static Object[][] logicInstances() {
+        // This is absolutely RIPE for some decomposing.
         Stream<Object[]> scenarios = Stream.of(
                 "solo_project", "startup", "midsized")
                 .map(Organization::new)
