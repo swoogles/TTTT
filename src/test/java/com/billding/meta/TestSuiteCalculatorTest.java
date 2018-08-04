@@ -18,14 +18,14 @@ public class TestSuiteCalculatorTest {
         InstanceGroup instanceGroup = new InstanceGroupRealTimes();
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(organization, codeBase, testingPeriod, instanceGroup);
         assertEquals(testSuiteCalculator.totalTestRunTime(), Duration.ofSeconds(4).plusMillis(70));
-        assertEquals(testSuiteCalculator.runTimeDuringWindow(), Duration.ofMinutes(37).plusSeconds(59).plusMillis(200));
+        assertEquals(testSuiteCalculator.runTimeDuringWindow(), Duration.ofSeconds(4).plusMillis(70));
     }
 
     @Test
     public void test_totalTestRunTime_maximum() {
         Organization organization = new Organization("midsized");
         CodeBase codeBase = new CodeBase("established");
-        TestingPeriod testingPeriod = new TestingPeriod("moment");
+        TestingPeriod testingPeriod = new TestingPeriod("long_term");
         InstanceGroup instanceGroup = new InstanceGroupRealTimes();
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(organization, codeBase, testingPeriod, instanceGroup);
         assertEquals(testSuiteCalculator.totalTestRunTime(), Duration.ofSeconds(25).plusMillis(725));
