@@ -5,7 +5,7 @@ categories: title
 ---
 
 {:.center}
-# Exciting Title Page!
+# Types of Tests and Testable Types
 
 {% include code_with_bullets.markdown notes = site.data.simple_list  %}
 

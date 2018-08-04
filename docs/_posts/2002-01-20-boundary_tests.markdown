@@ -3,8 +3,6 @@ layout: slide
 title:  "Boundary Tests"
 categories: types-of-tests
 ---
-* Depends on exactly 1 live external implementations
+* Focused testing of one external service
 * Necessary to see what happens when the rubber meets the road
-* For example:
-    * Data layer
-    * REST API Client
+* Data layer, REST API Client, etc

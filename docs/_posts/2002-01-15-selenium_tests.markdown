@@ -5,10 +5,6 @@ categories: types-of-tests
 ---
 
 * Most complicated to setup
-* Depends on many things:
-    * All implementations for the entire application
-    * running server
-    * WebDriver
-    * Browser
+* Requires *all* implementations for the entire application
 * Slow enough you can watch them happen in real time!
-* Necessary because JSPs cannot be compiled/executed in isolation.
+* Still Necessary
