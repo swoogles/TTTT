@@ -9,6 +9,10 @@ import java.time.Duration;
  * how many tests would be run in that circumstance.
  *
  * Note- Doesn't include any overhead factor for the tests themselves
+ *
+ * **************************************
+ * This will be where I spend the last 1/4-1/3 of the Types of Test presentation
+ * **************************************
  */
 public class TestSuiteCalculator {
     private final Organization organization;
