@@ -51,10 +51,6 @@ public final class Organization {
         return Arrays.asList(split);
     }
 
-    public Period getTimeWindow() {
-        return timeWindow;
-    }
-
     public int getNumberOfTimesTestWillBeRun() {
         return numberOfTimesTestWillBeRun;
     }

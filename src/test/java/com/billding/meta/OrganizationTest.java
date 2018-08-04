@@ -26,14 +26,6 @@ public class OrganizationTest {
     }
 
     @Test
-    public void getTimeWindow() {
-        assertEquals(
-            organization.getTimeWindow(),
-            Period.ofWeeks(2)
-        );
-    }
-
-    @Test
     public void getNumberOfTimesTestWillBeRun() {
         assertEquals(
                 organization.getNumberOfTimesTestWillBeRun(),
