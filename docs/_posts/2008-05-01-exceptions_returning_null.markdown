@@ -1,11 +1,8 @@
 ---
 layout: slide
-title:  "Exceptions and Returning Null"
+title:  "Exceptions Returning Null"
 categories: testable-types
 ---
-
-* By catching Exception/RuntimeException, you obscure that we've reached a fatal state
-* Is the result null, because there was no record in the Database, or because you failed to communicate with the Database at all?
 
 {% highlight java %}
 public void getRecordFromDatabase(String id) {
