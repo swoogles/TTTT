@@ -1,6 +1,5 @@
 package com.billding.bad_versions;
 
-import com.billding.meta.ChaoticWorld;
 import com.billding.meta.ComponentRunTimes;
 import com.billding.meta.DemoScenarios;
 import com.billding.meta.World;
@@ -18,7 +17,7 @@ public final class StaticLogic {
     private static final Logic instance = staticInstance();
 
     public static Duration failableAction() {
-        return instance.failableAction();
+        return instance.fallibleAction();
     }
 
     static public Duration getRunTime() {

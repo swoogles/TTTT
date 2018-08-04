@@ -27,18 +27,18 @@ public class ApplicationMockedTest {
         final ThirdPartyResource thirdPartyResource = mock(ThirdPartyResource.class);
 
 
-        // TODO This might be automatically mocking the void failableAction method
+        // TODO This might be automatically mocking the void fallibleAction method
         final UnreliableService mockSerice = mock(UnreliableService.class);
         // The hoops needed to test this class are pushing me more towards impelementing UnreliableService directly.
         when(mockSerice.getRunTime()).thenReturn(mockedRunTime);
         when(producer.getRunTime()).thenReturn(mockedRunTime);
-        when(producer.failableAction()).thenReturn(mockedRunTime);
+        when(producer.fallibleAction()).thenReturn(mockedRunTime);
         when(authService.getRunTime()).thenReturn(mockedRunTime);
-        when(authService.failableAction()).thenReturn(mockedRunTime);
+        when(authService.fallibleAction()).thenReturn(mockedRunTime);
         when(controller.getRunTime()).thenReturn(mockedRunTime);
-        when(controller.failableAction()).thenReturn(mockedRunTime);
+        when(controller.fallibleAction()).thenReturn(mockedRunTime);
         when(thirdPartyResource.getRunTime()).thenReturn(mockedRunTime);
-        when(thirdPartyResource.failableAction()).thenReturn(mockedRunTime);
+        when(thirdPartyResource.fallibleAction()).thenReturn(mockedRunTime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
@@ -57,8 +57,8 @@ public class ApplicationMockedTest {
 
     @Test(dataProvider = "applications")
     public void test_simple(String developer, Application application) {
-        Duration runTimeOfOperationsInBetween = application.failableAction();
-        application.failableAction();
+        Duration runTimeOfOperationsInBetween = application.fallibleAction();
+        application.fallibleAction();
 //        assertEquals(runTimeOfOperationsInBetween, 10);
         world.do2AssertionsThatNeededToHappenInTheSameMinute(runTimeOfOperationsInBetween);
     }

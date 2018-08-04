@@ -24,5 +24,5 @@ public interface UnreliableService {
      *
      * @return Time taken to perform action
      */
-    Duration failableAction();
+    Duration fallibleAction();
 }

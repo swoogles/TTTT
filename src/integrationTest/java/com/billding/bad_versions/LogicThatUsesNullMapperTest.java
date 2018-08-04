@@ -26,6 +26,6 @@ public class LogicThatUsesNullMapperTest {
             ),
             componentRunTimes.getLogic()
         );
-        logic.failableAction();
+        logic.fallibleAction();
     }
 }

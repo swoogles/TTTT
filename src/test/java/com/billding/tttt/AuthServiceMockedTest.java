@@ -19,12 +19,12 @@ public class AuthServiceMockedTest {
         );
 
     public AuthServiceMockedTest() {
-        when(mockIntraNet.failableAction()).thenReturn(mockedRunTime);
+        when(mockIntraNet.fallibleAction()).thenReturn(mockedRunTime);
         when(mockIntraNet.getRunTime()).thenReturn(mockedRunTime);
     }
 
     @Test
     public void test_simple() {
-        assertEquals(runTime, this.authService.failableAction());
+        assertEquals(runTime, this.authService.fallibleAction());
     }
 }

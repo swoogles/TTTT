@@ -27,7 +27,7 @@ public class StaticControllerMockedTest extends PowerMockTestCase {
 //        PowerMockito.mockStaticPartial(Mocked.class, "methodToBeMocked");
 
         Mockito.when(StaticLogic.facilityLevelOperation()).thenReturn(mockedRunTime);
-        Mockito.when(StaticLogic.failableAction()).thenReturn(mockedRunTime);
+        Mockito.when(StaticLogic.fallibleAction()).thenReturn(mockedRunTime);
         Mockito.when(StaticLogic.getRunTime()).thenReturn(mockedRunTime);
 
         return testInstanceCreator.createInstances(
@@ -46,7 +46,7 @@ public class StaticControllerMockedTest extends PowerMockTestCase {
             controller.getRunTime(),
                 runTime
         );
-        controller.failableAction();
+        controller.fallibleAction();
     }
     */
 
@@ -62,7 +62,7 @@ public class StaticControllerMockedTest extends PowerMockTestCase {
     public void noData() {
         StaticController staticController = new StaticController();
         staticController.facilityLevelOperation();
-        staticController.failableAction();
+        staticController.fallibleAction();
         assertNotNull(
                 staticController.getRunTime()
         );

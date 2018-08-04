@@ -26,7 +26,7 @@ public class FieldInjectedLogic {
     public Duration failableAction() {
         this.world.currentTime();
         return Stream.of(mapper)
-                .map(UnreliableService::failableAction)
+                .map(UnreliableService::fallibleAction)
                 .reduce(this.runtime, Duration::plus);
     }
 

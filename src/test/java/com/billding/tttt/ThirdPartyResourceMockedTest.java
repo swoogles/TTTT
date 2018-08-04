@@ -22,7 +22,7 @@ public class ThirdPartyResourceMockedTest {
     @DataProvider(name = "thirdPartyResources")
     public static Object[][] primeNumbers() {
         final Network network = mock(Network.class);
-        when(network.failableAction()).thenReturn(mockedRunTime);
+        when(network.fallibleAction()).thenReturn(mockedRunTime);
         when(network.getRunTime()).thenReturn(mockedRunTime);
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
@@ -35,11 +35,11 @@ public class ThirdPartyResourceMockedTest {
     @Test(dataProvider = "thirdPartyResources")
     public void test_simple(String developer, ThirdPartyResource thirdPartyResource) {
         assertEquals(
-            thirdPartyResource.failableAction(),
+            thirdPartyResource.fallibleAction(),
                 runTime
         );
         assertEquals(
-            thirdPartyResource.failableAction(),
+            thirdPartyResource.fallibleAction(),
                 runTime
         );
     }

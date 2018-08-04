@@ -14,7 +14,7 @@ import java.time.Duration;
 public class StaticController extends AbstractUnreliableService {
 
     public Duration facilityLevelOperation() {
-        return this.failableAction();
+        return this.fallibleAction();
     }
 
     public StaticController() {

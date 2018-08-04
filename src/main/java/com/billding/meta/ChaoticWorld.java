@@ -30,11 +30,11 @@ public class ChaoticWorld implements World {
     private final Random random = new Random();
 
     @Override
-    public void do2AssertionsThatNeededToHappenInTheSameMinute(Duration runTimeOfOperationsInBetween) {
+    public void do2AssertionsThatNeededToHappenInTheSameMinute(Duration runTimeOf) {
         int millisecondsInAMinute = 60 * 1000;
         int possibleOutComes  = millisecondsInAMinute;
         // TODO Check this math
-        if( random.nextInt(Integer.MAX_VALUE) % possibleOutComes < runTimeOfOperationsInBetween.toMillis()) {
+        if( random.nextInt(Integer.MAX_VALUE) % possibleOutComes < runTimeOf.toMillis()) {
             throw new RuntimeException("Happened at the worst millisecond in the whole minute");
         }
     }

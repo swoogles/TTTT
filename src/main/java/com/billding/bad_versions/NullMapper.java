@@ -23,7 +23,7 @@ public class NullMapper extends Mapper {
     }
 
     public Duration CRUD_query() {
-            return this.failableAction();
+            return this.fallibleAction();
     }
 
     @Override
@@ -34,11 +34,11 @@ public class NullMapper extends Mapper {
 
 
     @Override
-    public Duration failableAction() {
+    public Duration fallibleAction() {
         try {
             this.world.currentTime();
             return this.getRunTime()
-                    .plus( this.database.failableAction() );
+                    .plus( this.database.fallibleAction() );
         } catch (Exception ex) {
             return null;
         }

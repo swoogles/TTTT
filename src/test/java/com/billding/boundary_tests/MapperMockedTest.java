@@ -8,10 +8,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.time.Instant;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -40,6 +38,6 @@ public class MapperMockedTest {
 
     @Test(dataProvider = "mappers")
     public void test_specific(String developer, Mapper mapper) {
-        assertTrue(mapper.failableAction().compareTo(runTime) > 0  );
+        assertTrue(mapper.fallibleAction().compareTo(runTime) > 0  );
     }
 }

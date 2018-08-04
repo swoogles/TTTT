@@ -15,7 +15,16 @@ public interface World {
             */
     Instant currentTime();
 
-    void do2AssertionsThatNeededToHappenInTheSameMinute(Duration runTimeOfOperationsInBetween);
+    void do2AssertionsThatNeededToHappenInTheSameMinute(
+            Duration runTimeOf
+    );
+
+
+
+
+
+
+
 
     static World getWorld(String worldType) {
         switch (worldType) {

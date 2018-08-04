@@ -26,7 +26,7 @@ public class NullMapperTest {
         when(world.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
         Network network = mock(Network.class);
         when(network.getRunTime()).thenReturn(mockedRunTime);
-        when(network.failableAction()).thenReturn(mockedRunTime);
+        when(network.fallibleAction()).thenReturn(mockedRunTime);
 
 
         Database database = new Database(
@@ -58,7 +58,7 @@ public class NullMapperTest {
         when(world.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
         Network network = mock(Network.class);
         when(network.getRunTime()).thenReturn(mockedRunTime);
-        when(network.failableAction()).thenThrow(new RuntimeException("Forced failure for code coverage"));
+        when(network.fallibleAction()).thenThrow(new RuntimeException("Forced failure for code coverage"));
 
 
         Database database = new Database(
@@ -70,6 +70,6 @@ public class NullMapperTest {
                 world,
                 runTime
         );
-        mapper.failableAction();
+        mapper.fallibleAction();
     }
 }

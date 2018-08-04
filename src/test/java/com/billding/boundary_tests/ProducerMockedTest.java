@@ -25,10 +25,12 @@ public class ProducerMockedTest {
     public static Object[][] testData() {
         // TODO USE THIS instead of a mocked world.
 //        final World world = DemoScenarios.getPlatonicWorld();
+
         final World world = mock(ChaoticWorld.class);
         when(world.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
+        // TODO use real cluster
         final KafkaCluster kafkaCluster = mock(KafkaCluster.class);
-        when(kafkaCluster.failableAction()).thenReturn(mockedRunTime);
+        when(kafkaCluster.fallibleAction()).thenReturn(mockedRunTime);
         when(kafkaCluster.getRunTime()).thenReturn(mockedRunTime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
@@ -46,6 +48,7 @@ public class ProducerMockedTest {
 
     @Test(dataProvider = "mappers")
     public void test_specific(String developer, Producer producer) {
-        assertEquals(runTime, producer.failableAction());
+        assertEquals(runTime, producer.fallibleAction());
+//        throw new RuntimeException("You haven't implented this yet.");
     }
 }

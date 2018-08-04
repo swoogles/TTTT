@@ -38,14 +38,14 @@ public abstract class AbstractUnreliableService implements UnreliableService {
 
 
     @Override
-    public Duration failableAction() {
+    public Duration fallibleAction() {
         // TODO reinstate this?
 //        this.chaoticWorld.currentTime();
         this.requiredService.ifPresent(ServiceStatus::ensureServiceIsRunning);
         return this.services.stream()
-                .map(UnreliableService::failableAction)
+                .map(UnreliableService::fallibleAction)
                 // TODO I thought should be using this instead, but I think I'm wrong now.
-//                .reduce(this.failableAction(), Duration::plus);
+//                .reduce(this.fallibleAction(), Duration::plus);
                 .reduce(this.runtime, Duration::plus);
     }
 }

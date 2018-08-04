@@ -32,7 +32,7 @@ public class FieldInjectedLogicTest {
 
     @Test
     public void simple() {
-        when(mapper.failableAction()).thenReturn(Duration.ofMillis(10));
+        when(mapper.fallibleAction()).thenReturn(Duration.ofMillis(10));
         // Now if we forget this line, we get a runtime exception, rather than a compile error
         // Probably comment this out initially for the demo.
         fieldInjectedLogic.setRuntime(Duration.ofMillis(10));

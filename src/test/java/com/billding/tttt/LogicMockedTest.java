@@ -18,18 +18,18 @@ public class LogicMockedTest {
     @Test
     public void test_simple() {
         Mapper mapper = mock(Mapper.class);
-        when(mapper.failableAction()).thenReturn(mockedRunTime);
+        when(mapper.fallibleAction()).thenReturn(mockedRunTime);
         when(mapper.getRunTime()).thenReturn(mockedRunTime);
         final Logic logic = new Logic(
                 world,
             mapper,
                 runTime
         );
-        final Duration result = logic.failableAction();
+        final Duration result = logic.fallibleAction();
         assertEquals(result, runTime.plus(mockedRunTime));
 
         assertEquals(
-            logic.failableAction(),
+            logic.fallibleAction(),
             runTime.plus(mockedRunTime)
         );
     }

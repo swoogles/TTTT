@@ -22,7 +22,7 @@ public class ControllerMockedTest {
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         final Logic logicMock = mock(Logic.class);
-        when (logicMock.failableAction()).thenReturn(mockedRunTime);
+        when (logicMock.fallibleAction()).thenReturn(mockedRunTime);
         when (logicMock.getRunTime()).thenReturn(mockedRunTime);
 
         return testInstanceCreator.createInstances(
@@ -37,7 +37,7 @@ public class ControllerMockedTest {
     public void test_simple(String developer, Controller controller) {
 
         assertEquals(
-        controller.failableAction(),
+        controller.fallibleAction(),
                 runTime
         );
         assertEquals(

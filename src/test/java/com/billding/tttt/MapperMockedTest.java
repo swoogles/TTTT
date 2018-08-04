@@ -24,7 +24,7 @@ public class MapperMockedTest {
         final World world = mock(ChaoticWorld.class);
         when(world.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
         final Database database = mock(Database.class);
-        when(database.failableAction()).thenReturn(mockedRunTime);
+        when(database.fallibleAction()).thenReturn(mockedRunTime);
         when(database.getRunTime()).thenReturn(mockedRunTime);
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
@@ -41,6 +41,6 @@ public class MapperMockedTest {
 
     @Test(dataProvider = "mappers")
     public void test_specific(String developer, Mapper mapper) {
-        assertEquals(runTime, mapper.failableAction());
+        assertEquals(runTime, mapper.fallibleAction());
     }
 }
