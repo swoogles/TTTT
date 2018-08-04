@@ -26,15 +26,6 @@ public class OrganizationTest {
     }
 
     @Test
-    public void getNumberOfTimesTestWillBeRun() {
-        assertEquals(
-                organization.getNumberOfTimesTestWillBeRun(),
-                560
-        );
-    }
-
-
-    @Test
     public void getName() {
         assertEquals(
                 organization.getName(),

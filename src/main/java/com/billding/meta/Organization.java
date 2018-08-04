@@ -2,7 +2,6 @@ package com.billding.meta;
 
 import com.billding.tttt.PropertyRetriever;
 
-import java.time.Period;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -12,14 +11,11 @@ public final class Organization {
     private final String name;
     private final List<String> developers;
 
-    private final Period timeWindow;
-
     public int getNumberOfDevelopers() {
         return numberOfDevelopers;
     }
 
     private final int numberOfDevelopers;
-    private final int numberOfTimesTestWillBeRun;
 
     public Organization(String propertyFileName) {
         this.name = propertyFileName;
@@ -29,15 +25,6 @@ public final class Organization {
         this.numberOfDevelopers = developers.size();
         int numberOfHours = propertyRetriever.getInt("hours_in_work_day");
         int runsPerDeveloperPerHour = propertyRetriever.getInt("runs_per_developer_per_hour");
-        this.timeWindow = Period.parse(
-            propertyRetriever.getString("time_window")
-
-        );
-        int monthDays = (int) this.timeWindow.toTotalMonths() * 30;
-        int days = this.timeWindow.getDays();
-        this.numberOfTimesTestWillBeRun =
-                // TODO Improve super janky day calculation
-                runsPerDeveloperPerHour * numberOfHours * numberOfDevelopers * (days + monthDays);
     }
 
     private final Random random = new Random();
@@ -49,10 +36,6 @@ public final class Organization {
     private List<String> parseDevelopers(String csvList) {
         final String[] split = csvList.split(",");
         return Arrays.asList(split);
-    }
-
-    public int getNumberOfTimesTestWillBeRun() {
-        return numberOfTimesTestWillBeRun;
     }
 
     public String getName() {

@@ -18,11 +18,17 @@ public class TestSuiteCalculator {
     private final Organization organization;
     private final CodeBase codeBase;
     private final InstanceGroup instanceGroup;
+    private final CumulativeTestResults cumulativeTestResults;
 
-    public TestSuiteCalculator(Organization organization, CodeBase codeBase, InstanceGroup instanceGroup) {
+    public TestSuiteCalculator(
+            Organization organization,
+            CodeBase codeBase,
+            TestingPeriod testingPeriod,
+            InstanceGroup instanceGroup) {
         this.organization = organization;
         this.codeBase = codeBase;
         this.instanceGroup = instanceGroup;
+        this.cumulativeTestResults = new CumulativeTestResults(testingPeriod, organization);
     }
 
     private Duration runTimeFor(UnreliableService service, int testCount) {
@@ -43,6 +49,6 @@ public class TestSuiteCalculator {
 
     public Duration runTimeDuringWindow() {
         return totalTestRunTime()
-                .multipliedBy(this.organization.getNumberOfTimesTestWillBeRun());
+                .multipliedBy(this.cumulativeTestResults.getNumberOfTimesTestWillBeRun());
     }
 }

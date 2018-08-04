@@ -37,7 +37,7 @@ public class TestSuiteCalculatorIntegrationTest {
                                         return Stream.of(
                                                 new InstanceGroupMockTimes(),
                                                 new InstanceGroupRealTimes()
-                                        ).map(instanceGroup -> new Object[]{environment, codeBase, instanceGroup});
+                                        ).map(instanceGroup -> new Object[]{environment, codeBase, new TestingPeriod("moment"), instanceGroup});
 
                                     });
                         }
@@ -50,10 +50,11 @@ public class TestSuiteCalculatorIntegrationTest {
 
 
     @Test(dataProvider = "scenarios")
-    public void test_scenarios_mocked(Organization organization, CodeBase codeBase, InstanceGroup instanceGroup) throws Exception {
+    public void test_scenarios_mocked(Organization organization, CodeBase codeBase, TestingPeriod testingPeriod, InstanceGroup instanceGroup) throws Exception {
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(
                 organization,
                 codeBase,
+                testingPeriod,
                 instanceGroup
         );
         // This isn't factoring in environment AT ALL. Only codebases and the instances.

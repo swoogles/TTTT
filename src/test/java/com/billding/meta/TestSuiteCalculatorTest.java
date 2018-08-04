@@ -14,8 +14,9 @@ public class TestSuiteCalculatorTest {
     public void test_totalTestRunTime() {
         Organization organization = new Organization("solo_project");
         CodeBase codeBase = new CodeBase("minimal");
+        TestingPeriod testingPeriod = new TestingPeriod("moment");
         InstanceGroup instanceGroup = new InstanceGroupRealTimes();
-        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(organization, codeBase, instanceGroup);
+        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(organization, codeBase, testingPeriod, instanceGroup);
         assertEquals(testSuiteCalculator.totalTestRunTime(), Duration.ofSeconds(4).plusMillis(70));
         assertEquals(testSuiteCalculator.runTimeDuringWindow(), Duration.ofMinutes(37).plusSeconds(59).plusMillis(200));
     }
@@ -24,8 +25,9 @@ public class TestSuiteCalculatorTest {
     public void test_totalTestRunTime_maximum() {
         Organization organization = new Organization("midsized");
         CodeBase codeBase = new CodeBase("established");
+        TestingPeriod testingPeriod = new TestingPeriod("moment");
         InstanceGroup instanceGroup = new InstanceGroupRealTimes();
-        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(organization, codeBase, instanceGroup);
+        TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(organization, codeBase, testingPeriod, instanceGroup);
         assertEquals(testSuiteCalculator.totalTestRunTime(), Duration.ofSeconds(25).plusMillis(725));
         assertEquals(testSuiteCalculator.runTimeDuringWindow(), Duration.ofHours(2160).plusMinutes(54));
     }
