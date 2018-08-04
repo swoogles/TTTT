@@ -13,13 +13,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 // TODO These are important examples. Make sure to highlight them in presentation.
+// Some of these tests should be true functions in the codebase.
 public class TestSuiteCalculatorIntegrationTest {
     private final Path outputFile;
 
     public TestSuiteCalculatorIntegrationTest() throws IOException {
-        System.out.println(Paths.get(".").toAbsolutePath());
-        System.out.println("|organization | codebase | instances | runtime |");
-        System.out.println("|-------|--------|---------|--------|\n");
         this.outputFile = Paths.get("./docs/_data/first.csv");
         Files.delete(this.outputFile);
         String columnNames = "organization,codebase,instances,runtime\n";
@@ -78,14 +76,6 @@ public class TestSuiteCalculatorIntegrationTest {
         ).collect(Collectors.joining(",")) + "\n";
 
         Files.write(outputFile, line.getBytes("UTF8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-
-        System.out.println(
-                "| " + organization.getName()
-                        + " | " + codeBase.getName()
-                        + " | " + instanceGroup.getName()
-                        + " | "  + formattedDuration
-                + " |"
-        );
     }
 
 }
