@@ -21,6 +21,12 @@ public class PropertyRetrieverMocked {
     }
 
     @Test
+    public void test_getBoolean_invalid() {
+        assertFalse(propertyRetriever.getBinaryBoolean("invalid_boolean"));
+    }
+
+
+    @Test
     public void test_getInt() {
         assertEquals(propertyRetriever.getInt("int"), 7);
     }

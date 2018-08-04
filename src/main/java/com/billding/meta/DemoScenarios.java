@@ -43,15 +43,9 @@ public class DemoScenarios {
     }
 
     public static int getNumberOfTimesTestWillBeRun() {
-        Period timeWindow = Period.parse(
-                propertyRetriever.getString("time_window")
-
-        );
-        int monthDays = (int) timeWindow.toTotalMonths() * 30;
-        int days = timeWindow.getDays();
-        // TODO Improve super janky day calculation
-        int numberOfHours = propertyRetriever.getInt("hours_in_work_day");
-        int runsPerDeveloperPerHour = propertyRetriever.getInt("runs_per_developer_per_hour");
-        return runsPerDeveloperPerHour * numberOfHours * getTestEnvironment().getNumberOfDevelopers() * (days + monthDays);
+        String testingPeriod = propertyRetriever.getString("testing_period");
+        CumulativeTestResults cumulativeTestResults =
+                new CumulativeTestResults(new TestingPeriod(testingPeriod), getTestEnvironment());
+        return cumulativeTestResults.getNumberOfTimesTestWillBeRun();
     }
 }

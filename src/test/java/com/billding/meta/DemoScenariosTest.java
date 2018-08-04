@@ -20,5 +20,8 @@ public class DemoScenariosTest {
         assertFalse(
                 DemoScenarios.shouldUseRealRuntimes()
         );
+        assertTrue(
+                DemoScenarios.getNumberOfTimesTestWillBeRun() > 0
+        );
     }
 }
