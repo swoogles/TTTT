@@ -1,6 +1,7 @@
 ---
 layout: slide
 title:  "Priming Page"
+paginate: true
 categories: priming
 ---
 
