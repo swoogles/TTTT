@@ -7,12 +7,4 @@ categories: title
 {:.center}
 # Types of Tests and Testable Types
 
-{% include code_with_bullets.markdown notes = site.data.simple_list  %}
-
-|organization | codebase | instances | runtime |
-|-------|--------|---------|--------|
-{% for dataLine in site.data.first -%}
-| {{ dataLine.organization}} | {{ dataLine.codebase}} | {{ dataLine.instances}} | {{ dataLine.runtime}} |
-{% endfor %}
-
 
