@@ -6,3 +6,11 @@ baseurl: /TTTT
 url: https://swoogles.github.io
 
 
+collections:
+  demos:
+    output: true
+    permalink: /demos/:path/
+
+paginate_content:
+  debug: true
+  collections: pages, posts, demos, drafts

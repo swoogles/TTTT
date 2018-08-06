@@ -127,6 +127,8 @@ GEM
     jekyll-optional-front-matter (0.3.0)
       jekyll (~> 3.0)
     jekyll-paginate (1.1.0)
+    jekyll-paginate-content (1.1.0)
+      jekyll (~> 3.0)
     jekyll-readme-index (0.2.0)
       jekyll (~> 3.0)
     jekyll-redirect-from (0.14.0)
@@ -245,6 +247,7 @@ DEPENDENCIES
   github-pages
   jekyll (~> 3.7.3)
   jekyll-feed (~> 0.10.0)
+  jekyll-paginate-content
   minima (~> 2.0)
   tzinfo-data
 
