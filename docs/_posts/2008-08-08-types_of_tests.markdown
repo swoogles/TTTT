@@ -1,7 +1,7 @@
 ---
 layout: slide
 title:  "ManyStages Live"
-categories: live-demo
+categories: presentations
 paginate: true
 paginate_content:
   separator: h2
