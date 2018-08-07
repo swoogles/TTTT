@@ -181,10 +181,12 @@ We want tests that are
 ![Code Coverage]({{ "/assets/images/coverage/06.png" | absolute_url }}){:class="img-responsive"}
 
 # Code Coverage
-
-|   Unit    |  Integration  |       End-to-End      | Boundary |
-|  -------  |   --------    |       ---------       | -------- |
-| Additive  | Combinatorial |   max(Combinatorial)  | Additive |
+|   Test Type   |   Coverage            |
+|  -------      |   --------            |
+| Unit          |    Additive           |
+| Integration   |  Combinatorial        |
+| End-to-End    | max(Combinatorial)    |
+| Boundary      |   Additive            |
 
 # Live Demo Explanation
 * What I've made
