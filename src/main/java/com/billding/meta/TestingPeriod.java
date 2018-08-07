@@ -9,7 +9,6 @@ public class TestingPeriod {
     private final int funkyDaysNumber;
 
     public TestingPeriod(String resourceName) {
-        System.out.println("doing stuff");
         PropertyRetriever propertyRetriever = new PropertyRetriever("testing_periods/" + resourceName);
         Period timeWindow = Period.parse(
                 propertyRetriever.getString("time_window")

@@ -9,6 +9,7 @@ public class ServiceStatus {
 
     public static void ensureServiceIsRunning(String name) {
         if (propertyRetriever.getBinaryBoolean(name) == false)
-            throw new RuntimeException(name + " failed us!");
+            throw new RuntimeException("Good luck.");
+//        throw new RuntimeException(name + " failed us!");
     }
 }

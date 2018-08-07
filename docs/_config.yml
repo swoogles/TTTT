@@ -14,3 +14,9 @@ collections:
 paginate_content:
   debug: true
   collections: pages, posts, demos, drafts
+
+defaults:
+  - scope:
+      path: "assets/images"
+    values:
+      image: true
