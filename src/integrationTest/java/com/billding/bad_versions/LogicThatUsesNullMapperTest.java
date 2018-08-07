@@ -16,8 +16,7 @@ public class LogicThatUsesNullMapperTest {
     @Test
     public void test_simple() {
         final Logic logic = new Logic(
-                world,
-            new NullMapper(
+                new NullMapper(
                 new Database(
                     new Network(componentRunTimes.getNetwork()),
                     componentRunTimes.getDatabase()),

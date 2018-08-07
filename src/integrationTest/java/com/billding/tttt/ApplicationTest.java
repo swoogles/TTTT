@@ -41,8 +41,7 @@ public class ApplicationTest {
                     new Controller(
                         componentRunTimes.getController(),
                        new Logic(
-                               world,
-                            new Mapper(
+                               new Mapper(
                                 new Database(network, componentRunTimes.getDatabase()),
                                     world,
                                 componentRunTimes.getMapper()

@@ -57,7 +57,6 @@ public class InstanceGroupRealTimes implements InstanceGroup {
                 componentRunTimes.getMapper()
         );
         this.logic = new Logic(
-                world,
                 mapper,
                 componentRunTimes.getLogic()
         );

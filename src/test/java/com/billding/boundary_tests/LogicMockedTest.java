@@ -23,8 +23,7 @@ public class LogicMockedTest {
         when(mapper.fallibleAction()).thenReturn(mockedRunTime);
         when(mapper.getRunTime()).thenReturn(mockedRunTime);
         final Logic logic = new Logic(
-                world,
-            mapper,
+                mapper,
                 runTime
         );
         final Duration result = logic.fallibleAction();

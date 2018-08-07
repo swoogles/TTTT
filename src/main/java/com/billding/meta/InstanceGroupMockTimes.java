@@ -87,12 +87,10 @@ public class InstanceGroupMockTimes implements InstanceGroup {
                 mockRunTime
         );
         this.logic = new Logic(
-                world,
                 mockedMapperDependency,
                 componentRunTimes.getLogic()
         );
         Logic mockedLogicDependency = new Logic(
-                world,
                 mockedMapperDependency,
                 mockRunTime
         );

@@ -28,7 +28,7 @@ public final class StaticLogic {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
         final World world = DemoScenarios.getWorld();
-        return new Logic(world,
+        return new Logic(
                 new Mapper(
                         new Database(
                                 network,

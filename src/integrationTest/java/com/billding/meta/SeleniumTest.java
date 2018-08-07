@@ -49,8 +49,7 @@ public class SeleniumTest {
             ),
             new Controller(
                 componentRunTimes.getController(), new Logic(
-                    world,
-                new Mapper(
+                    new Mapper(
                     database,
                         world,
                     componentRunTimes.getMapper()

@@ -22,8 +22,7 @@ public class LogicTest {
         return testInstanceCreator.createInstances(
                 CodeBase::getNumberOfLogicTests,
                 (idx) -> new Logic(
-                        world,
-            new Mapper(
+                        new Mapper(
                 new Database(
                     new Network(componentRunTimes.getNetwork()),
                     componentRunTimes.getDatabase()),

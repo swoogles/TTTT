@@ -15,9 +15,14 @@ public class Application extends AbstractUnreliableService {
         ThirdPartyResource github,
         Duration runTime
     ){
-        // TODO look at servicing different applications
-//        super(SERVICE_NAME_BASE + "_" + name, runTime, producer, authService, controller, github);
-        super(null, runTime, producer, authService, controller, github);
+        super(
+                null,
+                runTime,
+                producer,
+                authService,
+                controller,
+                github
+        );
     }
 
 }

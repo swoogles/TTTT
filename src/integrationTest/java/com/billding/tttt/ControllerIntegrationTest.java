@@ -27,8 +27,7 @@ public class ControllerIntegrationTest {
                 new Controller(
                     componentRunTimes.getController(),
                     new Logic(
-                            world,
-                        new Mapper(
+                            new Mapper(
                             new Database(
                                 network,
                                 componentRunTimes.getDatabase()
