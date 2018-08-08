@@ -11,7 +11,7 @@ public class PlatonicWorld implements World {
     }
 
     @Override
-    public void do2AssertionsThatNeededToHappenInTheSameMinute(Duration runTimeOf) {
+    public void do2AssertionsThatNeededToHappenInTheSameMinute(Duration runTime) {
         // No need for an actual body here. Lack of failure is the important bit.
     }
 }
