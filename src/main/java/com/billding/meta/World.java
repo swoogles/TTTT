@@ -27,12 +27,11 @@ public interface World {
     Instant currentTime();
 
     static World getWorld(String worldType) {
-        switch (worldType) {
-            case "chaotic":
-                return new ChaoticWorld();
-            case "platonic":
-                return new PlatonicWorld();
-            default:
+        if ("chaotic".equals(worldType)) {
+            return new ChaoticWorld();
+        } else if ( "platonic".equals(worldType) ) {
+            return new PlatonicWorld();
+        } else {
                 throw new IllegalArgumentException("Not a valid world type");
         }
     }
