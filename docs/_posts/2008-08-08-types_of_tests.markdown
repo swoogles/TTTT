@@ -64,7 +64,7 @@ Will the logic tests you've written fail if the Database schema changes?
 
 * Requires some setup
 * Test one "neighboring" service
-* Data layer, REST API Client, etc
+* Can introduce periodic failures
 * Slower
 
 # Boundary Tests
@@ -74,24 +74,26 @@ Will the logic tests you've written fail if the Database schema changes?
 # Integration Tests - Internal
 
 * More complicated to setup
-* Depends on 1+ external implementations
-* Can introduce periodic failures
-* Slower, varies substantially by dependencies
+* Depends on multiple implementations
+* Multiple sources of periodic failures
+* Multiple slow dependencies
 
 # Integration Tests - Internal
 {:.failure_image}
 ![Integration Tests]({{ "/assets/images/03_integration_tests_internal.png" | absolute_url }}){:class="img-responsive"}
 
 # End-to-End Tests
-* Most complicated to setup
+* Maximally complicated to setup
 * Requires *all* implementations in application
-* Only tests that will confirm user expectations
+* Almost as slow as it gets
+* Will confirm user expectations
 
 # End-to-End Tests
 {:.failure_image}
 ![End-to-End Tests]({{ "/assets/images/04_end_to_end_tests.png" | absolute_url }}){:class="img-responsive"}
 
 # Selenium Tests
+* Yet more local dependencies on your environment
 * Slow enough you can watch them happen in real time!
 * Still Necessary
 
@@ -102,7 +104,7 @@ Will the logic tests you've written fail if the Database schema changes?
 
 # Integration Tests - External
 
-* Might not need entire dependency stack
+* You have no control over your dependencies
 * Human-contact with another organization
 * Is the other organization obligated to help?
 * Clean explanation of production failures
@@ -110,84 +112,6 @@ Will the logic tests you've written fail if the Database schema changes?
 # Integration Tests - External
 {:.failure_image}
 ![Integration Tests]({{ "/assets/images/06_integration_tests_external.png" | absolute_url }}){:class="img-responsive"}
-
-
-# Time-Sensitive Tests
-
-Concepts that can be painful to model:
-
-"Tomorrow"
-
-"Last year"
-
-"In the next 6 months"
-
-# Time-Sensitive Tests
-We want tests that:
-* Work today
-* Work tomorrow
-* Work after humanity has become multi-planetary
-
-
-# Time-Sensitive Tests
-{% highlight java %}
-    public void timeSensitiveTest() {
-        List<Event> lastTen =
-            eventLogic.inLast10Minutes(Instant.now());
-        // Other commands...
-        List<Event> lastOne = 
-            eventLogic.inLastMinute(Instant.now());
-            
-        assertTrue( lastTen.containsAll(lastOne) );
-    }
-{% endhighlight %}
-
-# Entire Test runs at the current Instant
-{% highlight java %}
-    public void test() {
-        Instant now = Instant.now();
-        
-        List<Event> lastTen = eventLogic.inLast10Minutes(now);
-        // ... Other commands/assertions ...
-        List<Event> lastOne = eventLogic.inLastMinute(now);
-        
-        assertTrue( lastTen.containsAll(lastOne) );
-    }
-{% endhighlight %}
-
-# Entire Test runs at a fixed Instant
-{% highlight java %}
-    Clock clock = Clock.fixed(
-                    Instant.parse("2018-08-08T00:00:00Z"),
-                    ZoneId.systemDefault());
-    void test() {
-        Instant now = clock.instant();
-        
-        List<Event> lastTen = eventLogic.inLast10Minutes(now);
-        // Other commands ...
-        List<Event> lastOne = eventLogic.inLastMinute(now);
-        
-        assertTrue( lastTen.containsAll(lastOne) );
-    }
-{% endhighlight %}
-
-# Completely Time-Insensitive Test
-{% highlight java %}
-    Clock clock = Clock.fixed(
-                    Instant.parse("2018-08-08T00:00:00Z"),
-                    ZoneId.of("America/Denver"));
-    void test() {
-        Instant now = clock.instant();
-        
-        List<Event> lastTen = eventLogic.inLast10Minutes(now);
-        // Other commands ... 
-        List<Event> lastOne = eventLogic.inLastMinute(now);
-        
-        assertTrue( lastTen.containsAll(lastOne) );
-    }
-{% endhighlight %}
-
-
 
 
 
@@ -305,6 +229,85 @@ Run unit+boundary tests
 Bump up organization and codebase
 
 {% endcomment %}
+
+# Time-Sensitive Tests
+
+Concepts that can be painful to model:
+
+"Tomorrow"
+
+"Last year"
+
+"In the next 6 months"
+
+# Time-Sensitive Tests
+We want tests that:
+* Work today
+* Work tomorrow
+* Work after humanity has become multi-planetary
+
+
+# Time-Sensitive Tests
+{% highlight java %}
+    public void timeSensitiveTest() {
+        List<Event> lastTen =
+            eventLogic.inLast10Minutes(Instant.now());
+        // Other commands...
+        List<Event> lastOne = 
+            eventLogic.inLastMinute(Instant.now());
+            
+        assertTrue( lastTen.containsAll(lastOne) );
+    }
+{% endhighlight %}
+
+# Entire Test runs at the current Instant
+{% highlight java %}
+    public void test() {
+        Instant now = Instant.now();
+        
+        List<Event> lastTen = eventLogic.inLast10Minutes(now);
+        // ... Other commands/assertions ...
+        List<Event> lastOne = eventLogic.inLastMinute(now);
+        
+        assertTrue( lastTen.containsAll(lastOne) );
+    }
+{% endhighlight %}
+
+# Entire Test runs at a fixed Instant
+{% highlight java %}
+    Clock clock = Clock.fixed(
+                    Instant.parse("2018-08-08T00:00:00Z"),
+                    ZoneId.systemDefault());
+    void test() {
+        Instant now = clock.instant();
+        
+        List<Event> lastTen = eventLogic.inLast10Minutes(now);
+        // Other commands ...
+        List<Event> lastOne = eventLogic.inLastMinute(now);
+        
+        assertTrue( lastTen.containsAll(lastOne) );
+    }
+{% endhighlight %}
+
+# Completely Time-Insensitive Test
+{% highlight java %}
+    Clock clock = Clock.fixed(
+                    Instant.parse("2018-08-08T00:00:00Z"),
+                    ZoneId.of("America/Denver"));
+    void test() {
+        Instant now = clock.instant();
+        
+        List<Event> lastTen = eventLogic.inLast10Minutes(now);
+        // Other commands ... 
+        List<Event> lastOne = eventLogic.inLastMinute(now);
+        
+        assertTrue( lastTen.containsAll(lastOne) );
+    }
+{% endhighlight %}
+
+
+
+
 
 # Sandbox
 {% include code_with_bullets.markdown notes = site.data.simple_list  %}
