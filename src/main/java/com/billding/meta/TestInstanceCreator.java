@@ -14,7 +14,7 @@ public class TestInstanceCreator {
         final CodeBase codeBase = DemoScenarios.getCodeBase();
         return IntStream.range(0, getNumberOfTests.apply(codeBase) * organization.getNumberOfDevelopers() )
             .mapToObj(idx -> new Object[]{
-                organization.getRandomDeveloper(),
+                organization.getDeveloper(idx % organization.getNumberOfDevelopers()),
                 instanceSupplier.apply(idx)
             }).toArray(size -> new Object[size][2]);
     }

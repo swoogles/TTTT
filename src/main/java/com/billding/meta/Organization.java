@@ -31,6 +31,11 @@ public final class Organization {
         return developers.get(Math.abs(random.nextInt() & Integer.MAX_VALUE) % developers.size());
     }
 
+    public String getDeveloper(int index) {
+        return this.developers.get(index);
+    }
+
+
     private List<String> parseDevelopers(String csvList) {
         final String[] split = csvList.split(",");
         return Arrays.asList(split);
