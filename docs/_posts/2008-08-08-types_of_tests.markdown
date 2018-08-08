@@ -8,11 +8,12 @@ paginate_content:
   title: ":section"
   permalink: /page:numof:max.html
 ---
-# Title
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 {:.center}
 ## Types of Tests and Testable Types
 
-
+{:.center}
+[github.com/swoogles/TTTT](github.com/swoogles/TTTT)
 
 # Why talk about this stuff?
 * Unrelated Test Failures 
@@ -130,68 +131,59 @@ We want tests that:
 
 # Time-Sensitive Tests
 {% highlight java %}
-    @Test
     public void timeSensitiveTest() {
-        List<Event> eventsInLast10Minutes =
-                eventLogic.inLast10Minutes(Instant.now());
+        List<Event> lastTen =
+            eventLogic.inLast10Minutes(Instant.now());
         // Other commands...
-        List<Event> eventsFromThisMinute =
-                eventLogic.inLastMinute(Instant.now());
-        assertTrue(
-                eventsInLast10Minutes.containsAll(
-                        eventsFromThisMinute ) );
+        List<Event> lastOne = 
+            eventLogic.inLastMinute(Instant.now());
+            
+        assertTrue( lastTen.containsAll(lastOne) );
     }
 {% endhighlight %}
 
-# Time-Sensitive Tests
+# Entire Test runs at the current Instant
 {% highlight java %}
-    @Test
-    public void timeSensitiveTest_improved() {
+    public void test() {
         Instant now = Instant.now();
-        List<Event> eventsInLast10Minutes =
-                eventLogic.inLast10Minutes(now);
+        
+        List<Event> lastTen = eventLogic.inLast10Minutes(now);
         // ... Other commands/assertions ...
-        List<Event> eventsFromThisMinute =
-                eventLogic.inLastMinute(now);
-        assertTrue(
-                eventsInLast10Minutes.containsAll(
-                        eventsFromThisMinute ) );
+        List<Event> lastOne = eventLogic.inLastMinute(now);
+        
+        assertTrue( lastTen.containsAll(lastOne) );
     }
 {% endhighlight %}
 
-# Time-Sensitive Tests
+# Entire Test runs at a fixed Instant
 {% highlight java %}
     Clock clock = Clock.fixed(
                     Instant.parse("2018-08-08T00:00:00Z"),
                     ZoneId.systemDefault());
-    @Test
-    public void timeSensitiveTest_betterStill() {
-        List<Event> eventsInLast10Minutes =
-                eventLogic.inLast10Minutes(clock.instant());
+    void test() {
+        Instant now = clock.instant();
+        
+        List<Event> lastTen = eventLogic.inLast10Minutes(now);
         // Other commands ...
-        List<Event> eventsFromThisMinute =
-                eventLogic.inLastMinute(clock.instant());
-        assertTrue(
-                eventsInLast10Minutes.containsAll(
-                        eventsFromThisMinute ) );
+        List<Event> lastOne = eventLogic.inLastMinute(now);
+        
+        assertTrue( lastTen.containsAll(lastOne) );
     }
 {% endhighlight %}
 
-# Time-Sensitive Tests
+# Completely Time-Insensitive Test
 {% highlight java %}
     Clock clock = Clock.fixed(
                     Instant.parse("2018-08-08T00:00:00Z"),
                     ZoneId.of("America/Denver"));
-    @Test
-    public void timeInsensitiveTest() {
-        List<Event> eventsInLast10Minutes =
-                eventLogic.inLast10Minutes(clock.instant());
+    void test() {
+        Instant now = clock.instant();
+        
+        List<Event> lastTen = eventLogic.inLast10Minutes(now);
         // Other commands ... 
-        List<Event> eventsFromThisMinute =
-                eventLogic.inLastMinute(clock.instant());
-        assertTrue(
-                eventsInLast10Minutes.containsAll(
-                        eventsFromThisMinute ));
+        List<Event> lastOne = eventLogic.inLastMinute(now);
+        
+        assertTrue( lastTen.containsAll(lastOne) );
     }
 {% endhighlight %}
 
