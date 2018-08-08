@@ -1,5 +1,6 @@
-package com.billding.tttt;
+package com.billding.meta;
 
+import com.billding.tttt.PropertyRetriever;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;

@@ -1,4 +1,4 @@
-package com.billding.boundary_tests;
+package com.billding.meta;
 
 import com.billding.tttt.PropertyRetriever;
 import org.testng.annotations.Test;

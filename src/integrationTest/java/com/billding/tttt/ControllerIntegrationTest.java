@@ -9,13 +9,12 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 import static com.billding.meta.SlowTestExecution.executeWithRunTime;
-import static org.testng.Assert.assertEquals;
 
 public class ControllerIntegrationTest {
     private static final World world = DemoScenarios.getWorld();
 
     @DataProvider(name = "controllers")
-    public static Object[][] primeNumbers() {
+    public static Object[][] controllers() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
 

@@ -13,8 +13,8 @@ import static com.billding.meta.SlowTestExecution.executeWithRunTime;
 public class LogicTest {
     private static final World world = DemoScenarios.getWorld();
 
-    @DataProvider(name = "logic")
-    public static Object[][] logicInstances() {
+    @DataProvider(name = "logics")
+    public static Object[][] logicstances() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
 
         TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
@@ -34,7 +34,7 @@ public class LogicTest {
         );
     }
 
-    @Test(dataProvider = "logic")
+    @Test(dataProvider = "logics")
     public void test_specific(String developer, Logic logic) {
         Duration duration = executeWithRunTime(logic);
         world.do2AssertionsThatNeededToHappenInTheSameMinute(duration);

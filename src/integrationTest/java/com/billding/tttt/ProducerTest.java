@@ -15,13 +15,13 @@ public class ProducerTest {
     private static final World world = DemoScenarios.getWorld();
 
     @DataProvider(name = "producers")
-    public static Object[][] testData() {
+    public static Object[][] producers() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            (ignored) -> 1,
+            CodeBase::getNumberOfProducerTests,
             (idx) -> new Producer(
                         new KafkaCluster(
                             new Network(componentRunTimes.getNetwork()),

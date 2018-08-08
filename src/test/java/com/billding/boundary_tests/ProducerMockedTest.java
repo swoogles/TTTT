@@ -21,8 +21,8 @@ public class ProducerMockedTest {
     private static final Duration mockedRunTime = Duration.ofMillis(0);
 
 
-    @DataProvider(name = "mappers")
-    public static Object[][] testData() {
+    @DataProvider(name = "producers")
+    public static Object[][] producers() {
         // TODO USE THIS instead of a mocked world.
 //        final World world = DemoScenarios.getPlatonicWorld();
 
@@ -46,7 +46,7 @@ public class ProducerMockedTest {
 
     }
 
-    @Test(dataProvider = "mappers")
+    @Test(dataProvider = "producers")
     public void test_specific(String developer, Producer producer) {
         assertEquals(runTime, producer.fallibleAction());
 //        throw new RuntimeException("You haven't implented this yet.");

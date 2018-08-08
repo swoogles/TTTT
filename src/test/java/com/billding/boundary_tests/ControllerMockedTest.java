@@ -17,8 +17,8 @@ public class ControllerMockedTest {
     private static final Duration runTime = Duration.ofMillis(1);
     private static final Duration mockedRunTime = Duration.ofMillis(0);
 
-    @DataProvider(name = "applications")
-    public static Object[][] primeNumbers() {
+    @DataProvider(name = "controllers")
+    public static Object[][] controllers() {
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         final Logic logicMock = mock(Logic.class);
@@ -33,7 +33,7 @@ public class ControllerMockedTest {
             ));
     }
 
-    @Test(dataProvider = "applications")
+    @Test(dataProvider = "controllers")
     public void test_simple(String developer, Controller controller) {
 
         assertEquals(

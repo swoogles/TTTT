@@ -14,14 +14,14 @@ public class ApplicationTest {
     private static final World world = DemoScenarios.getWorld();
 
     @DataProvider(name = "applications")
-    public static Object[][] primeNumbers() {
+    public static Object[][] applications() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            (ignored) -> 1,
+            CodeBase::getNumberOfApplicationTests,
             (idx) -> new Application(
                     "test_app" + idx,
                     new Producer(

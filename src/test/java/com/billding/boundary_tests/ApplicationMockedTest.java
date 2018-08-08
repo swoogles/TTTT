@@ -18,7 +18,7 @@ public class ApplicationMockedTest {
     private static final World world = DemoScenarios.getPlatonicWorld();
 
     @DataProvider(name = "applications")
-    public static Object[][] primeNumbers() {
+    public static Object[][] applications() {
         final Producer producer = mock(Producer.class);
         final AuthService authService = mock(AuthService.class);
         final Controller controller = mock(Controller.class);

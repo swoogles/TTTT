@@ -12,7 +12,7 @@ public class MapperTest {
     private static final World world = DemoScenarios.getWorld();
 
     @DataProvider(name = "mappers")
-    public static Object[][] primeNumbers() {
+    public static Object[][] mappers() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
 

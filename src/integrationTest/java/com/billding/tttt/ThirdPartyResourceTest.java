@@ -14,14 +14,14 @@ public class ThirdPartyResourceTest {
     private static final World world = DemoScenarios.getWorld();
 
     @DataProvider(name = "thirdPartyResources")
-    public static Object[][] primeNumbers() {
+    public static Object[][] thirdPartyResources() {
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
         final Network network = new Network(componentRunTimes.getNetwork());
 
         final TestInstanceCreator testInstanceCreator = new TestInstanceCreator();
 
         return testInstanceCreator.createInstances(
-            (ignored) -> 1,
+            CodeBase::getNumberOfThirdPartyResourceTests,
             (idx) -> new ThirdPartyResource("github", network, componentRunTimes.getThirdPartyResource()));
     }
 

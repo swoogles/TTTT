@@ -9,15 +9,13 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-import static org.mockito.Mockito.mock;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class MapperMockedTest {
     private static final Duration runTime = Duration.ofMillis(1);
 
     @DataProvider(name = "mappers")
-    public static Object[][] primeNumbers() {
+    public static Object[][] mappers() {
         final World world = DemoScenarios.getPlatonicWorld();
 
         final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
