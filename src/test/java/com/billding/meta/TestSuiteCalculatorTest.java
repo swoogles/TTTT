@@ -17,8 +17,8 @@ public class TestSuiteCalculatorTest {
         TestingPeriod testingPeriod = new TestingPeriod("moment");
         InstanceGroup instanceGroup = new InstanceGroupRealTimes();
         TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(organization, codeBase, testingPeriod, instanceGroup);
-        assertEquals(testSuiteCalculator.totalTestRunTime(), Duration.ofSeconds(4).plusMillis(70));
-        assertEquals(testSuiteCalculator.runTimeDuringWindow(), Duration.ofSeconds(4).plusMillis(70));
+        assertEquals(testSuiteCalculator.totalTestRunTime(), Duration.ofSeconds(0).plusMillis(740));
+        assertEquals(testSuiteCalculator.runTimeDuringWindow(), Duration.ofSeconds(0).plusMillis(740));
     }
 
     @Test

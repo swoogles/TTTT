@@ -1,11 +1,9 @@
 package com.billding.boundary_tests;
 
-import com.billding.meta.ChaoticWorld;
-import com.billding.meta.CodeBase;
-import com.billding.meta.TestInstanceCreator;
-import com.billding.meta.World;
+import com.billding.meta.*;
 import com.billding.tttt.Producer;
 import com.billding.tttt.external_services.KafkaCluster;
+import com.billding.tttt.external_services.Network;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -15,6 +13,7 @@ import java.time.Instant;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class ProducerMockedTest {
     private static final Duration runTime = Duration.ofMillis(1);
@@ -25,6 +24,7 @@ public class ProducerMockedTest {
     public static Object[][] producers() {
         // TODO USE THIS instead of a mocked world.
 //        final World world = DemoScenarios.getPlatonicWorld();
+        final ComponentRunTimes componentRunTimes = new ComponentRunTimes("runtimes");
 
         final World world = mock(ChaoticWorld.class);
         when(world.currentTime()).thenReturn(Instant.parse("1970-01-01T00:00:00Z"));
@@ -37,18 +37,19 @@ public class ProducerMockedTest {
 
         return testInstanceCreator.createInstances(
             CodeBase::getNumberOfProducerTests,
-            (idx) -> new Producer(
-                        kafkaCluster,
-                    world,
-                    runTime
-                    )
-        );
+        (idx) -> new Producer(
+                new KafkaCluster(
+                        new Network(componentRunTimes.getNetwork()),
+                        componentRunTimes.getKafkaCluster()
+                ),
+                world,
+                componentRunTimes.getProducer()
+        ));
 
     }
 
     @Test(dataProvider = "producers")
     public void test_specific(String developer, Producer producer) {
-        assertEquals(runTime, producer.fallibleAction());
-//        throw new RuntimeException("You haven't implented this yet.");
+        assertTrue(producer.fallibleAction().compareTo(runTime) > 0);
     }
 }

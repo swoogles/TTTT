@@ -247,7 +247,7 @@ We want tests that:
 | End-to-End    | max(Combinatorial)    |
 | Boundary      |   Additive            |
 
-# Live Demo Explanation
+# Live Demo
 * A generic application with fallible components
 * See how service disruptions can affect different test suits
 * Experience some intermittent failures.
@@ -309,6 +309,8 @@ Run integration tests
 Toggle a database service off
 Re-Run integration tests
 Run unit+boundary tests
+
+Bump up organization and codebase
 
 {% endcomment %}
 

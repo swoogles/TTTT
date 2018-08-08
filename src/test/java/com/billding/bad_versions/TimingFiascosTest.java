@@ -10,6 +10,7 @@ import java.util.List;
 import static org.testng.Assert.assertTrue;
 
 public class TimingFiascosTest {
+    /*
     private EventLogic eventLogic = null;
     interface Event {}
     interface EventLogic {
@@ -120,4 +121,5 @@ public class TimingFiascosTest {
                 eventsInLast10Minutes.containsAll(
                         eventsFromThisMinute ));
     }
+    */
 }
