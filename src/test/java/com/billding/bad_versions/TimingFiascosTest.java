@@ -30,18 +30,12 @@ public class TimingFiascosTest {
     public void timeSensitiveTest() {
         List<Event> eventsInLast10Minutes =
                 eventLogic.inLast10Minutes(Instant.now());
-
-        // ... Other commands/assertions ...
-
+        // Other commands...
         List<Event> eventsFromThisMinute =
                 eventLogic.inLastMinute(Instant.now());
-
         assertTrue(
                 eventsInLast10Minutes.containsAll(
-                        eventsFromThisMinute
-                )
-
-        );
+                        eventsFromThisMinute ) );
     }
 
 
@@ -60,18 +54,12 @@ public class TimingFiascosTest {
         Instant now = Instant.now();
         List<Event> eventsInLast10Minutes =
                 eventLogic.inLast10Minutes(now);
-
         // ... Other commands/assertions ...
-
         List<Event> eventsFromThisMinute =
                 eventLogic.inLastMinute(now);
-
         assertTrue(
                 eventsInLast10Minutes.containsAll(
-                        eventsFromThisMinute
-                )
-
-        );
+                        eventsFromThisMinute ) );
     }
 
 
@@ -87,27 +75,19 @@ public class TimingFiascosTest {
 
 
 
-    Clock clock =
-            Clock.fixed(
+    Clock clock = Clock.fixed(
                     Instant.parse("2018-08-08T00:00:00Z"),
                     ZoneId.systemDefault());
     @Test
     public void timeSensitiveTest_betterStill() {
-        Instant now = clock.instant();
         List<Event> eventsInLast10Minutes =
-                eventLogic.inLast10Minutes(now);
-
-        // ... Other commands/assertions ...
-
+                eventLogic.inLast10Minutes(clock.instant());
+        // Other commands ...
         List<Event> eventsFromThisMinute =
-                eventLogic.inLastMinute(now);
-
+                eventLogic.inLastMinute(clock.instant());
         assertTrue(
                 eventsInLast10Minutes.containsAll(
-                        eventsFromThisMinute
-                )
-
-        );
+                        eventsFromThisMinute ) );
     }
 
 
@@ -125,26 +105,19 @@ public class TimingFiascosTest {
 
 
 
-    Clock clock2 =
-            Clock.fixed(
-                    Instant.parse("2018-08-08T00:00:00Z"),
-                    ZoneId.of("America/Denver"));
+
+    Clock clock2 = Clock.fixed(
+            Instant.parse("2018-08-08T00:00:00Z"),
+            ZoneId.of("America/Denver"));
     @Test
     public void timeInsensitiveTest() {
-        Instant now = clock2.instant();
         List<Event> eventsInLast10Minutes =
-                eventLogic.inLast10Minutes(now);
-
-        // ... Other commands/assertions ...
-
+                eventLogic.inLast10Minutes(clock2.instant());
+        // Other commands ...
         List<Event> eventsFromThisMinute =
-                eventLogic.inLastMinute(now);
-
+                eventLogic.inLastMinute(clock2.instant());
         assertTrue(
                 eventsInLast10Minutes.containsAll(
-                        eventsFromThisMinute
-                )
-
-        );
+                        eventsFromThisMinute ));
     }
 }
