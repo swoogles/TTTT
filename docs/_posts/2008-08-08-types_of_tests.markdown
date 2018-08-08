@@ -1,6 +1,6 @@
 ---
 layout: slide
-title:  "ManyStages Live"
+title:  "Types of Tests"
 categories: presentations
 paginate: true
 paginate_content:
