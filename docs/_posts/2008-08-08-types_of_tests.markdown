@@ -8,16 +8,16 @@ paginate_content:
   title: ":section"
   permalink: /page:numof:max.html
 ---
-{:.center}
 # Title
+{:.center}
 ## Types of Tests and Testable Types
+
 
 
 # Why talk about this stuff?
 * Unrelated Test Failures 
 * Long, complicated test cases
 * Irreproducible failures
-* What can make *your* tests fail?
 
 {% comment %} 
 How many times has a test failed because of something *completely* unrelated to your code?
@@ -50,8 +50,8 @@ Will the logic tests you've written fail if the Database schema changes?
 
 # Unit Tests
 
-* Extremely Simple to setup
-* Do not depend on any external implementations
+* Zero setup.
+* Do not depend on any other implementations
 * No periodic failures
 * Screaming fast
 
@@ -61,9 +61,10 @@ Will the logic tests you've written fail if the Database schema changes?
 
 # Boundary Tests
 
-* Focused testing of one "neighboring" service
-* Where rubber meets the road
+* Requires some setup
+* Test one "neighboring" service
 * Data layer, REST API Client, etc
+* Slower
 
 # Boundary Tests
 {:.failure_image}
@@ -82,16 +83,12 @@ Will the logic tests you've written fail if the Database schema changes?
 
 # End-to-End Tests
 * Most complicated to setup
-* Requires *all* implementations for the entire application
+* Requires *all* implementations in application
+* Only tests that will confirm user expectations
 
-{% comment %}
-AKA "Functional Tests"
-{% endcomment %}
-
-# End-to-end Tests
+# End-to-End Tests
 {:.failure_image}
 ![End-to-End Tests]({{ "/assets/images/04_end_to_end_tests.png" | absolute_url }}){:class="img-responsive"}
-
 
 # Selenium Tests
 * Slow enough you can watch them happen in real time!
@@ -106,19 +103,15 @@ AKA "Functional Tests"
 
 * Might not need entire dependency stack
 * Human-contact with another organization
-* Is the other organization obligated to help you?
+* Is the other organization obligated to help?
 * Clean explanation of production failures
-
-{% comment %}
-Failure Points: Surprise Updates, Botched Deployment, Unpaid Bills
-{% endcomment %}
 
 # Integration Tests - External
 {:.failure_image}
 ![Integration Tests]({{ "/assets/images/06_integration_tests_external.png" | absolute_url }}){:class="img-responsive"}
 
 
-# Time-sensitive Tests
+# Time-Sensitive Tests
 
 Concepts that can be painful to model:
 
@@ -126,15 +119,81 @@ Concepts that can be painful to model:
 
 "Last year"
 
-"In the last 6 months"
+"In the next 6 months"
 
-# Time-sensitive Tests
-We want tests that are
-* Good today
-* Good tomorrow
-* Good after humanity has spread to other planets
+# Time-Sensitive Tests
+We want tests that:
+* Work today
+* Work tomorrow
+* Work after humanity has become multi-planetary
 
 
+# Time-Sensitive Tests
+{% highlight java %}
+    @Test
+    public void timeSensitiveTest() {
+        List<Event> eventsInLast10Minutes =
+                eventLogic.inLast10Minutes(Instant.now());
+        // Other commands...
+        List<Event> eventsFromThisMinute =
+                eventLogic.inLastMinute(Instant.now());
+        assertTrue(
+                eventsInLast10Minutes.containsAll(
+                        eventsFromThisMinute ) );
+    }
+{% endhighlight %}
+
+# Time-Sensitive Tests
+{% highlight java %}
+    @Test
+    public void timeSensitiveTest_improved() {
+        Instant now = Instant.now();
+        List<Event> eventsInLast10Minutes =
+                eventLogic.inLast10Minutes(now);
+        // ... Other commands/assertions ...
+        List<Event> eventsFromThisMinute =
+                eventLogic.inLastMinute(now);
+        assertTrue(
+                eventsInLast10Minutes.containsAll(
+                        eventsFromThisMinute ) );
+    }
+{% endhighlight %}
+
+# Time-Sensitive Tests
+{% highlight java %}
+    Clock clock = Clock.fixed(
+                    Instant.parse("2018-08-08T00:00:00Z"),
+                    ZoneId.systemDefault());
+    @Test
+    public void timeSensitiveTest_betterStill() {
+        List<Event> eventsInLast10Minutes =
+                eventLogic.inLast10Minutes(clock.instant());
+        // Other commands ...
+        List<Event> eventsFromThisMinute =
+                eventLogic.inLastMinute(clock.instant());
+        assertTrue(
+                eventsInLast10Minutes.containsAll(
+                        eventsFromThisMinute ) );
+    }
+{% endhighlight %}
+
+# Time-Sensitive Tests
+{% highlight java %}
+    Clock clock = Clock.fixed(
+                    Instant.parse("2018-08-08T00:00:00Z"),
+                    ZoneId.of("America/Denver"));
+    @Test
+    public void timeInsensitiveTest() {
+        List<Event> eventsInLast10Minutes =
+                eventLogic.inLast10Minutes(clock.instant());
+        // Other commands ... 
+        List<Event> eventsFromThisMinute =
+                eventLogic.inLastMinute(clock.instant());
+        assertTrue(
+                eventsInLast10Minutes.containsAll(
+                        eventsFromThisMinute ));
+    }
+{% endhighlight %}
 
 
 
@@ -153,31 +212,31 @@ We want tests that are
 
 # Code Coverage
 {:.center}
-## How should we approach full-coverage?
+## How should we achieve full coverage?
 
 
 # Code Coverage
-{:.failure_image}
+{:.full_image}
 ![Code Coverage]({{ "/assets/images/coverage/01.png" | absolute_url }}){:class="img-responsive"}
 
 # Code Coverage
-{:.failure_image}
+{:.full_image}
 ![Code Coverage]({{ "/assets/images/coverage/02.png" | absolute_url }}){:class="img-responsive"}
 
 # Code Coverage
-{:.failure_image}
+{:.full_image}
 ![Code Coverage]({{ "/assets/images/coverage/03.png" | absolute_url }}){:class="img-responsive"}
 
 # Code Coverage
-{:.failure_image}
+{:.full_image}
 ![Code Coverage]({{ "/assets/images/coverage/04.png" | absolute_url }}){:class="img-responsive"}
 
 # Code Coverage
-{:.failure_image}
+{:.full_image}
 ![Code Coverage]({{ "/assets/images/coverage/05.png" | absolute_url }}){:class="img-responsive"}
 
 # Code Coverage
-{:.failure_image}
+{:.full_image}
 ![Code Coverage]({{ "/assets/images/coverage/06.png" | absolute_url }}){:class="img-responsive"}
 
 # Code Coverage
@@ -189,24 +248,69 @@ We want tests that are
 | Boundary      |   Additive            |
 
 # Live Demo Explanation
-* What I've made
-* This will model how all the components of an application can fail
-* NOT demoing combination explosion
-* MORE WORDING HERE
+* A generic application with fallible components
+* See how service disruptions can affect different test suits
+* Experience some intermittent failures.
 
+{% comment %}
+NOT demoing combination explosion
+{% endcomment %}
 
 # Demo Concepts
-* UnreliableService
-    * Mapper, RestResource, Logic, ThirdPartyResource
+{% highlight java %}
+public class ServiceStatus {
+    public static void ensureServiceIsRunning(String name) {
+        // Check property file and throw a RuntimeException 
+        // if turned off.
+    }
+}
+{% endhighlight %}
+
+# Demo Concepts
+{% highlight java %}
+public abstract class UnreliableService {
+    private List<UnreliableService> dependencies;
+    
+    public Duration fallibleAction() {
+        ServiceStatus.ensureServiceIsRunning(serviceName);
+        this.dependencies.forEach(
+            dependency->dependency.fallibleAction
+        );
+        ...
+    }
+}
+{% endhighlight %}
+
+# Demo Concepts
+
+## UnreliableService Implementations
+
+* Mapper
+* Logic
+* RestResource
+* ThirdPartyResource
+* Application
+
+# Demo Concepts
 * TestSuiteCalculator
     * Organization
     * CodeBase
     * TestingPeriod
-* ServiceStatus
-* World
+{% comment %}
+World - Mention this in context later?
+{% endcomment %}
 
 # Live Demo
 ## Get thee to Intellij
+
+{% comment %}
+Go to live_demo.properties
+Run integration tests
+Toggle a database service off
+Re-Run integration tests
+Run unit+boundary tests
+
+{% endcomment %}
 
 # Sandbox
 {% include code_with_bullets.markdown notes = site.data.simple_list  %}
