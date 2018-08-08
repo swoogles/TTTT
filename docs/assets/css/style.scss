@@ -14,8 +14,15 @@ body {
 }
 
 .failure_image {
-  text-align: center;
+  margin: 0 auto;
+  display: block;
   width: 60%;
+}
+
+.full-image {
+  margin: 0 auto;
+  display: block;
+  width: 100%;
 }
 
 //h1 {
