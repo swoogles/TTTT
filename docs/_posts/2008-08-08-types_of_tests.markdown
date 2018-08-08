@@ -93,8 +93,8 @@ Will the logic tests you've written fail if the Database schema changes?
 ![End-to-End Tests]({{ "/assets/images/04_end_to_end_tests.png" | absolute_url }}){:class="img-responsive"}
 
 # Selenium Tests
-* Yet more local dependencies on your environment
-* Slow enough you can watch them happen in real time!
+* More local environment dependencies
+* Slow enough to watch them happen in real time!
 * Still Necessary
 
 # Selenium Tests
@@ -164,8 +164,8 @@ Will the logic tests you've written fail if the Database schema changes?
 | Boundary      |   Additive            |
 
 # Live Demo
-* A generic application with fallible components
-* See how service disruptions can affect different test suits
+* A generic `Application` with fallible components
+* How service disruptions affect multiple suites
 * Experience some intermittent failures.
 
 {% comment %}
@@ -174,8 +174,8 @@ NOT demoing combination explosion
 
 # Demo Concepts
 {% highlight java %}
-public class ServiceStatus {
-    public static void ensureServiceIsRunning(String name) {
+class ServiceStatus {
+    void ensureServiceIsRunning(String name) {
         // Check property file and throw a RuntimeException 
         // if turned off.
     }
@@ -184,10 +184,10 @@ public class ServiceStatus {
 
 # Demo Concepts
 {% highlight java %}
-public abstract class UnreliableService {
+abstract class UnreliableService {
     private List<UnreliableService> dependencies;
     
-    public Duration fallibleAction() {
+    Duration fallibleAction() {
         ServiceStatus.ensureServiceIsRunning(serviceName);
         this.dependencies.forEach(
             dependency->dependency.fallibleAction
@@ -209,15 +209,16 @@ public abstract class UnreliableService {
 
 # Demo Concepts
 * TestSuiteCalculator
-    * Organization
-    * CodeBase
-    * TestingPeriod
+    * Organization - How many people?
+    * CodeBase - How many classes?
+    * TestingPeriod - How many executions?
 {% comment %}
 World - Mention this in context later?
 {% endcomment %}
 
 # Live Demo
-## Get thee to Intellij
+{:.center}
+## *Get thee to Intellij*
 
 {% comment %}
 Go to live_demo.properties
@@ -249,7 +250,7 @@ We want tests that:
 
 # Time-Sensitive Tests
 {% highlight java %}
-    public void timeSensitiveTest() {
+    void test() {
         List<Event> lastTen =
             eventLogic.inLast10Minutes(Instant.now());
         // Other commands...
@@ -262,7 +263,7 @@ We want tests that:
 
 # Entire Test runs at the current Instant
 {% highlight java %}
-    public void test() {
+    void test() {
         Instant now = Instant.now();
         
         List<Event> lastTen = eventLogic.inLast10Minutes(now);
@@ -307,16 +308,24 @@ We want tests that:
 
 
 
+# Solo Project Stats
 
-
-# Sandbox
-{% include code_with_bullets.markdown notes = site.data.simple_list  %}
-
-|organization | codebase | instances | runtime |
-|-------|--------|---------|--------|
-{% for dataLine in site.data.first -%}
-| {{ dataLine.organization}} | {{ dataLine.codebase}} | {{ dataLine.instances}} | {{ dataLine.runtime}} |
+|codebase | instances | runtime |
+|--------|---------|--------|
+{% for dataLine in site.data.solo_project -%}
+| {{ dataLine.codebase}} | {{ dataLine.dependencies}} | {{ dataLine.runtime}} |
 {% endfor %}
 
+# Mid-sized Organization Stats
+
+|codebase | instances | runtime |
+|--------|---------|--------|
+{% for dataLine in site.data.midsized -%}
+| {{ dataLine.codebase}} | {{ dataLine.dependencies}} | {{ dataLine.runtime}} |
+{% endfor %}
+
+# Questions
+{:.center}
+Have any?
 
 ---

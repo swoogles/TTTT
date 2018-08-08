@@ -22,39 +22,39 @@ public class ApplicationTest {
 
         return testInstanceCreator.createInstances(
             CodeBase::getNumberOfApplicationTests,
-            (idx) -> new Application(
-                    "test_app" + idx,
-                    new Producer(
-                            new KafkaCluster(
-                                    network,
-                                    componentRunTimes.getKafkaCluster()
-                            ),
-                            world,
-                            componentRunTimes.getProducer()
-                    ),
-                    new AuthService(
-                        new Intranet(
-                            network,
-                            componentRunTimes.getIntranet()),
-                        componentRunTimes.getAuthService()
-                    ),
-                    new Controller(
-                        componentRunTimes.getController(),
-                       new Logic(
-                               new Mapper(
-                                new Database(network, componentRunTimes.getDatabase()),
-                                    world,
-                                componentRunTimes.getMapper()
-                            ),
-                            componentRunTimes.getLogic()
-                        )
-                    ),
-                    new ThirdPartyResource(
-                        "github",
-                        network,
-                        componentRunTimes.getThirdPartyResource()
-                    ),
-                    componentRunTimes.getApplication()
+                (idx) -> new Application(
+                        "test_app" + idx,
+                        new Producer(
+                                new KafkaCluster(
+                                        network,
+                                        componentRunTimes.getKafkaCluster()
+                                ),
+                                world,
+                                componentRunTimes.getProducer()
+                        ),
+                        new AuthService(
+                                new Intranet(
+                                        network,
+                                        componentRunTimes.getIntranet()),
+                                componentRunTimes.getAuthService()
+                        ),
+                        new Controller(
+                                componentRunTimes.getController(),
+                                new Logic(
+                                        new Mapper(
+                                                new Database(network, componentRunTimes.getDatabase()),
+                                                world,
+                                                componentRunTimes.getMapper()
+                                        ),
+                                        componentRunTimes.getLogic()
+                                )
+                        ),
+                        new ThirdPartyResource(
+                                "github",
+                                network,
+                                componentRunTimes.getThirdPartyResource()
+                        ),
+                        componentRunTimes.getApplication()
                 ));
     }
 

@@ -17,11 +17,51 @@ import java.util.stream.Stream;
 public class TestSuiteCalculatorIntegrationTest {
     private final Path outputFile;
 
+    private Path createNewFile(String organization, String columnHeaders) throws IOException {
+        Path path = Paths.get("./docs/_data/" + organization + ".csv");
+        if (Files.exists(path)) Files.delete(path);
+        String columnNames = columnHeaders + "\n";
+        Files.write(path, columnNames.getBytes("UTF8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        return path;
+    }
+
     public TestSuiteCalculatorIntegrationTest() throws IOException {
         this.outputFile = Paths.get("./docs/_data/first.csv");
         Files.delete(this.outputFile);
         String columnNames = "organization,codebase,instances,runtime\n";
         Files.write(outputFile, columnNames.getBytes("UTF8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    }
+
+    void createTestData(String organizationName) throws IOException {
+        Path path = createNewFile(organizationName, "codebase,dependencies,runtime");
+        Organization organization = new Organization(organizationName);
+        Stream.of( "adolescent", "established", "mature")
+                .map(CodeBase::new)
+                .forEach(codeBase -> Stream.of(
+                        new InstanceGroupMockTimes(),
+                        new InstanceGroupRealTimes()
+                ).forEach(instanceGroup ->   {
+                            TestSuiteCalculator testSuiteCalculator = new TestSuiteCalculator(organization, codeBase, new TestingPeriod("moment"), instanceGroup);
+                            long s = testSuiteCalculator.runTimeDuringWindow().getSeconds();
+                            String formattedDuration = String.format("%d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
+
+                            String line = Stream.of(
+                                    codeBase.getName(),
+                                    instanceGroup.getName(),
+                                    formattedDuration
+                            ).collect(Collectors.joining(",")) + "\n";
+
+                            try {
+                                Files.write(path, line.getBytes("UTF8"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                            } catch (IOException ex) { throw new RuntimeException(ex); }
+                        }
+                ));
+    }
+    @Test
+    public void singleOrgData() throws IOException {
+        createTestData("solo_project");
+        createTestData("midsized");
+
     }
 
     @DataProvider(name = "scenarios")
