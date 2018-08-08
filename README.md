@@ -6,7 +6,7 @@
 This project is completely Educational. I think it will be purely to facilitate some presentations.
 Who knows? Maybe it will spin off some decent code of its own.
 
-Presentation outline available at: [Pages Link](https://swoogles.github.io/TTTT/)
+Presentation outline available at: [Pages Link](https://swoogles.github.io/TTTT/presentations/2008/08/08/types_of_tests)
 
 ## Existing Features:
 Describe Test Environment to determine number of tests to run. This is based on:
