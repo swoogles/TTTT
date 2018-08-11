@@ -17,10 +17,31 @@
     <script type="text/javascript">
         {% include keyboard_navigation_nonpaginated.js %}
     </script>
+    <script type="text/javascript">
+        {% include swipe_navigation.js %}
+    </script>
+    <script type="text/javascript">
+        function addLoadEvent(func) {
+            console.log("adding a load event. Func:  " + func)
+            var oldonload = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = func;
+            } else {
+                window.onload = function() {
+                    if (oldonload) {
+                        oldonload();
+                    }
+                    func();
+                }
+            }
+        }
+        addLoadEvent(setup_keypress)
+    </script>
+
 
 </head>
 
-<body onload="setup_keypress()">
+<body>
 
 <div class="container">
     <section id="main_content">
@@ -38,5 +59,14 @@
     ga('send', 'pageview');
 </script>
 {% endif %}
+
+<script type="text/javascript">
+    function addSwipesToContent() {
+        var content = document.getElementById("main_content");
+        console.log("content: " + content);
+        detectswipe("main_content", swipeNavigation);
+    }
+addLoadEvent(addSwipesToContent)
+</script>
 </body>
 </html>
