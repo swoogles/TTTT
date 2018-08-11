@@ -41,9 +41,9 @@ function detectswipe(el,func) {
 function swipeNavigation(el,d) {
     console.log("swipeNavigation");
     if ( d === "l" ) {
-        document.location.href = "{{page.previous.url | relative_url}}";
-    } else if ( d === "r") {
         document.location.href = "{{page.next.url | relative_url}}";
+    } else if ( d === "r") {
+        document.location.href = "{{page.previous.url | relative_url}}";
     }
-    alert("you swiped on element with id '"+el+"' to "+d+" direction");
+    // alert("you swiped on element with id '"+el+"' to "+d+" direction");
 }

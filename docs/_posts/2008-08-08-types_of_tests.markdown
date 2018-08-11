@@ -13,7 +13,7 @@ paginate_content:
 ## Types of Tests and Testable Types
 
 {:.center}
-Use left/right arrays to navigate backwards/forwards
+Use left/right arrows or swipe to navigate backwards/forwards
 
 {:.center}
 [github.com/swoogles/TTTT](github.com/swoogles/TTTT)
